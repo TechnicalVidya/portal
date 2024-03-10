@@ -9,15 +9,15 @@ export const siteConfig = {
     },
     {
       title: "Events",
-      href: "/",
+      href: "/events",
     },
     {
-      title: "Zephr",
-      href: "/",
+      title: "Zephyr",
+      href: "/zephyr",
     },
     {
       title: "Concession",
-      href: "/",
+      href: "/concession",
     },
   ],
   links: {
