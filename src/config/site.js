@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Portal",
   description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "where we're all about making memories that'll make your Instagram jealous. Join the fun as we turn your events into legendary stories.",
   mainNav: [
     {
       title: "Home",

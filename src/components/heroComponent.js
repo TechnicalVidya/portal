@@ -13,8 +13,7 @@ const HeroComponent = () => {
           We Bring Your Events to Life!
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground">
-          where we're all about making memories that'll make your Instagram
-          jealous. Join the fun as we turn your events into legendary stories.
+          {siteConfig.description}
         </p>
       </div>
       <div className="flex gap-4">
