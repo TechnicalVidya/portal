@@ -20,7 +20,7 @@ function MainNav({ items }) {
         <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>
       {items && items.length ? (
-        <nav className="flex gap-6">
+        <nav className="md:flex hidden gap-6">
           {items.map(
             (item, index) =>
               item.href && (
