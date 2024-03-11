@@ -22,9 +22,9 @@ const HeroComponent = () => {
 
       <div className="flex flex-col items-center gap-4">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center">
-          Crafting Memories, Inspiring Moments!
-          {/* <br className="hidden sm:inline" />
-          We Bring Your Events to Life! */}
+          Technical Vidya
+          <br className="hidden sm:inline" />
+          We Bring Your skills to Life!
         </h1>
         {/* <h1 className="text-3xl mt-3 font-extrabold leading-tight tracking-tighter md:text-4xl text-center"></h1> */}
         <p className="max-w-[700px] text-lg text-muted-foreground text-center">
