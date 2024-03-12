@@ -49,7 +49,7 @@ export default function AuthenticationPage() {
             >
               <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
             </svg>
-            Portal
+            Ltce Students Portal
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
@@ -58,7 +58,7 @@ export default function AuthenticationPage() {
                 website - streamlined RSVPs, interactive schedules, and seamless
                 networking!
               </p>
-              <footer className="text-sm">Sofia Davis</footer>
+              <footer className="text-sm">Ansh Varma</footer>
             </blockquote>
           </div>
         </div>

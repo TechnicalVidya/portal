@@ -1,11 +1,11 @@
 export const siteConfig = {
-  name: "Portal",
+  name: "Ltce Students Portal",
   description:
     "where we're all about making memories that'll make your Instagram jealous. Join the fun as we turn your events into legendary stories.",
   mainNav: [
     {
-      title: "Home",
-      href: "/",
+      title: "Clubs",
+      href: "/clubs",
     },
     {
       title: "Events",
@@ -21,7 +21,7 @@ export const siteConfig = {
     },
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
+    twitter: "/",
     github: "https://github.com/TechnicalVidya/portal",
     members: "/",
   },
