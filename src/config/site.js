@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Ltce Students Portal",
+  name: "Ingenia",
   description:
     "where we're all about making memories that'll make your Instagram jealous. Join the fun as we turn your events into legendary stories.",
   mainNav: [
