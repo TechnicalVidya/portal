@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/nav/site-header";
 import ReduxProvider from "@/redux/redux-provider";
+import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,9 @@ export default function RootLayout({ children }) {
           <ThemeProvider attribute="class" defaultTheme="dark">
             <SiteHeader />
             <div className="p-8">{children}</div>
-          </ThemeProvider></ReduxProvider>
+            <Footer />
+          </ThemeProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

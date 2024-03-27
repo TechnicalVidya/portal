@@ -8,11 +8,8 @@ import { Icons } from "./icons";
 import { usePathname } from "next/navigation";
 
 function MainNav({ items }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const pathname = usePathname();
-
-
-
 
   useEffect(() => {
     const foundIndex = items.findIndex((item) => item.href === pathname);
@@ -20,8 +17,9 @@ function MainNav({ items }) {
     if (foundIndex !== -1) {
       setActiveIndex(foundIndex);
     }
-  }, [])
 
+    if (pathname === "/") setActiveIndex(-1);
+  }, [pathname]);
 
   return (
     <div className="flex gap-6 md:gap-10">
@@ -44,8 +42,7 @@ function MainNav({ items }) {
                       : "text-muted-foreground",
                     item.disabled && "cursor-not-allowed opacity-80"
                   )}
-                  onClick={() => handleLinkClick(index)}
-                  passHref
+                  // onClick={() => handleLinkClick(index)}
                 >
                   {item.title}
                 </Link>
