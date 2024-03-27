@@ -1,7 +1,9 @@
+'use client'
+import Zephyr from "@/modules/zephyr";
 import React from "react";
 
-const Zephyr = () => {
-  return <div>Zephyr</div>;
+const Page = () => {
+  return <Zephyr />;
 };
 
-export default Zephyr;
+export default Page;

@@ -1,7 +1,9 @@
+'use client'
+import Events from "@/modules/events";
 import React from "react";
 
-const Events = () => {
-  return <div>Events</div>;
+const Page = () => {
+  return <Events />;
 };
 
-export default Events;
+export default Page;

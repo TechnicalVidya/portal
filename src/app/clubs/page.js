@@ -1,7 +1,11 @@
-import React from "react";
+'use client'
 
-const Clubs = () => {
-  return <div>Clubs</div>;
+import Clubs from "@/modules/clubs";
+
+const Page = () => {
+  return (
+    <Clubs />
+  );
 };
 
-export default Clubs ;
+export default Page;
