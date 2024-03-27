@@ -1,6 +1,5 @@
 export const siteConfig = {
   name: "INGENIA",
-  name: "Ingenia",
   description:
     "Where we're all about making memories that'll make your Instagram jealous. Join the fun as we turn your events into legendary stories.",
   mainNav: [
