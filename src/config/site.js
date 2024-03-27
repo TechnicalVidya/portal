@@ -1,8 +1,12 @@
 export const siteConfig = {
-  name: "Ltce Students Portal",
+  name: "INGENIA",
   description:
-    "where we're all about making memories that'll make your Instagram jealous. Join the fun as we turn your events into legendary stories.",
+    "Where we're all about making memories that'll make your Instagram jealous. Join the fun as we turn your events into legendary stories.",
   mainNav: [
+    {
+      title: "Zephyr",
+      href: "/zephyr",
+    },
     {
       title: "Clubs",
       href: "/clubs",
@@ -11,10 +15,7 @@ export const siteConfig = {
       title: "Events",
       href: "/events",
     },
-    {
-      title: "Zephyr",
-      href: "/zephyr",
-    },
+    
     {
       title: "Concession",
       href: "/concession",
