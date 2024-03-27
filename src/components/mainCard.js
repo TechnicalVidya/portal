@@ -6,10 +6,8 @@ import {
   CardContent,
   CardDescription,
   CardFooter,
-  CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import img3 from "@/assets/3.jpg";
 import Image from "next/image";
 
 export function CardWithForm({ card }) {
