@@ -140,49 +140,8 @@ const HeroComponent = () => {
           </div>
         </div>
       </div>
-      <br/><br/>
-      <hr />  
+     
 
-      <section className="p-6 dark:bg-transparent bg-transparent dark:text-gray-200">
-      <div className="w-100%">
-        <h1 className=" mt-4 scroll-m-20 text-lg font-bold  text-gray-600 dark:text-gray-400">
-          CONTACT US..
-        </h1>
-          <h4 className="scroll-m-20 text-4xl font-bold text-left">
-         Feel free to contact us  for any queries or suggestions. We will get back!
-            </h4>
-            <div  className="flex flex-wrap mb-20 justify-center justify-evenly">
-              <img
-                  src="https://img.icons8.com/3d-fluency/94/place-marker.png"
-                  alt="Location"
-                  className="w-94 h-94 mt-9 "/>
-                  <a href="https://maps.app.goo.gl/Ba44bWDuegcB7zP57">
-                  <p className="mt-20 text-lg text-gray-600 dark:text-gray-400 text-center">
-                    LTCoE , Koparkhairane <br /> Navi Mumbai 400708
-                  </p>
-                  </a>
-              <img
-                  src="https://img.icons8.com/3d-fluency/94/place-marker.png"
-                  alt="Phone"
-                  className="w-94 h-94 mt-9 "/>
-                  <a href="https://maps.app.goo.gl/Ba44bWDuegcB7zP57">
-                  <p className="mt-20 text-lg text-gray-600 dark:text-gray-400 text-center">
-                    XXXXXXXXXX <br /> XXXXXXXXXX
-                  </p>
-                  </a>
-              <img
-                  src="https://img.icons8.com/3d-fluency/94/gmail.png"
-                  alt="Mail"
-                  className="w-94 h-94 mt-9 "/>
-                  <a>
-                  <p className="mt-20 text-lg text-gray-600 dark:text-gray-400 text-center">
-                    techvidya@gmail.com
-                  </p>
-                  </a>
-           </div>
-      </div>
-
-      </section>
       
 
     </section>
