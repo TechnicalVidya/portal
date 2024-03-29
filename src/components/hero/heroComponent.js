@@ -130,7 +130,7 @@ const HeroComponent = () => {
 
             </div>
             <blockquote className="text-xl font-medium mb-4 text-gray-800 dark:text-white">
-             "Embrace challenges as opportunities, let curiosity guide, determination fuel, and passion drive you towards success. Your potential is limitless."
+            &quot;Embrace challenges as opportunities, let curiosity guide, determination fuel, and passion drive you towards success. Your potential is limitless.&quot;
               </blockquote>
             <cite className="block font-bold text-lg not-italic mb-1 text-gray-600 dark:text-gray-400">Dr. Satish Chaturvedi</cite>
             <div className="text-gray-600 dark:text-gray-400">
