@@ -3,8 +3,8 @@ import { siteConfig } from "@/config/site";
 import Link from "next/link";
 import { buttonVariants } from "../ui/button";
 import { Badge } from "../ui/badge";
-import Image from 'next/image';
-import TestimonialImage from '@/assets/testimonial.png';
+import Image from "next/image";
+import TestimonialImage from "@/assets/testimonial.png";
 
 const HeroComponent = () => {
   return (
@@ -24,7 +24,7 @@ const HeroComponent = () => {
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-6xl text-center">
           Technical Vidya
           <br className="hidden sm:inline" />
-           We Bring Your skills to Life!
+          We Bring Your skills to Life!
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground text-center">
           {siteConfig.description}
@@ -48,43 +48,43 @@ const HeroComponent = () => {
           </Link>
         </div>
       </div>
-<br/><br/>
 
-<div className="bg-transparent p-4 lg:p-8">
-  <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center gap-8">
-    {/* Left Content (GIF) */}
-    <div className="lg:w-1/2">
-      <img
-        src="https://googleworkspace-en.sienacompany.com/img/content/Connected%20world-pana.svg"
-        alt="Motto GIF"
-        className="w-full lg:max-w-lg h-auto"
-      />
-    </div>
-    {/* Right Content (Text) */}
-    
-    <div className="lg:w-1/2 dark:bg-transparent bg-transparent dark:text-gray-200">
-      <div className="text-center">
-        <h2 className="text-3xl lg:text-4xl font-bold mb-4">Your Text Here</h2>
-        <p className="text-lg leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vehicula diam nec nunc dictum, vitae luctus dui vestibulum.
-          Phasellus euismod felis eget libero suscipit, eget ullamcorper dui suscipit. Nulla facilisi. Vivamus vel neque velit.
-        </p>
-      </div>
-      </div>
-    </div>
-  </div>
+      {/* <div className="bg-transparent p-4 lg:p-8">
+        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center gap-8">
+        
+          <div className="lg:w-1/2">
+            <img
+              src="https://googleworkspace-en.sienacompany.com/img/content/Connected%20world-pana.svg"
+              alt="Motto GIF"
+              className="w-full lg:max-w-lg h-auto"
+            />
+          </div>
+        
 
+          <div className="lg:w-1/2 dark:bg-transparent bg-transparent dark:text-gray-200">
+            <div className="text-center">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+                Your Text Here
+              </h2>
+              <p className="text-lg leading-relaxed">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                vehicula diam nec nunc dictum, vitae luctus dui vestibulum.
+                Phasellus euismod felis eget libero suscipit, eget ullamcorper
+                dui suscipit. Nulla facilisi. Vivamus vel neque velit.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div> */}
 
-
-
-      <section className="p-6 dark:bg-transparent bg-transparent dark:text-gray-200">
+      {/* <section className="p-6 dark:bg-transparent bg-transparent dark:text-gray-200">
         <h4 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-4xl text-center">
-         TECHNICAL STATS
-          
+          TECHNICAL STATS
         </h4>
-        <p className="mt-1 text-lg text-gray-600 dark:text-gray-400 text-center">THE NUMBERS SAY IT ALL</p>
-        
-        
+        <p className="mt-1 text-lg text-gray-600 dark:text-gray-400 text-center">
+          THE NUMBERS SAY IT ALL
+        </p>
+
         <div className="mt-4 container mx-auto grid justify-center grid-cols-2 text-center lg:grid-cols-4">
           <div className="flex flex-col justify-start m-2 lg:m-6">
             <p className="text-4xl font-bold leading-none lg:text-6xl">500+</p>
@@ -103,13 +103,12 @@ const HeroComponent = () => {
             <p className="text-sm sm:text-base">COMMITMENT</p>
           </div>
         </div>
-      </section>
+      </section> */}
 
-
-
-      <div className="max-w-3xl mx-auto mt-20" data-aos="zoom-y-out">
+      {/* Testimonial */}
+      {/* <div className="max-w-3xl mx-auto mt-20" data-aos="zoom-y-out">
         <div className="relative flex items-start border-2 border-gray-200 rounded bg-white dark:bg-gray-800 dark:border-gray-600 p-6 md:p-8">
-          {/* Testimonial Image */}
+         
           <div className="flex-shrink-0 mr-6">
             <div className="relative w-24 h-24 rounded-full overflow-hidden">
               <Image
@@ -121,33 +120,39 @@ const HeroComponent = () => {
               />
             </div>
           </div>
-          {/* Testimonial Content */}
           <div className="flex flex-col justify-center">
             <div className="absolute top-0 -mt-8 left-1/2 transform -translate-x-1/2">
-              <svg className="absolute top-0 right-0 -mt-3 -mr-8 w-16 h-16 fill-current text-blue-500 dark:text-blue-400" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <svg
+                className="absolute top-0 right-0 -mt-3 -mr-8 w-16 h-16 fill-current text-blue-500 dark:text-blue-400"
+                viewBox="0 0 64 64"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path d="M37.89 58.338c-2.648-5.63-3.572-10.045-2.774-13.249.8-3.203 8.711-13.383 23.737-30.538l2.135.532c-6.552 10.033-10.532 17.87-11.939 23.515-.583 2.34.22 6.158 2.41 11.457l-13.57 8.283zm-26.963-6.56c-2.648-5.63-3.572-10.046-2.773-13.25.799-3.203 8.71-13.382 23.736-30.538l2.136.533c-6.552 10.032-10.532 17.87-11.94 23.515-.583 2.339.22 6.158 2.41 11.456l-13.57 8.283z" />
               </svg>
-
             </div>
             <blockquote className="text-xl font-medium mb-4 text-gray-800 dark:text-white">
-            &quot;Embrace challenges as opportunities, let curiosity guide, determination fuel, and passion drive you towards success. Your potential is limitless.&quot;
-              </blockquote>
-            <cite className="block font-bold text-lg not-italic mb-1 text-gray-600 dark:text-gray-400">Dr. Satish Chaturvedi</cite>
+              &quot;Embrace challenges as opportunities, let curiosity guide,
+              determination fuel, and passion drive you towards success. Your
+              potential is limitless.&quot;
+            </blockquote>
+            <cite className="block font-bold text-lg not-italic mb-1 text-gray-600 dark:text-gray-400">
+              Dr. Satish Chaturvedi
+            </cite>
             <div className="text-gray-600 dark:text-gray-400">
               <span>Founder - </span>
-              <a className="text-blue-600 hover:underline" href="https://ltce.in">Lokmanya Tilak College Of Engineering</a>
+              <a
+                className="text-blue-600 hover:underline"
+                href="https://ltce.in"
+              >
+                Lokmanya Tilak College Of Engineering
+              </a>
             </div>
           </div>
         </div>
-      </div>
-     
-
-      
-
+      </div> */}
     </section>
-  
   );
 };
 
 export default HeroComponent;
-
