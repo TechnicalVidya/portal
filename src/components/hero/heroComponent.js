@@ -6,8 +6,6 @@ import { Badge } from "../ui/badge";
 import Image from 'next/image';
 import TestimonialImage from '@/assets/testimonial.png';
 
-
-
 const HeroComponent = () => {
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
@@ -26,7 +24,7 @@ const HeroComponent = () => {
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-6xl text-center">
           Technical Vidya
           <br className="hidden sm:inline" />
-          We Bring Your skills to Life!
+           We Bring Your skills to Life!
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground text-center">
           {siteConfig.description}
@@ -84,10 +82,10 @@ const HeroComponent = () => {
          TECHNICAL STATS
           
         </h4>
-        <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 text-center">THE NUMBERS SAY IT ALL</p>
+        <p className="mt-1 text-lg text-gray-600 dark:text-gray-400 text-center">THE NUMBERS SAY IT ALL</p>
         
         
-        <div className="container mx-auto grid justify-center grid-cols-2 text-center lg:grid-cols-4">
+        <div className="mt-4 container mx-auto grid justify-center grid-cols-2 text-center lg:grid-cols-4">
           <div className="flex flex-col justify-start m-2 lg:m-6">
             <p className="text-4xl font-bold leading-none lg:text-6xl">500+</p>
             <p className="text-sm sm:text-base">HONORS AND ACHIEVEMENTS</p>
@@ -143,6 +141,49 @@ const HeroComponent = () => {
         </div>
       </div>
       <br/><br/>
+      <hr />  
+
+      <section className="p-6 dark:bg-transparent bg-transparent dark:text-gray-200">
+      <div className="w-100%">
+        <h1 className=" mt-4 scroll-m-20 text-lg font-bold  text-gray-600 dark:text-gray-400">
+          CONTACT US..
+        </h1>
+          <h4 className="scroll-m-20 text-4xl font-bold text-left">
+         Feel free to contact us  for any queries or suggestions. We will get back!
+            </h4>
+            <div  className="flex flex-wrap mb-20 justify-center justify-evenly">
+              <img
+                  src="https://img.icons8.com/3d-fluency/94/place-marker.png"
+                  alt="Location"
+                  className="w-94 h-94 mt-9 "/>
+                  <a href="https://maps.app.goo.gl/Ba44bWDuegcB7zP57">
+                  <p className="mt-20 text-lg text-gray-600 dark:text-gray-400 text-center">
+                    LTCoE , Koparkhairane <br /> Navi Mumbai 400708
+                  </p>
+                  </a>
+              <img
+                  src="https://img.icons8.com/3d-fluency/94/place-marker.png"
+                  alt="Phone"
+                  className="w-94 h-94 mt-9 "/>
+                  <a href="https://maps.app.goo.gl/Ba44bWDuegcB7zP57">
+                  <p className="mt-20 text-lg text-gray-600 dark:text-gray-400 text-center">
+                    XXXXXXXXXX <br /> XXXXXXXXXX
+                  </p>
+                  </a>
+              <img
+                  src="https://img.icons8.com/3d-fluency/94/gmail.png"
+                  alt="Mail"
+                  className="w-94 h-94 mt-9 "/>
+                  <a>
+                  <p className="mt-20 text-lg text-gray-600 dark:text-gray-400 text-center">
+                    techvidya@gmail.com
+                  </p>
+                  </a>
+           </div>
+      </div>
+
+      </section>
+      
 
     </section>
   
