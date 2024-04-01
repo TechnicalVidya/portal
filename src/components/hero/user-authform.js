@@ -7,17 +7,33 @@ import { Icons } from "../icons";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
+import axios from "axios";
 
 export function UserAuthForm({ className, ...props }) {
   const [isLoading, setIsLoading] = React.useState(false);
+  const [formData, setFormData] = React.useState({
+    erp: "", password: ""
+  })
+
+  // console.log(formData)
+
+  const handleLogin = async () => {
+    if (formData.erp.length > 0 && formData.password.length > 0) {
+      const res = await axios.post('/api/v1/auth/signin', formData)
+      console.log(res)
+    }
+
+  }
 
   async function onSubmit(event) {
     event.preventDefault();
     setIsLoading(true);
+    handleLogin()
+    setIsLoading(false)
 
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    // setTimeout(() => {
+    //   setIsLoading(false);
+    // }, 3000);
   }
 
   return (
@@ -31,9 +47,26 @@ export function UserAuthForm({ className, ...props }) {
             <Input
               id="email"
               placeholder="name@example.com"
+              onChange={(e) => setFormData({ ...formData, erp: e.target.value })}
               type="email"
               autoCapitalize="none"
               autoComplete="email"
+              autoCorrect="off"
+              disabled={isLoading}
+            />
+          </div>
+
+          <div className="grid gap-1">
+            <Label className="sr-only" htmlFor="email">
+              Password
+            </Label>
+            <Input
+              id="password"
+              placeholder="******"
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              type="password"
+              autoCapitalize="none"
+              autoComplete="password"
               autoCorrect="off"
               disabled={isLoading}
             />
