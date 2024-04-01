@@ -11,15 +11,39 @@ import {
 import Image from "next/image";
 
 export function CardWithForm({ card }) {
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
-    <Card className="pt-6">
+    <Card className="pt-6 ">
       <CardContent>
         <div key={card.id}>
-          <div className="overflow-hidden">
+          <div
+            className="relative overflow-hidden rounded-lg shadow-lg transition duration-300 transform"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div
+              className={`absolute inset-0 bg-opacity-50 transition-opacity ${
+                isHovered ? "opacity-0" : "opacity-100"
+              }`}
+            ></div>
             <Image
-              className="rounded-lg"
+              className={`object-cover w-full h-full transition-transform ${
+                isHovered ? "scale-110" : ""
+              }`}
               src={card.imageUrl}
               alt={card.altText}
+              width={500} // Example width
+              height={300} // Example height
+              layout="responsive" // Maintain aspect ratio
             />
           </div>
           <CardTitle className="mt-4">{card.title}</CardTitle>

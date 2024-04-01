@@ -49,7 +49,7 @@ const HeroComponent = () => {
         </div>
       </div>
 
-      {/* <div className="bg-transparent p-4 lg:p-8">
+      <div className="bg-transparent p-4 lg:p-8">
         <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center gap-8">
         
           <div className="lg:w-1/2">
@@ -64,20 +64,18 @@ const HeroComponent = () => {
           <div className="lg:w-1/2 dark:bg-transparent bg-transparent dark:text-gray-200">
             <div className="text-center">
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-                Your Text Here
+                Ansh Varma 
               </h2>
-              <p className="text-lg leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                vehicula diam nec nunc dictum, vitae luctus dui vestibulum.
-                Phasellus euismod felis eget libero suscipit, eget ullamcorper
-                dui suscipit. Nulla facilisi. Vivamus vel neque velit.
-              </p>
+              <h2 className="text-lg leading-relaxed">
+               Young talent will think of new ideas to improve the quality <br /> of life and technology and innovation will help us.
+               
+              </h2>
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
 
-      {/* <section className="p-6 dark:bg-transparent bg-transparent dark:text-gray-200">
+      <section className="p-6 dark:bg-transparent bg-transparent dark:text-gray-200">
         <h4 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-4xl text-center">
           TECHNICAL STATS
         </h4>
@@ -103,10 +101,10 @@ const HeroComponent = () => {
             <p className="text-sm sm:text-base">COMMITMENT</p>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Testimonial */}
-      {/* <div className="max-w-3xl mx-auto mt-20" data-aos="zoom-y-out">
+      <div className="max-w-3xl mx-auto mt-20" data-aos="zoom-y-out">
         <div className="relative flex items-start border-2 border-gray-200 rounded bg-white dark:bg-gray-800 dark:border-gray-600 p-6 md:p-8">
          
           <div className="flex-shrink-0 mr-6">
@@ -150,7 +148,7 @@ const HeroComponent = () => {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </section>
   );
 };
