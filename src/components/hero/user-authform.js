@@ -48,7 +48,7 @@ export function UserAuthForm({ className, ...props }) {
               id="email"
               placeholder="name@example.com"
               onChange={(e) => setFormData({ ...formData, erp: e.target.value })}
-              type="email"
+              type="text"
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
@@ -71,7 +71,7 @@ export function UserAuthForm({ className, ...props }) {
               disabled={isLoading}
             />
           </div>
-          <Button disabled={isLoading}>
+          <Button disabled={isLoading} type='submit'>
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
