@@ -5,9 +5,9 @@ import img2 from "@/assets/2.jpg";
 import img3 from "@/assets/3.jpg";
 import Cards from "../clubs/cards";
 
-import Img1 from "@/assets/clubs/1.png";
-import Img2 from "@/assets/clubs/2.png";
-import Img3 from "@/assets/clubs/3.png";
+import Img1 from "@/assets/events/1.png";
+import Img2 from "@/assets/events/2.png";
+import Img3 from "@/assets/events/3.png";
 
 
 const cardData = [

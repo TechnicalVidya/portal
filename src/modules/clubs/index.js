@@ -3,11 +3,88 @@ import React from "react";
 import img1 from "@/assets/1.jpg";
 import img2 from "@/assets/2.jpg";
 import img3 from "@/assets/3.jpg";
-// import Cards from "./cards";
+import Cards from "./cards";
 
-// import Img1 from "@/assets/clubs/1.png";
-// import Img2 from "@/assets/clubs/2.png";
-// import Img3 from "@/assets/clubs/3.png";
+// import Img1 from "@/assets/events/1.png";
+// import Img2 from "@/assets/events/2.png";
+// import Img3 from "@/assets/events/3.png";
+import Img1 from "@/assets/clubs/club1.png";
+
+
+const cardData = [
+  {
+    id: 1,
+    imageUrl: Img1,
+    title: "GDSC ",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
+    managedBy: "Ansh Varma",
+    altText: "dummy Alt",
+  },
+  {
+    id: 2,
+    imageUrl: Img1,
+    title: "CSI",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
+    managedBy: "Ansh Varma",
+    altText: "dummy Alt",
+  },
+  {
+    id: 3,
+    imageUrl: Img1,
+    title: "ENTERPRENEURSHIP CELL",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
+    managedBy: "Ansh Varma",
+    altText: "dummy Alt",
+  },
+  {
+    id: 3,
+    imageUrl: Img1,
+    title: "IEEE",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
+    managedBy: "Ansh Varma",
+    altText: "dummy Alt",
+  },
+  {
+    id: 3,
+    imageUrl: Img1,
+    title: "ENGLISH LITRARY CLUB",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
+    managedBy: "Ansh Varma",
+    altText: "dummy Alt",
+  },
+  {
+    id: 3,
+    imageUrl: Img1,
+    title: "NATIONAL SERVICE SCHEME",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
+    managedBy: "Ansh Varma",
+    altText: "dummy Alt",
+  },
+  {
+    id: 3,
+    imageUrl: Img1,
+    title: "WOMEN DEVELOPMENT CELL",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
+    managedBy: "Ansh Varma",
+    altText: "dummy Alt",
+  },
+  {
+    id: 3,
+    imageUrl: Img1,
+    title: "TECHNICAL VIDYA",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
+    managedBy: "Ansh Varma",
+    altText: "dummy Alt",
+  },
+];
 
 const Clubs = () => {
   const imgArray = [img1, img2, img3];
@@ -16,7 +93,7 @@ const Clubs = () => {
     <div>
       <div className="flex flex-col items-center justify-center">
         <CarouselDemo imgArray={imgArray} />
-        {/* <Cards cardData={cardData} /> */}
+        <Cards cardData={cardData} />
       </div>
     </div>
   );
