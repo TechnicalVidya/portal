@@ -12,6 +12,15 @@ import Image from "next/image";
 
 export function CardWithForm({ card }) {
   const [isHovered, setIsHovered] = React.useState(false);
+  const [title, setTitle] = React.useState(card.title);
+
+  const truncateString = (str, num) =>
+    str.length > num ? str.slice(0, num) + '...' : str;
+
+  React.useEffect(() => {
+    const t = truncateString(card.title, 10);
+    setTitle(t)
+  }, [card.title]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -46,7 +55,7 @@ export function CardWithForm({ card }) {
               layout="responsive" // Maintain aspect ratio
             />
           </div>
-          <CardTitle className="mt-4">{card.title}</CardTitle>
+          <CardTitle className="mt-4">{title}</CardTitle>
           <CardDescription className="text-gray-500 text-sm mt-2">
             {card.description}
           </CardDescription>
