@@ -69,9 +69,9 @@ const HeroComponent = () => {
             <hr />
             <br />
               <h2 className="text-lg leading-relaxed ">
-              Life isn't just about checking off accomplishments, acquiring possessions, and fulfilling desires. Your qualifications and job history aren't the real measure of who you are. Life is tough, filled with unexpected twists and turns beyond anyone's control. Having the humility to accept this reality can help you navigate through its challenges.
+              Life isn&apos;t just about checking off accomplishments, acquiring possessions, and fulfilling desires. Your qualifications and job history aren&apos;t the real measure of who you are. Life is tough, filled with unexpected twists and turns beyond anyone&apos;s control. Having the humility to accept this reality can help you navigate through its challenges.
 
-              Understand the importance of the present moment. Put your efforts into studying hard, working hard, and enjoy your life to the fullest. Don't let yourself be constrained by rules, but always be mindful of not causing harm to others. <br />
+              Understand the importance of the present moment. Put your efforts into studying hard, working hard, and enjoy your life to the fullest. Don&apos;t let yourself be constrained by rules, but always be mindful of not causing harm to others. <br />
                     <br /> <p className="mt-1 text-lg text-gray-600 dark:text-gray-400 font-bold text-right"> -ANSH VARMA</p>
               </h2>
             </div>
