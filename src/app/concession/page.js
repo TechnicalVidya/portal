@@ -1,7 +1,10 @@
 import React from "react";
+import Concession from "@/modules/concession";
 
-const Concession = () => {
-  return <div>Concession</div>;
+const Page = () => {
+  return (
+    <Concession />
+  );
 };
 
-export default Concession;
+export default Page;

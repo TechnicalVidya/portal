@@ -20,6 +20,10 @@ export const siteConfig = {
       title: "Concession",
       href: "/concession",
     },
+    {
+      title: "Blogs",
+      href: "/Blogs",
+    },
   ],
   links: {
     twitter: "/",
