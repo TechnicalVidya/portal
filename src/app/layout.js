@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/nav/site-header";
 import ReduxProvider from "@/redux/redux-provider";
 import Footer from "@/components/footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,8 +20,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <ReduxProvider>
           <ThemeProvider attribute="class" defaultTheme="dark">
+            <Toaster />
             <SiteHeader />
-            <div className="p-8">{children}</div>
+            <main className="p-8">{children}</main>
             <Footer />
           </ThemeProvider>
         </ReduxProvider>

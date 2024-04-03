@@ -11,6 +11,7 @@ import axios from "axios";
 import { setUser } from "@/redux/slices/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
+import { handleLogin } from "@/utils/login";
 
 export function UserAuthForm({ className, ...props }) {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -20,37 +21,14 @@ export function UserAuthForm({ className, ...props }) {
     erpPassword: "",
   });
   const router = useRouter();
-
   const user = useSelector((state) => state.user);
-  console.log(user);
-
-  //   {
-  //     "erpID":11111,
-  //     "erpPassword":"11111"
-  // }
-  // console.log(formData)
-
-  const handleLogin = async () => {
-    if (formData.erpID !== 0 && formData.erpPassword.length > 0) {
-      const { data } = await axios.post("/api/v1/auth/signin", formData);
-      if (data.succes) {
-        const { user } = data;
-        const userSlice = { authenticated: data.succes, ...user };
-        dispatch(setUser(userSlice));
-        router.push("/");
-      }
-    }
-  };
 
   async function onSubmit(event) {
     event.preventDefault();
     setIsLoading(true);
-    handleLogin();
+    const loginStatus = await handleLogin(formData, dispatch);
     setIsLoading(false);
-
-    // setTimeout(() => {
-    //   setIsLoading(false);
-    // }, 3000);
+    if (loginStatus) router.push("/");
   }
 
   return (

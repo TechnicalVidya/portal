@@ -38,6 +38,7 @@
     "redux-persist": "^6.0.0",
     "sharp": "^0.33.2",
     "slick-carousel": "^1.8.1",
+    "sonner": "^1.4.41",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"
   },
