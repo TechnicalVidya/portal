@@ -8,28 +8,45 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import axios from "axios";
+import { setUser } from "@/redux/slices/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 export function UserAuthForm({ className, ...props }) {
   const [isLoading, setIsLoading] = React.useState(false);
+  const dispatch = useDispatch();
   const [formData, setFormData] = React.useState({
-    erp: "", password: ""
-  })
+    erpID: 0,
+    erpPassword: "",
+  });
+  const router = useRouter();
 
+  const user = useSelector((state) => state.user);
+  console.log(user);
+
+  //   {
+  //     "erpID":11111,
+  //     "erpPassword":"11111"
+  // }
   // console.log(formData)
 
   const handleLogin = async () => {
-    if (formData.erp.length > 0 && formData.password.length > 0) {
-      const res = await axios.post('/api/v1/auth/signin', formData)
-      console.log(res)
+    if (formData.erpID !== 0 && formData.erpPassword.length > 0) {
+      const { data } = await axios.post("/api/v1/auth/signin", formData);
+      if (data.succes) {
+        const { user } = data;
+        const userSlice = { authenticated: data.succes, ...user };
+        dispatch(setUser(userSlice));
+        router.push("/");
+      }
     }
-
-  }
+  };
 
   async function onSubmit(event) {
     event.preventDefault();
     setIsLoading(true);
-    handleLogin()
-    setIsLoading(false)
+    handleLogin();
+    setIsLoading(false);
 
     // setTimeout(() => {
     //   setIsLoading(false);
@@ -47,7 +64,12 @@ export function UserAuthForm({ className, ...props }) {
             <Input
               id="email"
               placeholder="name@example.com"
-              onChange={(e) => setFormData({ ...formData, erp: e.target.value })}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  erpID: parseInt(e.target.value) || 0,
+                })
+              }
               type="text"
               autoCapitalize="none"
               autoComplete="email"
@@ -63,7 +85,9 @@ export function UserAuthForm({ className, ...props }) {
             <Input
               id="password"
               placeholder="******"
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, erpPassword: e.target.value })
+              }
               type="password"
               autoCapitalize="none"
               autoComplete="password"
@@ -71,7 +95,7 @@ export function UserAuthForm({ className, ...props }) {
               disabled={isLoading}
             />
           </div>
-          <Button disabled={isLoading} type='submit'>
+          <Button disabled={isLoading} type="submit">
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
