@@ -5,6 +5,7 @@ import { buttonVariants } from "../ui/button";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
 import TestimonialImage from "@/assets/testimonial.png";
+import FounderImage from "@/assets/founder.png";
 
 const HeroComponent = () => {
   return (
@@ -34,8 +35,7 @@ const HeroComponent = () => {
       <div className="flex justify-center mt-3">
         <div className="flex gap-4">
           <Link
-            as={siteConfig.links.members}
-            href={siteConfig.links.members}
+            href="/members"
             className={buttonVariants()}
           >
             See Members
@@ -52,11 +52,12 @@ const HeroComponent = () => {
       <div className="bg-transparent p-4 lg:p-8">
         <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center gap-8">
         
-          <div className="lg:w-1/2">
-            <img
-              src="https://googleworkspace-en.sienacompany.com/img/content/Connected%20world-pana.svg"
-              alt="Motto GIF"
-              className="w-full lg:max-w-lg h-auto"
+          <div className="lg:w-1/2 pl-20">
+            <Image
+              src={FounderImage}
+              alt="founderImage"
+              width={320}
+                height={320}
             />
           </div>
         
