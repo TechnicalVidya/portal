@@ -22,7 +22,7 @@ export const siteConfig = {
     },
     {
       title: "Blogs",
-      href: "/Blogs",
+      href: "/blogs",
     },
   ],
   links: {

@@ -10,9 +10,51 @@ const Footer = () => {
         </div>
       </footer>
 
-      <footer className="hidden md:flex">
-        <div className="mx-auto px-4 sm:px-6">
+      <footer className="justify-between hidden md:flex ">
+        <div className="mx-auto px-4 sm:px-6 ">
           <div className="grid sm:grid-cols-12 gap-8 py-8 md:py-12 border-t border-muted mt-36">
+
+          <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
+              <h6 className="text-muted-foreground font-medium mb-2">
+                Quick Links
+              </h6>
+              <ul className="text-sm">
+                <li className="mb-2">
+                  <a
+                    href="#"
+                    className="text-gray-300 hover:text-muted-foreground transition duration-150 ease-in-out"
+                  >
+                    Zephyr
+                  </a>
+                </li>
+                <li className="mb-2">
+                  <a
+                    href="#"
+                    className="text-gray-300 hover:text-muted-foreground transition duration-150 ease-in-out"
+                  >
+                    Clubs
+                  </a>
+                </li>
+                <li className="mb-2">
+                  <a
+                    href="#"
+                    className="text-gray-300 hover:text-muted-foreground transition duration-150 ease-in-out"
+                  >
+                    Event
+                  </a>
+                </li>
+
+                <li className="mb-2">
+                  <a
+                    href="#"
+                    className="text-gray-300 hover:text-muted-foreground transition duration-150 ease-in-out"
+                  >
+                    Concession
+                  </a>
+                </li>
+              </ul>
+            </div>
+              
             <div className="sm:col-span-12 lg:col-span-3">
               <div className="mb-2">
                 <p>{siteConfig.name}</p>
@@ -88,48 +130,9 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
-              <h6 className="text-muted-foreground font-medium mb-2">
-                Quick Links
-              </h6>
-              <ul className="text-sm">
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-muted-foreground transition duration-150 ease-in-out"
-                  >
-                    Zephyr
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-muted-foreground transition duration-150 ease-in-out"
-                  >
-                    Clubs
-                  </a>
-                </li>
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-muted-foreground transition duration-150 ease-in-out"
-                  >
-                    Event
-                  </a>
-                </li>
 
-                <li className="mb-2">
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:text-muted-foreground transition duration-150 ease-in-out"
-                  >
-                    Concession
-                  </a>
-                </li>
-              </ul>
-            </div>
 
-            <div className="sm:col-span-6 md:col-span-3">
+            <div className="sm:col-span-6 md:col-span-3 ">
               <h6 className="text-muted-foreground font-medium mb-2">
                 Any Queries
               </h6>
