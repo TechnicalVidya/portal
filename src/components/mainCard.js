@@ -65,7 +65,11 @@ export function CardWithForm({ card }) {
               </p>
               <div>
                 {/* {console.log(console.log(card))} */}
-                <Link href={card.github} target="_blank" rel="noreferrer">
+                <Link
+                  href={card.github ? card.github : ""}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <div
                     className={buttonVariants({
                       size: "icon",
@@ -76,7 +80,11 @@ export function CardWithForm({ card }) {
                     <span className="sr-only">GitHub</span>
                   </div>
                 </Link>
-                <Link href={card.twitter} target="_blank" rel="noreferrer">
+                <Link
+                  href={card.twitter ? card.twitter : ""}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <div
                     className={buttonVariants({
                       size: "icon",
@@ -100,7 +108,7 @@ export function CardWithForm({ card }) {
       </CardContent>
       <CardFooter className="flex justify-between">
         <div className="flex flex-row items-center justify-center">
-          <AnimatedTooltip items={card.members} />
+          <AnimatedTooltip items={card?.members} />
         </div>
         <Button>Join Club</Button>
       </CardFooter>

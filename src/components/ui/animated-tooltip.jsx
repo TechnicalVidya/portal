@@ -10,7 +10,7 @@ import {
 } from "framer-motion";
 
 export const AnimatedTooltip = ({ items }) => {
-  const itemsToBeViewed = items.slice(0, 3);
+  const itemsToBeViewed = items?.slice(0, 3);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const springConfig = { stiffness: 100, damping: 5 };
   const x = useMotionValue(0); // going to set this value on mouse move
@@ -31,7 +31,7 @@ export const AnimatedTooltip = ({ items }) => {
 
   return (
     <>
-      {itemsToBeViewed.map((item, idx) => (
+      {itemsToBeViewed?.map((item, idx) => (
         <div
           className="-mr-4  relative group"
           key={item.name}
