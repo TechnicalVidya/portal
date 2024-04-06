@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,18 +9,21 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
+import Link from "next/link";
+import { Icons } from "./icons";
+import { AnimatedTooltip } from "./ui/animated-tooltip";
 
 export function CardWithForm({ card }) {
   const [isHovered, setIsHovered] = React.useState(false);
-  const [title, setTitle] = React.useState(card.title);
+  const [title, setTitle] = React.useState(card?.title);
 
   const truncateString = (str, num) =>
-    str.length > num ? str.slice(0, num) + '...' : str;
+    str.length > num ? str.slice(0, num) + "..." : str;
 
   React.useEffect(() => {
-    const t = truncateString(card.title, 10);
-    setTitle(t)
-  }, [card.title]);
+    const t = truncateString(card?.title, 16);
+    setTitle(t);
+  }, [card?.title]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -33,9 +36,9 @@ export function CardWithForm({ card }) {
   return (
     <Card className="pt-6 ">
       <CardContent>
-        <div key={card.id}>
+        <div key={card?.id}>
           <div
-            className="relative overflow-hidden rounded-lg shadow-lg transition duration-300 transform"
+            className="relative overflow-hidden rounded-lg shadow-lg transition transform"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -45,30 +48,61 @@ export function CardWithForm({ card }) {
               }`}
             ></div>
             <Image
-              className={`object-cover w-full h-full transition-transform ${
+              className={`object-cover w-full h-full transition-transform duration-300 cursor-pointer ${
                 isHovered ? "scale-110" : ""
               }`}
-              src={card.imageUrl}
-              alt={card.altText}
+              src={card?.imageUrl}
+              alt={card?.title}
               width={500} // Example width
               height={300} // Example height
               layout="responsive" // Maintain aspect ratio
             />
           </div>
-          <CardTitle className="mt-4">{title}</CardTitle>
+          <CardTitle className="mt-4">
+            <div className="w-full flex justify-between items-center">
+              <p>
+                {title.charAt(0).toUpperCase() + title.slice(1).toLowerCase()}
+              </p>
+              <div>
+                {/* {console.log(console.log(card))} */}
+                <Link href={card.github} target="_blank" rel="noreferrer">
+                  <div
+                    className={buttonVariants({
+                      size: "icon",
+                      variant: "ghost",
+                    })}
+                  >
+                    <Icons.gitHub className="h-5 w-5" />
+                    <span className="sr-only">GitHub</span>
+                  </div>
+                </Link>
+                <Link href={card.twitter} target="_blank" rel="noreferrer">
+                  <div
+                    className={buttonVariants({
+                      size: "icon",
+                      variant: "ghost",
+                    })}
+                  >
+                    <Icons.twitter className="h-5 w-5 fill-current" />
+                    <span className="sr-only">Twitter</span>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </CardTitle>
+          <CardDescription variant="outline">
+            - {card?.managedBy}
+          </CardDescription>
           <CardDescription className="text-gray-500 text-sm mt-2">
-            {card.description}
+            {card?.description}
           </CardDescription>
         </div>
       </CardContent>
       <CardFooter className="flex justify-between">
-      <div class="group relative flex">
-          <button>
-          <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" class="w-8 hover:scale-125 duration-200 hover:stroke-blue-500"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-          </button>
-          </div>
-        <CardDescription variant="outline">- {card.managedBy}</CardDescription>
-        <Button>See Activity</Button>
+        <div className="flex flex-row items-center justify-center">
+          <AnimatedTooltip items={card.members} />
+        </div>
+        <Button>Join Club</Button>
       </CardFooter>
     </Card>
   );

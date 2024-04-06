@@ -13,13 +13,13 @@ export function CarouselDemo({ imgArray }) {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (
-    <Carousel className="w-full max-w-[80vw]" plugins={[plugin.current]}>
+    <Carousel className="w-full max-w-6xl" plugins={[plugin.current]}>
       <CarouselContent>
         {Array.from({ length: 3 }).map((_, index) => (
           <CarouselItem key={index}>
-            <div className="p-1">
-              <Card className="p-6 py-8 border-none shadow-none">
-                <CardContent className="flex items-center justify-center h-[50vh] overflow-hidden">
+            <div>
+              <Card className="border-none shadow-none">
+                <CardContent className="flex items-center justify-center md:h-[50vh] overflow-hidden">
                   <Image src={imgArray[index]} width={1920} height={1080} />
                 </CardContent>
               </Card>
