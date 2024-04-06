@@ -18,8 +18,8 @@ export function CarouselDemo({ imgArray }) {
         {Array.from({ length: 3 }).map((_, index) => (
           <CarouselItem key={index}>
             <div>
-              <Card className="border-none shadow-none">
-                <CardContent className="flex items-center justify-center md:h-[50vh] overflow-hidden">
+              <Card className="border-none shadow-none p-0 m-0">
+                <CardContent className="flex items-center justify-center md:h-[50vh] overflow-hidden p-4 md:p-0 m-0">
                   <Image src={imgArray[index]} width={1920} height={1080} />
                 </CardContent>
               </Card>

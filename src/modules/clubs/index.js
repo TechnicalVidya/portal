@@ -5,6 +5,7 @@ import img2 from "@/assets/2.jpg";
 import img3 from "@/assets/3.jpg";
 import Cards from "./cards";
 import { cardData } from "./clubData";
+import Heading from "@/components/ui/heading";
 
 const Clubs = () => {
   const imgArray = [img1, img2, img3];
@@ -13,10 +14,8 @@ const Clubs = () => {
     <div>
       <div className="grid items-center justify-center">
         <CarouselDemo imgArray={imgArray} />
-        <h1 className="scroll-m-20 text-3xl font-semibold tracking-tight lg:text-4xl text-left md:mt-20 px-4 md:px-0">
-          Explore Clubs
-        </h1>
-        <Cards cardData={cardData} />
+        <Heading heading={"Explore Clubs"} />
+        <Cards cardData={cardData} btnText={"Join"} />
       </div>
     </div>
   );

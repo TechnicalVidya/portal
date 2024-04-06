@@ -8,7 +8,7 @@ import Cards from "../clubs/cards";
 import Img1 from "@/assets/events/1.png";
 import Img2 from "@/assets/events/2.png";
 import Img3 from "@/assets/events/3.png";
-
+import Heading from "@/components/ui/heading";
 
 const cardData = [
   {
@@ -44,11 +44,11 @@ const Events = () => {
   const imgArray = [img1, img2, img3];
   return (
     <div>
-      <div className="flex flex-col items-center justify-center">
+      <div className="grid items-center justify-center">
         <CarouselDemo imgArray={imgArray} />
-        <Cards cardData={cardData} />
+        <Heading heading={"Explore Events"} />
+        <Cards cardData={cardData} btnText={"Participate"} />
       </div>
-      
     </div>
   );
 };

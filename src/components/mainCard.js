@@ -13,7 +13,7 @@ import Link from "next/link";
 import { Icons } from "./icons";
 import { AnimatedTooltip } from "./ui/animated-tooltip";
 
-export function CardWithForm({ card }) {
+export function CardWithForm({ card, btnText }) {
   const [isHovered, setIsHovered] = React.useState(false);
   const [title, setTitle] = React.useState(card?.title);
 
@@ -110,7 +110,7 @@ export function CardWithForm({ card }) {
         <div className="flex flex-row items-center justify-center">
           <AnimatedTooltip items={card?.members} />
         </div>
-        <Button>Join Club</Button>
+        <Button>{btnText}</Button>
       </CardFooter>
     </Card>
   );
