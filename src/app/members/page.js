@@ -10,7 +10,6 @@ function Services() {
           Our Team
         </h1>
       </div>
-
       <Team />
     </>
   );
