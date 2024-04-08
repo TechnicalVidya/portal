@@ -312,17 +312,7 @@ function Team() {
 
                 </div>
             </div>
-            <div className="h-screen flex justify-center items-center bg-gray-900">
-      <div className="relative w-80 aspect-w-7 aspect-h-10 bg-gray-800 rounded-lg cursor-pointer overflow-hidden transition-all duration-500 transform hover:scale-105 hover:shadow-lg">
-        <div className="w-full h-full overflow-hidden rounded-lg">
-          <Image src={anshImg} className="w-full h-full object-cover object-bottom transition-all duration-500 transform hover:grayscale hover:brightness-40" alt="Car" />
-        </div>
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-8 transition-all duration-300 opacity-0 hover:opacity-100">
-          <h2 className="text-xl font-semibold mb-3">Ford Mustang 1969</h2>
-          <p className="text-sm text-gray-400">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti porro quis.</p>
-        </div>
-      </div>
-    </div>
+            
     {/* <div className=" flex justify-center items-center mt-20">
       <div className="relative w-full sm:w-80 aspect-w-7 aspect-h-10 bg-gray-800 rounded-lg cursor-pointer overflow-hidden transition-all duration-500 transform hover:scale-105 hover:shadow-lg">
         <div className="w-full h-full overflow-hidden rounded-lg">
