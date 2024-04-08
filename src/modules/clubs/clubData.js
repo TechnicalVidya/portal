@@ -54,7 +54,7 @@ export const cardData = [
   {
     id: 1,
     imageUrl: Img6,
-    title: "Skate Club ",
+    title: "GDSC",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
     managedBy: "Ansh Varma",
@@ -66,7 +66,7 @@ export const cardData = [
   {
     id: 2,
     imageUrl: Img2,
-    title: "Art Club",
+    title: "CSI",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
     managedBy: "Ansh Varma",
