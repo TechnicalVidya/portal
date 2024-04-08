@@ -16,7 +16,7 @@ function Team() {
     return (
 
         <section class="bg-transperent">
-            {/* <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
+            <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
 
                 <div class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
                     <div class="card-container dark:bg-gray-800 bg-white shadow-lg w-full rounded-lg p-6 mx-auto max-w-md">
@@ -322,8 +322,8 @@ function Team() {
           <p className="text-sm text-gray-400">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti porro quis.</p>
         </div>
       </div>
-    </div> */}
-    <div className=" flex justify-center items-center mt-20">
+    </div>
+    {/* <div className=" flex justify-center items-center mt-20">
       <div className="relative w-full sm:w-80 aspect-w-7 aspect-h-10 bg-gray-800 rounded-lg cursor-pointer overflow-hidden transition-all duration-500 transform hover:scale-105 hover:shadow-lg">
         <div className="w-full h-full overflow-hidden rounded-lg">
           <Image src={anshImg} className="w-full h-full object-cover object-bottom transition-all duration-500 transform hover:grayscale hover:brightness-40" alt="Car" />
@@ -353,7 +353,7 @@ function Team() {
     <div>
         <h1>Ansh Varma</h1> <span>Full-stack Developer </span>
     </div>
-</div>
+</div> */}
         </section>
 
 
