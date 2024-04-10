@@ -58,7 +58,7 @@ export function CardWithForm({ card, btnText }) {
               layout="responsive" // Maintain aspect ratio
             />
           </div>
-          <CardTitle className="mt-4">
+          {btnText &&<CardTitle className="mt-4">
             <div className="w-full flex justify-between items-center">
               <p>
                 {title.charAt(0).toUpperCase() + title.slice(1).toLowerCase()}
@@ -97,7 +97,7 @@ export function CardWithForm({ card, btnText }) {
                 </Link>
               </div>
             </div>
-          </CardTitle>
+          </CardTitle>}
           <CardDescription variant="outline">
             - {card?.managedBy}
           </CardDescription>
@@ -110,7 +110,7 @@ export function CardWithForm({ card, btnText }) {
         <div className="flex flex-row items-center justify-center">
           <AnimatedTooltip items={card?.members} />
         </div>
-        <Button>{btnText}</Button>
+        {btnText && <Button>{btnText}</Button>}
       </CardFooter>
     </Card>
   );
