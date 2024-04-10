@@ -15,7 +15,7 @@ const Clubs = () => {
       <div className="grid items-center justify-center">
         <CarouselDemo imgArray={imgArray} />
         <Heading heading={"Explore Clubs"} />
-        <Cards cardData={cardData} btnText={"Join"} />
+        <Cards cardData={cardData} btnText={"Join"} type={'clubs'} />
       </div>
     </div>
   );
