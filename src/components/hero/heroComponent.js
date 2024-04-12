@@ -174,7 +174,7 @@ const HeroComponent = () => {
                         href="javascript:void(0)"
                         class="text-dark dark:text-white hover:text-primary mb-4 block text-xl font-semibold sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]"
                         >
-                     Women&aposs Development Cell
+                     Women&apos;s Development Cell
                      </a>
                   </h3>
                   <p class="text-base leading-relaxed text-body-color mb-7">
@@ -276,7 +276,7 @@ const HeroComponent = () => {
           CONTACT US
         </h3>
         <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-5xl text-left">
-        Have any queries or suggestions? We&aposre just a message away!
+        Have any queries or suggestions? We&apos;re just a message away!
           <br className="hidden sm:inline" />
         </h1>
       </div>
