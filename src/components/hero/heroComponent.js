@@ -5,13 +5,15 @@ import { buttonVariants } from "../ui/button";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
 import TestimonialImage from "@/assets/testimonial.png";
-import FounderImage from "@/assets/founder.png";
+// import FounderImage from "@/assets/founder.png";
 
 const HeroComponent = () => {
   return (
+    
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
+      
       <div className="flex items-center justify-center">
-        <Badge
+              <Badge
           className={
             "bg-secondary hover:bg-muted text-sm flex justify-between gap-3 text-muted-foreground"
           }
@@ -52,7 +54,7 @@ const HeroComponent = () => {
       <div className="bg-transparent p-4 lg:p-8">
         <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center gap-8">
         
-          <div className="lg:w-1/2 pl-20">
+          {/* <div className="lg:w-1/2 pl-20">
             <Image
               src={FounderImage}
               alt="founderImage"
@@ -76,7 +78,8 @@ const HeroComponent = () => {
                     <br /> <p className="mt-1 text-lg text-gray-600 dark:text-gray-400 font-bold text-right"> -ANSH VARMA</p>
               </h2>
             </div>
-          </div>
+          </div> 
+          */}
         </div>
       </div>
 

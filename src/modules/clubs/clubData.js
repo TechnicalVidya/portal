@@ -1,9 +1,9 @@
-import Img1 from "@/assets/clubs/1.png";
-import Img2 from "@/assets/clubs/2.png";
-import Img3 from "@/assets/clubs/3.png";
-import Img4 from "@/assets/clubs/4.png";
-import Img5 from "@/assets/clubs/5.png";
-import Img6 from "@/assets/clubs/6.png";
+import Img1 from "@/assets/teamsLogo/gdsc.png";
+import Img2 from "@/assets/teamsLogo/english.jpeg";
+import Img3 from "@/assets/teamsLogo/iiclogo.jpeg";
+import Img4 from "@/assets/teamsLogo/race.jpeg";
+import Img5 from "@/assets/teamsLogo/wdc.png";
+import Img6 from "@/assets/teamsLogo/ashrae.jpeg";
 
 const members = [
   {
@@ -53,7 +53,7 @@ const members = [
 export const cardData = [
   {
     id: 1,
-    imageUrl: Img6,
+    imageUrl: Img1,
     title: "GDSC",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
@@ -66,7 +66,7 @@ export const cardData = [
   {
     id: 2,
     imageUrl: Img2,
-    title: "CSI",
+    title: "tec",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
     managedBy: "Ansh Varma",
@@ -78,7 +78,7 @@ export const cardData = [
   {
     id: 3,
     imageUrl: Img3,
-    title: "ENTERPRENEURSHIP CELL",
+    title: "IIC",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
     managedBy: "Ansh Varma",
@@ -90,7 +90,7 @@ export const cardData = [
   {
     id: 4,
     imageUrl: Img4,
-    title: "Fa2",
+    title: "ltjss",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
     managedBy: "Ansh Varma",
@@ -102,7 +102,7 @@ export const cardData = [
   {
     id: 5,
     imageUrl: Img5,
-    title: "Remix Club",
+    title: "wdc",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
     managedBy: "Ansh Varma",
@@ -113,8 +113,8 @@ export const cardData = [
   },
   {
     id: 6,
-    imageUrl: Img1,
-    title: "Jungle Beats",
+    imageUrl: Img6,
+    title: "ashrae",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
     managedBy: "Ansh Varma",
