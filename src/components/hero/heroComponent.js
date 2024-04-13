@@ -17,7 +17,7 @@ import MailImg from "@/assets/contactus/mail.png";
 const HeroComponent = () => {
   return (
     
-    <section className="mt-20 container grid items-center gap-6 pb-8 pt-6 md:py-10">
+    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       
       <div className="mt-40 flex items-center justify-center">
               <Badge
