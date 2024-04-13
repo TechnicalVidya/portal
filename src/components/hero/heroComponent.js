@@ -19,7 +19,7 @@ const HeroComponent = () => {
     
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       
-      <div className="mt-40 flex items-center justify-center">
+      <div className="flex items-center justify-center">
               <Badge
           className={
             "bg-secondary hover:bg-muted text-sm flex justify-between gap-3 text-muted-foreground"
