@@ -1,14 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
+// import Image from "next/image";
+// import Link from "next/link";
 
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "./ui/button";
-import { UserAuthForm } from "./hero/user-authform";
+// import { cn } from "@/lib/utils";
+// import { buttonVariants } from "./ui/button";
+// import { UserAuthForm } from "./hero/user-authform";
 
-export default function AuthenticationPage() {
-  return (
-    <>
-      <div className="md:hidden">
+// import GoogleSvg from "@/assets/google.svg" 
+// import Logo from "@/assets/logo.png" 
+
+// export default function AuthenticationPage() {
+//   return (
+//     <>
+      {/* <div className="md:hidden"> */}
         {/* <Image
           src="/examples/authentication-light.png"
           width={1280}
@@ -23,8 +26,8 @@ export default function AuthenticationPage() {
           alt="Authentication"
           className="hidden dark:block"
         /> */}
-      </div>
-      <div className="container relative hidden h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
+      {/* </div> */}
+      {/* <div className="container relative hidden h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <p
           // href="/examples/authentication"
           className={cn(
@@ -92,7 +95,43 @@ export default function AuthenticationPage() {
             </p>
           </div>
         </div>
-      </div>
-    </>
+      </div> */}
+
+      
+
+//     </>
+//   );
+// }
+
+
+import Head from 'next/head';
+import LoginForm from '../components/LoginForm';
+import Mesh from "@/assets/mesh-gradient.png";
+import Image from "next/image";
+
+export default function Home() {
+  return (
+    <div>
+      <Head>
+        <title>Login Page</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <section className="container flex flex-col md:flex-row">
+        <div className="image-section w-full md:w-1/2 relative">
+          <div className="image-wrapper">
+            <Image src= {Mesh} alt="" />
+          </div>
+          <div className="content-container absolute inset-0 flex flex-col justify-center items-center text-center bg-white bg-opacity-30 backdrop-filter backdrop-blur-sm p-8">
+            <h1 className="section-heading text-3xl md:text-5xl font-semibold mb-4">Empowering Minds Through Digital <span className="text-primary">Education.</span></h1>
+            <p className="section-paragraph text-gray-700">Unlock endless possibilities with our feature-packed event website - streamlined RSVPs, interactive schedules, and seamless networking!
+Every step forward is a step towards knowledge. Embrace the journey.</p>
+      <span className='mt-2'> ~ Ansh Varma </span>
+          </div>
+        </div>
+
+        <LoginForm />
+      </section>
+    </div>
   );
 }

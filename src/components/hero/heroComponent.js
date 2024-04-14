@@ -89,11 +89,14 @@ const HeroComponent = () => {
           */}
         {/* </div>
       </div> */}
-<div className="bg-gray-2 dark:bg-dark pt-20  lg:pt-[120px] lg:pb-20">
+
+
+      {/* Recent events */}
+<div className="bg-gray-2 dark:bg-dark pt-20  dark:bg-transparent bg-transparent lg:pt-[120px] lg:pb-20">
 <h4 className="scroll-m-20 mb-10  text-4xl font-extrabold tracking-tight lg:text-4xl text-center">
           Recent Events
         </h4>
-<div className="container mx-auto">
+<div className="container mx-auto ">
       <div className="flex flex-wrap -mx-4">
          <div className="w-full px-4 md:w-1/2 xl:w-1/3">
             <div
@@ -194,6 +197,8 @@ const HeroComponent = () => {
    </div>
    </div>
 
+   
+
 
       <section className="p-6 dark:bg-transparent bg-transparent dark:text-gray-200">
         <h4 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-4xl text-center">
@@ -271,46 +276,46 @@ const HeroComponent = () => {
       </div>
 
         {/* Contact Us */}
-      <div className="mt-20 flex flex-col items-left gap-4">
-      <h3 className=" lg:text-2xl text-gray-600 dark:text-gray-400 text-left">
-          CONTACT US
-        </h3>
-        <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-5xl text-left">
-        Have any queries or suggestions? We&apos;re just a message away!
-          <br className="hidden sm:inline" />
-        </h1>
-      </div>
+        <div className="mt-20 flex flex-col items-left gap-4">
+  <h3 className="lg:text-2xl text-gray-600 dark:text-gray-400 text-left">
+    CONTACT US
+  </h3>
+  <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-5xl text-left">
+    Have any queries or suggestions? We&apos;re just a message away!
+    <br className="hidden sm:inline" />
+  </h1>
+</div>
 
-      <div className="flex flex-wrap gap-20 justify-left">
-  <div className="p-6 max-w-sm mx-2 my-2 bg-white rounded-xl shadow-md flex items-center space-x-4">
+<div className="flex flex-wrap gap-20 justify-left">
+  <div className="p-6 max-w-sm mx-2 my-2 bg-white dark:bg-gray-800 rounded-xl shadow-md flex items-center space-x-4">
     <div className="flex-shrink-0">
       <Image className="h-12 w-12" src={LocationImg} alt="Location Logo" />
     </div>
     <div>
-      <div className="text-xl font-medium text-black">LTCoE</div>
-      <p className="text-gray-500">Koparkhairane, Maharashtra,  India</p>
-      <p className="text-gray-500">Postal Code: 400709</p>
+      <div className="text-xl font-medium text-black dark:text-white">LTCoE</div>
+      <p className="text-gray-500 dark:text-gray-400">Koparkhairane, Maharashtra, India</p>
+      <p className="text-gray-500 dark:text-gray-400">Postal Code: 400709</p>
     </div>
   </div>
 
-  <div className="p-6 max-w-sm mx-2 my-2 bg-white rounded-xl shadow-md flex items-center space-x-4">
+  <div className="p-6 max-w-sm mx-2 my-2 bg-white dark:bg-gray-800 rounded-xl shadow-md flex items-center space-x-4">
     <div className="flex-shrink-0">
       <Image className="h-12 w-12" src={CallImg} alt="Call Logo" />
     </div>
     <div>
-      <div className="text-xl font-medium text-black">OFFICE</div>
-      <p className="text-gray-500">XXXXXX-0000</p>
-      <p className="text-gray-500">0000-XXXXXX</p>
+      <div className="text-xl font-medium text-black dark:text-white">OFFICE</div>
+      <p className="text-gray-500 dark:text-gray-400">XXXXXX-0000</p>
+      <p className="text-gray-500 dark:text-gray-400">0000-XXXXXX</p>
     </div>
   </div>
 
-  <div className="p-6 max-w-sm mx-2 my-2 bg-white rounded-xl shadow-md flex items-center space-x-4">
+  <div className="p-6 max-w-sm mx-2 my-2 bg-white dark:bg-gray-800 rounded-xl shadow-md flex items-center space-x-4">
     <div className="flex-shrink-0">
       <Image className="h-12 w-12" src={MailImg} alt="Mail Logo" />
     </div>
     <div>
-      <div className="text-xl font-medium text-black">Technical Vidya</div>
-      <p className="text-gray-500">techvidya1905@gmail.com</p>
+      <div className="text-xl font-medium text-black dark:text-white">Technical Vidya</div>
+      <p className="text-gray-500 dark:text-gray-400">techvidya1905@gmail.com</p>
     </div>
   </div>
 </div>
