@@ -65,9 +65,7 @@ export default function AuthenticationPage() {
         <div className="lg:p-8">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
-              <h1 className="text-2xl font-semibold tracking-tight">
-                Log In
-              </h1>
+              <h1 className="text-2xl font-semibold tracking-tight">Log In</h1>
               <p className="text-sm text-muted-foreground">
                 Enter your email below to login in your account
               </p>
@@ -96,3 +94,44 @@ export default function AuthenticationPage() {
     </>
   );
 }
+
+// import Head from "next/head";
+// import LoginForm from "../components/LoginForm";
+// import Mesh from "@/assets/mesh-gradient.png";
+// import Image from "next/image";
+// import { UserAuthForm } from "./hero/user-authform";
+
+// export default function Home() {
+//   return (
+//     <div>
+//       <Head>
+//         <title>Login Page</title>
+//         <link rel="icon" href="/favicon.ico" />
+//       </Head>
+
+//       <section className="container flex flex-col md:flex-row">
+//         <div className="image-section w-full md:w-1/2 relative">
+//           <div className="image-wrapper">
+//             <Image src={Mesh} alt="" />
+//           </div>
+//           <div className="content-container absolute inset-0 flex flex-col justify-center items-center text-center bg-white bg-opacity-30 backdrop-filter backdrop-blur-sm p-8">
+//             <h1 className="section-heading text-3xl md:text-5xl font-semibold mb-4">
+//               Empowering Minds Through Digital{" "}
+//               <span className="text-primary">Education.</span>
+//             </h1>
+//             <p className="section-paragraph text-gray-700">
+//               Unlock endless possibilities with our feature-packed event website
+//               - streamlined RSVPs, interactive schedules, and seamless
+//               networking! Every step forward is a step towards knowledge.
+//               Embrace the journey.
+//             </p>
+//             <span className="mt-2"> ~ Ansh Varma </span>
+//           </div>
+//         </div>
+
+//         {/* <LoginForm /> */}
+//         <UserAuthForm />
+//       </section>
+//     </div>
+//   );
+// }

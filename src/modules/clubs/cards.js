@@ -1,7 +1,7 @@
 import { CardWithForm } from "@/components/mainCard";
 import React from "react";
 
-const Cards = ({ cardData, btnText }) => {
+const Cards = ({ cardData, btnText, type }) => {
   return (
     <div>
       <div className="md:py-16 py-8">
@@ -12,6 +12,7 @@ const Cards = ({ cardData, btnText }) => {
                 card={card}
                 key={card.id}
                 btnText={btnText}
+                type={type}
               />
             ))}
           </div>

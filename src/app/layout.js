@@ -22,7 +22,9 @@ export default function RootLayout({ children }) {
           <ThemeProvider attribute="class" defaultTheme="dark">
             <Toaster />
             <SiteHeader />
-            <main className="md:p-8 p-2">{children}</main>
+            <main className="md:p-8 p-2 grid items-center justify-center">
+              <div className="max-w-6xl">{children}</div>
+            </main>
             <Footer />
           </ThemeProvider>
         </ReduxProvider>

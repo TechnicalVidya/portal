@@ -1,10 +1,3 @@
-import Img1 from "@/assets/clubs/1.png";
-import Img2 from "@/assets/clubs/2.png";
-import Img3 from "@/assets/clubs/3.png";
-import Img4 from "@/assets/clubs/4.png";
-import Img5 from "@/assets/clubs/5.png";
-import Img6 from "@/assets/clubs/6.png";
-
 const members = [
   {
     id: 1,
@@ -53,8 +46,9 @@ const members = [
 export const cardData = [
   {
     id: 1,
-    imageUrl: Img6,
-    title: "Skate Club ",
+    imageUrl:
+      "https://github.com/TechnicalVidya/portal/blob/main/src/assets/teamsLogo/gdsc.png?raw=true",
+    title: "GDSC",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
     managedBy: "Ansh Varma",
@@ -65,8 +59,9 @@ export const cardData = [
   },
   {
     id: 2,
-    imageUrl: Img2,
-    title: "Art Club",
+    imageUrl:
+      "https://github.com/TechnicalVidya/portal/blob/main/src/assets/teamsLogo/english.jpeg?raw=true",
+    title: "tec",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
     managedBy: "Ansh Varma",
@@ -77,8 +72,9 @@ export const cardData = [
   },
   {
     id: 3,
-    imageUrl: Img3,
-    title: "ENTERPRENEURSHIP CELL",
+    imageUrl:
+      "https://github.com/TechnicalVidya/portal/blob/main/src/assets/teamsLogo/iiclogo.jpeg?raw=true",
+    title: "IIC",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
     managedBy: "Ansh Varma",
@@ -89,8 +85,9 @@ export const cardData = [
   },
   {
     id: 4,
-    imageUrl: Img4,
-    title: "Fa2",
+    imageUrl:
+      "https://github.com/TechnicalVidya/portal/blob/main/src/assets/teamsLogo/race.jpeg?raw=true",
+    title: "ltjss",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
     managedBy: "Ansh Varma",
@@ -101,8 +98,9 @@ export const cardData = [
   },
   {
     id: 5,
-    imageUrl: Img5,
-    title: "Remix Club",
+    imageUrl:
+      "https://github.com/TechnicalVidya/portal/blob/main/src/assets/teamsLogo/wdc.jpeg?raw=true",
+    title: "wdc",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
     managedBy: "Ansh Varma",
@@ -113,8 +111,9 @@ export const cardData = [
   },
   {
     id: 6,
-    imageUrl: Img1,
-    title: "Jungle Beats",
+    imageUrl:
+      "https://github.com/TechnicalVidya/portal/blob/main/src/assets/teamsLogo/ashrae.jpeg?raw=true",
+    title: "ashrae",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ante justo. Integer euismod libero id mauris malesuada tincidunt.",
     managedBy: "Ansh Varma",

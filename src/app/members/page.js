@@ -1,18 +1,24 @@
+'use client'
 import React from "react";
 import Team from "@/components/ui/team"
+import { CarouselDemo } from "@/components/carousel";
+import img1 from "@/assets/ourTeam/teamImg1.jpg";
+import img2 from "@/assets/ourTeam/teamImg2.jpg";
+import img3 from "@/assets/ourTeam/teamImg3.jpg";
+import Heading from "@/components/ui/heading";
 
-function Services() {
-  let message = `Our Team`;
+const Clubs = () => {
+  const imgArray = [img1, img2 , img3];
+
   return (
-    <>
-      <div className="flex flex-col items-center gap-4">
-        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-6xl text-center">
-          Our Team
-        </h1>
-      </div>
+    <div>
+      <div className="grid items-center justify-center">
+        <CarouselDemo imgArray={imgArray} />
+        <Heading heading={"Our Team Members"} />
       <Team />
-    </>
+      </div>
+    </div>
   );
 }
 
-export default Services;
+export default Clubs;

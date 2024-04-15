@@ -12,14 +12,20 @@ function MainNav({ items }) {
   const pathname = usePathname();
 
   useEffect(() => {
-    const foundIndex = items.findIndex((item) => item.href === pathname);
-    // console.log(foundIndex)
+    let foundIndex = items.findIndex((item) => item.href === pathname);
+
+    if (foundIndex === -1) {
+      foundIndex = items.findIndex(
+        (item) => item.href && pathname.startsWith(item.href)
+      );
+    } 
+
     if (foundIndex !== -1) {
       setActiveIndex(foundIndex);
     }
 
     if (pathname === "/") setActiveIndex(-1);
-  }, [pathname]);
+  }, [pathname, items]);
 
   return (
     <div className="flex gap-6 md:gap-10">

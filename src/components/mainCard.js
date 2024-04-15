@@ -13,7 +13,7 @@ import Link from "next/link";
 import { Icons } from "./icons";
 import { AnimatedTooltip } from "./ui/animated-tooltip";
 
-export function CardWithForm({ card, btnText }) {
+export function CardWithForm({ card, btnText, type }) {
   const [isHovered, setIsHovered] = React.useState(false);
   const [title, setTitle] = React.useState(card?.title);
 
@@ -47,8 +47,8 @@ export function CardWithForm({ card, btnText }) {
                 isHovered ? "opacity-0" : "opacity-100"
               }`}
             ></div>
-            <Image
-              className={`object-cover w-full h-full transition-transform duration-300 cursor-pointer ${
+            <img
+              className={`object-cover aspect-square transition-transform duration-300 cursor-pointer ${
                 isHovered ? "scale-110" : ""
               }`}
               src={card?.imageUrl}
@@ -110,7 +110,9 @@ export function CardWithForm({ card, btnText }) {
         <div className="flex flex-row items-center justify-center">
           <AnimatedTooltip items={card?.members} />
         </div>
-        <Button>{btnText}</Button>
+        <Link href={`/${type}/${title}`}>
+          <Button>{btnText}</Button>
+        </Link>
       </CardFooter>
     </Card>
   );

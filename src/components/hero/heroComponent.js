@@ -5,13 +5,22 @@ import { buttonVariants } from "../ui/button";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
 import TestimonialImage from "@/assets/testimonial.png";
-import FounderImage from "@/assets/founder.png";
+import TecEve from "@/assets/tecEve.png"
+import EssaEve from "@/assets/eesaevent.jpg"
+import wdcEve from "@/assets/wdcEve.png"
+import LocationImg from "@/assets/contactus/image.png";
+import CallImg from "@/assets/contactus/call.png";
+import MailImg from "@/assets/contactus/mail.png";
+
+// import FounderImage from "@/assets/founder.png";
 
 const HeroComponent = () => {
   return (
+    
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
+      
       <div className="flex items-center justify-center">
-        <Badge
+              <Badge
           className={
             "bg-secondary hover:bg-muted text-sm flex justify-between gap-3 text-muted-foreground"
           }
@@ -49,10 +58,10 @@ const HeroComponent = () => {
         </div>
       </div>
 
-      <div className="bg-transparent p-4 lg:p-8">
-        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center gap-8">
+      {/* <div className="bg-transparent p-4 lg:p-8">
+        <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center gap-8"> */}
         
-          <div className="lg:w-1/2 pl-20">
+          {/* <div className="lg:w-1/2 pl-20">
             <Image
               src={FounderImage}
               alt="founderImage"
@@ -76,9 +85,120 @@ const HeroComponent = () => {
                     <br /> <p className="mt-1 text-lg text-gray-600 dark:text-gray-400 font-bold text-right"> -ANSH VARMA</p>
               </h2>
             </div>
-          </div>
-        </div>
+          </div> 
+          */}
+        {/* </div>
+      </div> */}
+
+
+      {/* Recent events */}
+<div className="bg-gray-2 dark:bg-dark pt-20  dark:bg-transparent bg-transparent lg:pt-[120px] lg:pb-20">
+<h4 className="scroll-m-20 mb-10  text-4xl font-extrabold tracking-tight lg:text-4xl text-center">
+          Recent Events
+        </h4>
+<div className="container mx-auto ">
+      <div className="flex flex-wrap -mx-4">
+         <div className="w-full px-4 md:w-1/2 xl:w-1/3">
+            <div
+               className="mb-10 overflow-hidden duration-300 bg-white rounded-lg dark:bg-dark-2 shadow-1 hover:shadow-3 dark:shadow-card dark:hover:shadow-3"
+               >
+               <Image
+                  src={TecEve}
+                  alt="image"
+                  class="w-full"
+                  />
+               <div className="p-8 text-center sm:p-9 md:p-7 xl:p-9">
+                  <h3>
+                     <a
+                        href="javascript:void(0)"
+                        className="text-dark dark:text-white hover:text-primary mb-4 block text-xl font-semibold sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]"
+                        >
+                     The English Club
+                     </a>
+                  </h3>
+                  <p
+                     className="text-base leading-relaxed text-body-color dark:text-dark-6 mb-7"
+                     >
+                     Lorem ipsum dolor sit amet pretium consectetur adipiscing
+                     elit. Lorem consectetur adipiscing elit.
+                  </p>
+                  <a
+                     href="javascript:void(0)"
+                     className="inline-block py-2 text-base font-medium transition border rounded-full text-body-color hover:border-primary hover:bg-primary border-gray-3 px-7 hover:text-white dark:border-dark-3 dark:text-dark-6"
+                     >
+                  View Details
+                  </a>
+               </div>
+            </div>
+         </div>
+         <div className="w-full px-4 md:w-1/2 xl:w-1/3">
+            <div
+               class="mb-10 overflow-hidden duration-300 bg-white rounded-lg dark:bg-dark-2 shadow-1 hover:shadow-3 dark:shadow-card dark:hover:shadow-3"
+               >
+               <Image
+                  src={EssaEve}
+                  alt="image"
+                  class="w-full"
+                  />
+               <div class="p-8 text-center sm:p-9 md:p-7 xl:p-9">
+                  <h3>
+                     <a
+                        href="javascript:void(0)"
+                        class="text-dark dark:text-white hover:text-primary mb-4 block text-xl font-semibold sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]"
+                        >
+                     Department of Electrical Engineering
+                     </a>
+                  </h3>
+                  <p class="text-base leading-relaxed text-body-color mb-7">
+                     Lorem ipsum dolor sit amet pretium consectetur adipiscing
+                     elit. Lorem consectetur adipiscing elit.
+                  </p>
+                  <a
+                     href="javascript:void(0)"
+                     class="inline-block py-2 text-base font-medium transition border rounded-full text-body-color hover:border-primary hover:bg-primary border-gray-3 px-7 hover:text-white dark:border-dark-3 dark:text-dark-6"
+                     >
+                  View Details
+                  </a>
+               </div>
+            </div>
+         </div>
+         <div class="w-full px-4 md:w-1/2 xl:w-1/3">
+            <div
+               class="mb-10 overflow-hidden duration-300 bg-white rounded-lg dark:bg-dark-2 shadow-1 hover:shadow-3 dark:shadow-card dark:hover:shadow-3"
+               >
+               <Image
+                  src={wdcEve}
+                  alt="image"
+                  class="w-full"
+                  />
+               <div class="p-8 text-center sm:p-9 md:p-7 xl:p-9">
+                  <h3>
+                     <a
+                        href="javascript:void(0)"
+                        class="text-dark dark:text-white hover:text-primary mb-4 block text-xl font-semibold sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]"
+                        >
+                     Women&apos;s Development Cell
+                     </a>
+                  </h3>
+                  <p class="text-base leading-relaxed text-body-color mb-7">
+                     Lorem ipsum dolor sit amet pretium consectetur adipiscing
+                     elit. Lorem consectetur adipiscing elit.
+                  </p>
+                  <a
+                     href="javascript:void(0)"
+                     class="inline-block py-2 text-base font-medium transition border rounded-full text-body-color hover:border-primary hover:bg-primary border-gray-3 px-7 hover:text-white dark:border-dark-3 dark:text-dark-6"
+                     >
+                  View Details
+                  </a>
+               </div>
+            </div>
+         </div>
       </div>
+   </div>
+   </div>
+
+   
+
 
       <section className="p-6 dark:bg-transparent bg-transparent dark:text-gray-200">
         <h4 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-4xl text-center">
@@ -154,6 +274,52 @@ const HeroComponent = () => {
           </div>
         </div>
       </div>
+
+        {/* Contact Us */}
+        <div className="mt-20 flex flex-col items-left gap-4">
+  <h3 className="lg:text-2xl text-gray-600 dark:text-gray-400 text-left">
+    CONTACT US
+  </h3>
+  <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-5xl text-left">
+    Have any queries or suggestions? We&apos;re just a message away!
+    <br className="hidden sm:inline" />
+  </h1>
+</div>
+
+<div className="flex flex-wrap gap-20 justify-left">
+  <div className="p-6 max-w-sm mx-2 my-2 bg-white dark:bg-gray-800 rounded-xl shadow-md flex items-center space-x-4">
+    <div className="flex-shrink-0">
+      <Image className="h-12 w-12" src={LocationImg} alt="Location Logo" />
+    </div>
+    <div>
+      <div className="text-xl font-medium text-black dark:text-white">LTCoE</div>
+      <p className="text-gray-500 dark:text-gray-400">Koparkhairane, Maharashtra, India</p>
+      <p className="text-gray-500 dark:text-gray-400">Postal Code: 400709</p>
+    </div>
+  </div>
+
+  <div className="p-6 max-w-sm mx-2 my-2 bg-white dark:bg-gray-800 rounded-xl shadow-md flex items-center space-x-4">
+    <div className="flex-shrink-0">
+      <Image className="h-12 w-12" src={CallImg} alt="Call Logo" />
+    </div>
+    <div>
+      <div className="text-xl font-medium text-black dark:text-white">OFFICE</div>
+      <p className="text-gray-500 dark:text-gray-400">XXXXXX-0000</p>
+      <p className="text-gray-500 dark:text-gray-400">0000-XXXXXX</p>
+    </div>
+  </div>
+
+  <div className="p-6 max-w-sm mx-2 my-2 bg-white dark:bg-gray-800 rounded-xl shadow-md flex items-center space-x-4">
+    <div className="flex-shrink-0">
+      <Image className="h-12 w-12" src={MailImg} alt="Mail Logo" />
+    </div>
+    <div>
+      <div className="text-xl font-medium text-black dark:text-white">Technical Vidya</div>
+      <p className="text-gray-500 dark:text-gray-400">techvidya1905@gmail.com</p>
+    </div>
+  </div>
+</div>
+
     </section>
   );
 };
