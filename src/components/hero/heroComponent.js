@@ -11,6 +11,8 @@ import wdcEve from "@/assets/wdcEve.png"
 import LocationImg from "@/assets/contactus/image.png";
 import CallImg from "@/assets/contactus/call.png";
 import MailImg from "@/assets/contactus/mail.png";
+import Company from "@/components/company";
+
 
 // import FounderImage from "@/assets/founder.png";
 
@@ -90,7 +92,7 @@ const HeroComponent = () => {
         {/* </div>
       </div> */}
 
-
+      <Company />
       {/* Recent events */}
 <div className="bg-gray-2 dark:bg-dark pt-20  dark:bg-transparent bg-transparent lg:pt-[120px] lg:pb-20">
 <h4 className="scroll-m-20 mb-10  text-4xl font-extrabold tracking-tight lg:text-4xl text-center">
@@ -275,7 +277,8 @@ const HeroComponent = () => {
         </div>
       </div>
 
-        {/* Contact Us */}
+      
+    {/* Contact Us */}
         <div className="mt-20 flex flex-col items-left gap-4">
   <h3 className="lg:text-2xl text-gray-600 dark:text-gray-400 text-left">
     CONTACT US

@@ -45,6 +45,7 @@
     "sharp": "^0.33.2",
     "slick-carousel": "^1.8.1",
     "sonner": "^1.4.41",
+    "styled-components": "^6.1.9",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "tw-elements": "^2.0.0"
