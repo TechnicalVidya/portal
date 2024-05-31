@@ -1,31 +1,20 @@
 // userSlice.js
 
 import { createSlice } from "@reduxjs/toolkit";
+import { userInitialState } from "../intialStates/userInitialState";
 
 const userSlice = createSlice({
   name: "user",
-  initialState: {
-    authenticated: false,
-    avatar: null,
-    batch: null,
-    createdAt: null,
-    dept: null,
-    email: null,
-    erpID: null,
-    firstName: null,
-    lastName: null,
-    token: null,
-    updatedAt: null,
-    __v: null,
-    _id: null,
-  },
+  initialState: userInitialState,
   reducers: {
     setUser: (state, action) => {
       state.user = action.payload;
+      Cookies.set("isLoggedIn", "true");
       console.log("userSlice", state.user);
     },
     resetUser: (state) => {
       state.user = null;
+      Cookies.remove("isLoggedIn");
     },
   },
 });
