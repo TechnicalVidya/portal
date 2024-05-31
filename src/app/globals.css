@@ -49,6 +49,10 @@
   }
 }
 
+::selection {
+  background: hsla(19, 88%, 66%, 0.71);
+}
+
 @layer base {
   * {
     @apply border-border;
