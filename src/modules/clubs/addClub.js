@@ -26,6 +26,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
+import { useState } from "react";
 
 const FormSchema = z.object({
   name: z.string().min(2, {
@@ -68,20 +69,32 @@ export function AddClub() {
         <div className="overflow-auto p-1">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <ReusableField
-                form={form}
-                name="name"
-                label="Name*"
-                placeholder="Club Name"
-                component={Input}
-              />
-              <ReusableField
-                form={form}
-                name="description"
-                label="Description*"
-                placeholder="Description"
-                component={Textarea}
-              />
+              <div className="grid grid-cols-3 gap-2">
+                <ImageUpload
+                  form={form}
+                  name="circle_image"
+                  label="Logo"
+                  description="Choose your logo wisely."
+                  defaultImage="/club/club-icon.png"
+                />
+
+                <div className="col-span-2 grid">
+                  <ReusableField
+                    form={form}
+                    name="name"
+                    label="Name*"
+                    placeholder="Club Name"
+                    component={Input}
+                  />
+                  <ReusableField
+                    form={form}
+                    name="description"
+                    label="Description*"
+                    placeholder="Description"
+                    component={Textarea}
+                  />
+                </div>
+              </div>
 
               <SocialMediaField
                 form={form}
@@ -164,3 +177,58 @@ function ReusableField({
     />
   );
 }
+
+const ImageUpload = ({ form, name, label, description, defaultImage }) => {
+  const [preview, setPreview] = useState(defaultImage || "/club/club-icon.png");
+
+  const getImageData = (event) => {
+    try {
+      const files = event.target.files;
+      const displayUrl = URL.createObjectURL(files[0]);
+      return { files, displayUrl };
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <FormField
+      control={form.control}
+      name={name}
+      render={({ field: { onChange, value, ...rest } }) => (
+        <>
+          <FormItem>
+            <FormLabel>{label}</FormLabel>
+            <FormControl>
+              <div className="flex">
+                <label
+                  htmlFor={`${name}_input`}
+                  className="aspect-square w-32 overflow-hidden rounded-lg rounded-full cursor-pointer">
+                  <img
+                    src={preview}
+                    className="w-full h-full"
+                    alt="Circle Preview"
+                  />
+                </label>
+                <Input
+                  id={`${name}_input`}
+                  type="file"
+                  {...rest}
+                  onChange={(event, err) => {
+                    console.log(err)
+                    const { files, displayUrl } = getImageData(event);
+                    setPreview(displayUrl);
+                    onChange(files);
+                  }}
+                  className="hidden"
+                />
+              </div>
+            </FormControl>
+            {description && <FormDescription>{description}</FormDescription>}
+            <FormMessage />
+          </FormItem>
+        </>
+      )}
+    />
+  );
+};
