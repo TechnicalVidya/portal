@@ -14,14 +14,15 @@ import Heading from "@/components/ui/heading";
 
 
 export default function eventHome(){
-  const imgArray = [img1, img2, img3];
+  const imgArray = [img1, img2, img3]
   return(
     <>
       <section className=" bg-contain pt-5 md:py-10">
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
-            <h1 className="h1-bold">Host, Connect, Celebrate: Your Events, Our Platform!</h1>
-            <p className="p-regular-20 md:p-regular-24">Unlock unforgettable moments with our platform, where booking and learning about exclusive events is just a click away.</p>
+          <h1 class="font-bold text-6xl">Host, Connect, Celebrate: Your Events, Our Platform!</h1>
+          <p class="text-lg md:text-xl">Unlock unforgettable moments with our platform, where booking and learning about exclusive events is just a click away.</p>
+
             <Button size="lg" asChild className="button w-full sm:w-fit">
               <Link href="/createEve">
                 Create Now
@@ -40,12 +41,15 @@ export default function eventHome(){
       </section> 
 
       <section id="events" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-        <div className="grid items-center justify-center  md:space-y-16 space-y-6">
+        <div className="grid items-center justify-center">
            <Heading heading={"Explore Events"} />
-           <Cards cardData={cardData} btnText={"Participate"} />
+            <div className="pt-16 center">
+            <Cards cardData={cardData} btnText={"Participate"} />
+            </div>
          </div>
         
       </section>
     </>
   )
 }
+	
