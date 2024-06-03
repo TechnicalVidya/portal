@@ -9,7 +9,7 @@ const Zephyr = () => {
   const imgArray = [img1, img2, img3];
   return (
     <div>
-      <div className="grid items-center justify-center">
+      <div className="grid items-center justify-center md:space-y-16 space-y-6 ">
         <CarouselDemo imgArray={imgArray} />
         <Heading heading={"Zephyr"} />
       </div>
