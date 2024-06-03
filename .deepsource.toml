@@ -1,49 +1,12 @@
 version = 1
 
-# Configuration for DeepSource analyzers
-analyzers = [
-  'javascript',
-  'typescript',
-  'secrets',
-]
+[[analyzers]]
+name = "javascript"
+enabled = true
 
-# Common configurations for all analyzers
-[analyzer]
-  exclude_patterns = [
-    "node_modules/",
-    "out/",
-    ".next/",
-  ]
-
-  include_patterns = [
-    "src/",
-    "pages/",
-    "components/",
-  ]
-
-  # This is the default behavior, change to 'true' to include dot files
-  include_dotfiles = false
-
-  # Minimum severity level for issues to be reported: info, warning, or error
-  min_severity = 'info'
-
-# JavaScript analyzer configuration
-[[analyzers.javascript]]
-  enabled = true
-  config_path = "path/to/your/eslint-config.json"
-
-# TypeScript analyzer configuration
-[[analyzers.typescript]]
-  enabled = true
-  config_path = "path/to/your/tsconfig.json"
-
-# Secrets analyzer configuration
-[[analyzers.secrets]]
-  enabled = true
-
-# General configurations
-[general]
-  # Fail pipeline if any issues are found
-  fail_on_issues = true
-  # Enable autofixing where possible
-  autofix = true
+  [analyzers.meta]
+  ecma_version = "6"
+  environment = ["nodejs"]
+  plugins = ["react"]
+  module_system = "es-modules"
+  style_guide = "standard"
