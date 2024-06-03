@@ -3,6 +3,7 @@ import React from "react";
 import TecEve from "@/assets/tecEve.png";
 import EssaEve from "@/assets/eesaevent.jpg";
 import wdcEve from "@/assets/wdcEve.png";
+import { Card } from "@/components/ui/card";
 
 const RecentEvents = () => {
   return (
@@ -12,7 +13,7 @@ const RecentEvents = () => {
       </h4>
       <div className="container mx-auto ">
         <div className="flex flex-wrap -mx-4">
-          <div className="w-full px-4 md:w-1/2 xl:w-1/3">
+          <Card className="w-full px-4 md:w-1/2 xl:w-1/3">
             <div className="mb-10 overflow-hidden duration-300 bg-white rounded-lg dark:bg-dark-2 shadow-1 hover:shadow-3 dark:shadow-card dark:hover:shadow-3">
               <Image src={TecEve} alt="image" class="w-full" />
               <div className="p-8 text-center sm:p-9 md:p-7 xl:p-9">
@@ -34,7 +35,7 @@ const RecentEvents = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </Card>
           <div className="w-full px-4 md:w-1/2 xl:w-1/3">
             <div class="mb-10 overflow-hidden duration-300 bg-white rounded-lg dark:bg-dark-2 shadow-1 hover:shadow-3 dark:shadow-card dark:hover:shadow-3">
               <Image src={EssaEve} alt="image" class="w-full" />

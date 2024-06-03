@@ -7,7 +7,7 @@ export const handleLogin = async (formData, dispatchFunction) => {
 
   if (formData.erpID !== 0 && formData.erpPassword.length > 0) {
     try {
-      const { data } = await axios.post("/api/v1/auth/signin", formData);
+      const { data } = await axios.post("/api/auth/signin", formData);
       console.log(data)
       if (data.succes) {
         const { user } = data;

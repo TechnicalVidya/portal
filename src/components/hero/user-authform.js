@@ -7,21 +7,19 @@ import { Icons } from "../icons";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import axios from "axios";
-import { setUser } from "@/redux/slices/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { handleLogin } from "@/utils/login";
 
 export function UserAuthForm({ className, ...props }) {
   const [isLoading, setIsLoading] = React.useState(false);
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [formData, setFormData] = React.useState({
-    erpID: 0,
-    erpPassword: "",
+    erpID: 222222,
+    erpPassword: "222222",
   });
   const router = useRouter();
-  const user = useSelector((state) => state.user);
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -42,6 +40,7 @@ export function UserAuthForm({ className, ...props }) {
             <Input
               id="email"
               placeholder="name@example.com"
+              value={formData.erpID}
               onChange={(e) =>
                 setFormData({
                   ...formData,
@@ -63,6 +62,7 @@ export function UserAuthForm({ className, ...props }) {
             <Input
               id="password"
               placeholder="******"
+              value={formData.erpPassword}
               onChange={(e) =>
                 setFormData({ ...formData, erpPassword: e.target.value })
               }
