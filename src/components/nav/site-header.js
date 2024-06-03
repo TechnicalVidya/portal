@@ -9,6 +9,7 @@ import { NavAlert } from "./nav-alert";
 import { useSelector } from "react-redux";
 import { AvatarDemo } from "../avatar";
 import { useEffect } from "react";
+import MobileNav from "./sideNav"
 
 export function SiteHeader() {
   const { user } = useSelector((state) => state.user);
@@ -26,6 +27,8 @@ export function SiteHeader() {
             <ThemeToggle />
             {user?.authenticated && <AvatarDemo imgURI={user.avatar} />}
           </nav>
+
+          <MobileNav />
         </div>
       </div>
     </header>
