@@ -40,7 +40,7 @@ export default function eventHome(){
       </section> 
 
       <section id="events" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-        <div className="grid items-center justify-center">
+        <div className="grid items-center justify-center  md:space-y-16 space-y-6">
            <Heading heading={"Explore Events"} />
            <Cards cardData={cardData} btnText={"Participate"} />
          </div>
