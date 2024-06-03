@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
+import { loggedInCookieName } from "./utils/constants";
 
 export function middleware(request) {
-  const { value } = request.cookies.get("isLoggedIn")
-    ? request.cookies.get("isLoggedIn")
+  const { value } = request.cookies.get(loggedInCookieName)
+    ? request.cookies.get(loggedInCookieName)
     : false;
   const isLoggedIn = value === "true";
   //   const isLoggedIn = true
