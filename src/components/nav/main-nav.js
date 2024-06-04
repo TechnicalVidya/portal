@@ -7,9 +7,15 @@ import { cn } from "@/lib/utils";
 import { Icons } from "./icons";
 import { usePathname } from "next/navigation";
 
-function MainNav({ items }) {
+function MainNav({ items, isVisible, isOpen, setIsOpen }) {
   const [activeIndex, setActiveIndex] = useState(-1);
   const pathname = usePathname();
+
+  const handleSlider = () => {
+    if (isOpen !== undefined && setIsOpen !== undefined) {
+      setIsOpen(!isOpen);
+    }
+  };
 
   useEffect(() => {
     let foundIndex = items.findIndex((item) => item.href === pathname);
@@ -18,7 +24,7 @@ function MainNav({ items }) {
       foundIndex = items.findIndex(
         (item) => item.href && pathname.startsWith(item.href)
       );
-    } 
+    }
 
     if (foundIndex !== -1) {
       setActiveIndex(foundIndex);
@@ -28,19 +34,20 @@ function MainNav({ items }) {
   }, [pathname, items]);
 
   return (
-    <div className="flex gap-6 md:gap-10">
+    <div className="flex md:flex-row flex-col gap-6 md:gap-10">
       <Link href="/" className="flex items-center space-x-2" passHref>
         <Icons.logo className="h-6 w-6" />
         <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>
-      {items && items.length ? (
-        <nav className="md:flex hidden gap-6">
+      {items && items.length && isVisible ? (
+        <nav className="flex md:flex-row flex-col gap-6">
           {items.map(
             (item, index) =>
               item.href && (
                 <Link
                   key={index}
                   href={item.href}
+                  onClick={handleSlider}
                   className={cn(
                     "flex items-center text-sm font-medium",
                     activeIndex === index
