@@ -7,7 +7,7 @@ import heroImg from "@/assets/events/hero.png";
 import img1 from "@/assets/1.jpg";
 import img2 from "@/assets/2.jpg";
 import img3 from "@/assets/3.jpg";
-import Cards from "../clubs/cards";
+import Cards from "../../components/cards";
 import { cardData } from "./dummyEventData";
 import Heading from "@/components/ui/heading";
 

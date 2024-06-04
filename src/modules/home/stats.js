@@ -1,35 +1,53 @@
+import GradualSpacingText from "@/components/gradualSpacingText";
+import { NumberTickerText } from "@/components/numberTickerDemo";
 import React from "react";
+
+const stats = [
+  { value: "500", label: "Honors and Achievements" },
+  { value: 52, label: "Research Papers" },
+  { value: 1000, label: "Students Enrolled" },
+  { value: 100, label: "Commitment" },
+];
 
 const Stats = () => {
   return (
     <section className="p-6 dark:bg-transparent bg-transparent dark:text-gray-200">
-      <h4 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-4xl text-center">
-        TECHNICAL STATS
-      </h4>
-      <p className="mt-1 text-lg text-gray-600 dark:text-gray-400 text-center">
-        THE NUMBERS SAY IT ALL
-      </p>
+      <div className="space-y-3">
+        <GradualSpacingText
+          text={"Technical Stats"}
+          className={
+            "font-display text-center text-4xl font-bold tracking-[-0.1em] text-black md:text-7xl md:leading-[5rem]"
+          }
+        />
+        <GradualSpacingText
+          text={"The numbers say it all"}
+          className={"tracking-[-0.1em]"}
+        />
+      </div>
 
-      <div className="mt-4 container mx-auto grid justify-center grid-cols-2 text-center lg:grid-cols-4">
-        <div className="flex flex-col justify-start m-2 lg:m-6">
-          <p className="text-4xl font-bold leading-none lg:text-6xl">500+</p>
-          <p className="text-sm sm:text-base">HONORS AND ACHIEVEMENTS</p>
-        </div>
-        <div className="flex flex-col justify-start m-2 lg:m-6">
-          <p className="text-4xl font-bold leading-none lg:text-6xl">52</p>
-          <p className="text-sm sm:text-base">RESEARCH PAPERS</p>
-        </div>
-        <div className="flex flex-col justify-start m-2 lg:m-6">
-          <p className="text-4xl font-bold leading-none lg:text-6xl">1K+</p>
-          <p className="text-sm sm:text-base">STUDENTS ENROLLED</p>
-        </div>
-        <div className="flex flex-col justify-start m-2 lg:m-6">
-          <p className="text-4xl font-bold leading-none lg:text-6xl">100%</p>
-          <p className="text-sm sm:text-base">COMMITMENT</p>
-        </div>
+      <div className="flex md:flex-row flex-col items-center justify-center gap-6 my-10">
+        {stats.map((stat, index) => (
+          <StatisticItem
+            key={index}
+            value={stat.value}
+            label={stat.label}
+            className={"text-7xl"}
+          />
+        ))}
       </div>
     </section>
   );
 };
 
 export default Stats;
+
+const StatisticItem = ({ value, label, className }) => {
+  return (
+    <div className="flex flex-col justify-center items-center">
+      <div className="text-[5.5rem] flex items-center">
+        <NumberTickerText value={value} className={className} />
+      </div>
+      <p className="text-sm sm:text-base">{label}</p>
+    </div>
+  );
+};

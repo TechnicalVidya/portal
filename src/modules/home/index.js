@@ -1,3 +1,4 @@
+"use client";
 import HeroComponent from "@/components/hero/heroComponent";
 // import { BentoGridDemo } from "./bentoGrid";
 import Testimonials from "./testimonials";
@@ -13,10 +14,12 @@ export default function Home() {
       <div className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
         <Company />
       </div>
-      <RecentEvents />
-      <Stats />
-      <Testimonials />
-      <ContactUs />
+      <div className="space-y-20">
+        <RecentEvents />
+        <Stats />
+        <Testimonials />
+        <ContactUs />
+      </div>
     </div>
   );
 }

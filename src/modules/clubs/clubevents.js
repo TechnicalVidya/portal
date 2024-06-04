@@ -1,5 +1,5 @@
 import React from "react";
-import Cards from "./cards";
+import Cards from "../../components/cards";
 
 const Clubevents = ({ clubInfo }) => {
   return (
