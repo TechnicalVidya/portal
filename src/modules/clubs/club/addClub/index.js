@@ -3,7 +3,6 @@ import {
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
@@ -11,15 +10,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { Textarea } from "@/components/ui/textarea";
@@ -28,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
+import { ImageUpload, ReusableField, SocialMediaField } from "./formcomponents";
 
 // const MAX_FILE_SIZE = 5000000;
 const ACCEPTED_IMAGE_TYPES = [
@@ -70,12 +62,11 @@ export function AddClub() {
   });
 
   async function onSubmit(data) {
-    console.log(data);
     try {
       const formData = new FormData();
       for (const key in data) {
         if (key === "image" && data[key] !== null) {
-          formData.append(key, data[key][0]); // Append the file object
+          formData.append(key, data[key][0]);
         } else {
           formData.append(key, data[key]);
         }
@@ -172,117 +163,3 @@ export function AddClub() {
     </AlertDialog>
   );
 }
-
-function SocialMediaField({ form, name, label, icon: Icon, placeholder }) {
-  return (
-    <FormField
-      control={form.control}
-      name={name}
-      render={({ field }) => (
-        <FormItem>
-          <div className="flex items-center gap-2">
-            <FormLabel>
-              <Icon className="text-3xl" />
-            </FormLabel>
-            <FormControl>
-              <Input placeholder={placeholder} {...field} />
-            </FormControl>
-          </div>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
-  );
-}
-
-function ReusableField({
-  form,
-  name,
-  label,
-  placeholder,
-  component: Component,
-}) {
-  return (
-    <FormField
-      control={form.control}
-      name={name}
-      render={({ field }) => (
-        <FormItem>
-          <FormLabel>{label}</FormLabel>
-          <FormControl>
-            <Component placeholder={placeholder} {...field} />
-          </FormControl>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
-  );
-}
-
-const ImageUpload = ({
-  form,
-  name,
-  label,
-  description,
-  preview,
-  setPreview,
-}) => {
-  // const [preview, setPreview] = useState(null);
-
-  const getImageData = (event) => {
-    try {
-      const files = event.target.files;
-      const displayUrl = URL.createObjectURL(files[0]);
-      return { files, displayUrl };
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  return (
-    <FormField
-      control={form.control}
-      name={name}
-      render={({ field: { onChange, value, ...rest } }) => (
-        <>
-          <FormItem>
-            <FormLabel>{label}</FormLabel>
-            <FormControl>
-              <div className="flex">
-                <label
-                  htmlFor={`${name}_input`}
-                  className="aspect-square w-32 overflow-hidden rounded-lg rounded-full cursor-pointer">
-                  {preview === null ? (
-                    <div className="h-full w-full bg-muted grid p-2 place-items-center">
-                      Add Logo
-                    </div>
-                  ) : (
-                    <img
-                      src={preview}
-                      className="w-full h-full"
-                      alt="Circle Preview"
-                    />
-                  )}
-                </label>
-                <Input
-                  id={`${name}_input`}
-                  type="file"
-                  {...rest}
-                  onChange={(event, err) => {
-                    console.log(err);
-                    const { files, displayUrl } = getImageData(event);
-                    setPreview(displayUrl);
-                    onChange(files);
-                  }}
-                  className="hidden"
-                />
-              </div>
-            </FormControl>
-            {description && <FormDescription>{description}</FormDescription>}
-            <FormMessage />
-          </FormItem>
-        </>
-      )}
-    />
-  );
-};

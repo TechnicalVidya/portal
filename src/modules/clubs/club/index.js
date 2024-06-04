@@ -7,7 +7,7 @@ import Clubevents from "../clubevents";
 const Club = ({ clubName }) => {
   // {clubName} : data will be fetched from this
 
-  // console.log(clubInfo)
+  console.log(clubInfo)
   return (
     <div className="w-full justify-center items-center">
       <div className="hidden md:flex items-center justify-center">

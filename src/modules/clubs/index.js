@@ -6,7 +6,7 @@ import img3 from "@/assets/3.jpg";
 import Cards from "./cards";
 import { cardData } from "./clubData";
 import Heading from "@/components/ui/heading";
-import { AddClub } from "./addClub";
+import { AddClub } from "./club/addClub";
 
 const Clubs = () => {
   const imgArray = [img1, img2, img3];
