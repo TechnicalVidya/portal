@@ -45,7 +45,7 @@ const members = [
 
 export const cardData = [
   {
-    id: 1,
+    id: 654,
     imageUrl:
       "https://github.com/TechnicalVidya/portal/blob/main/src/assets/teamsLogo/gdsc.png?raw=true",
     title: "GDSC",

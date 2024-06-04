@@ -1,4 +1,5 @@
 export const clubInfo = {
+  id: 654,
   clubName: "Google Developer Student Club",
   description:
     "Google Developer Student Club is a community of student developers interested in Google technologies.",
@@ -18,6 +19,7 @@ export const clubInfo = {
   ],
   event: [
     {
+      id: 785,
       title: "Workshop on Web Development",
       managedBy: "Vivek Sahu",
       date: "2024-04-15",
@@ -28,6 +30,7 @@ export const clubInfo = {
         "A hands-on workshop covering the latest trends and tools in web development.",
     },
     {
+      id: 124,
       title: "Hackathon for Beginners",
       date: "2024-05-10",
       managedBy: "Vivek Sahu",
@@ -38,6 +41,7 @@ export const clubInfo = {
         "An introductory hackathon aimed at beginners interested in coding and problem-solving.",
     },
     {
+      id: 785,
       title: "Guest Speaker Series: AI in Healthcare",
       date: "2024-06-05",
       managedBy: "Vivek Sahu",
