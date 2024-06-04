@@ -35,7 +35,11 @@ function MainNav({ items, isVisible, isOpen, setIsOpen }) {
 
   return (
     <div className="flex md:flex-row flex-col gap-6 md:gap-10">
-      <Link href="/" className="flex items-center space-x-2" passHref>
+      <Link
+        href="/"
+        className="flex items-center space-x-2"
+        onClick={handleSlider}
+        passHref>
         <Icons.logo className="h-6 w-6" />
         <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>
