@@ -1,12 +1,12 @@
 import ClubTeamMembers from "@/components/clubTeamMembers";
 import React, { useEffect } from "react";
-import { clubInfo } from "./dummyData";
+import { clubInfo } from "@/modules/clubs/club/dummyData";
 import { BreadcrumbDemo } from "@/components/breadcrumb";
-import Clubevents from "../clubevents";
+// import Clubevents from "../clubevents";
 
-const Club = ({ clubId }) => {
-  // {clubId} : data will be fetched from this
-  // console.log(clubId);
+const Event = ({ eventId }) => {
+  //   {eventId} : data will be fetched from this
+//   console.log(eventId);
 
   // console.log(clubInfo);
   return (
@@ -14,11 +14,8 @@ const Club = ({ clubId }) => {
       <div className="hidden md:flex items-center justify-center">
         <BreadcrumbDemo clubName={clubInfo.clubName} />
       </div>
-
-      <Clubevents clubInfo={clubInfo} />
-      <ClubTeamMembers clubData={clubInfo} />
     </div>
   );
 };
 
-export default Club;
+export default Event;
