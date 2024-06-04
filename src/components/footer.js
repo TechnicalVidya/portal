@@ -10,7 +10,7 @@ const Footer = () => {
         </div>
       </footer> */}
 
-      <footer className="justify-between hidden md:flex ">
+      <footer className="justify-evenly hidden md:flex pl-20  ">
         <div className="mx-auto px-4 sm:px-6 ">
           <div className="grid sm:grid-cols-12 gap-8 py-8 md:py-12 border-t border-muted mt-36">
 
@@ -22,7 +22,7 @@ const Footer = () => {
                 <li className="mb-2">
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-muted-foreground transition duration-150 ease-in-out"
+                    className="text-gray-400 hover:text-muted-foreground transition duration-150 ease-in-out"
                   >
                     Zephyr
                   </a>
@@ -30,7 +30,7 @@ const Footer = () => {
                 <li className="mb-2">
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-muted-foreground transition duration-150 ease-in-out"
+                    className="text-gray-400 hover:text-muted-foreground transition duration-150 ease-in-out"
                   >
                     Clubs
                   </a>
@@ -38,7 +38,7 @@ const Footer = () => {
                 <li className="mb-2">
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-muted-foreground transition duration-150 ease-in-out"
+                    className="text-gray-400 hover:text-muted-foreground transition duration-150 ease-in-out"
                   >
                     Event
                   </a>
@@ -47,9 +47,50 @@ const Footer = () => {
                 <li className="mb-2">
                   <a
                     href="#"
-                    className="text-gray-300 hover:text-muted-foreground transition duration-150 ease-in-out"
+                    className="text-gray-400 hover:text-muted-foreground transition duration-150 ease-in-out"
                   >
                     Concession
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
+              <h6 className="text-muted-foreground font-medium mb-2">
+                Contact Us
+              </h6>
+              <ul className="text-sm">
+                <li className="mb-2">
+                  <a
+                    href="mailto:techvidya1905@gmail.com"
+                    className="text-gray-400 hover:text-muted-foreground transition duration-150 ease-in-out"
+                  >
+                    E-mail
+                  </a>
+                </li>
+                <li className="mb-2">
+                  <a
+                    href="tel:9372179120"
+                    className="text-gray-400 hover:text-muted-foreground transition duration-150 ease-in-out"
+                  >
+                    Office
+                  </a>
+                </li>
+                <li className="mb-2">
+                  <a
+                    href="tel:9372179120"
+                    className="text-gray-400 hover:text-muted-foreground transition duration-150 ease-in-out"
+                  >
+                    Technical Vidya
+                  </a>
+                </li>
+                <li className="mb-2">
+                  <a
+                    href="https://maps.app.goo.gl/YXdTk6buSXToDgjB9"
+                    target="_blank"
+                    className="text-gray-400 hover:text-muted-foreground transition duration-150 ease-in-out"
+                  >
+                    Address
                   </a>
                 </li>
               </ul>
