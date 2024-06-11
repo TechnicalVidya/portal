@@ -4,6 +4,10 @@ export const siteConfig = {
     "Where we're all about making memories that'll make your Instagram jealous. Join the fun as we turn your events into legendary stories.",
   mainNav: [
     {
+      title: "Internships",
+      href: "/internship",
+    },  
+    {
       title: "Zephyr",
       href: "/zephyr",
     },
@@ -24,6 +28,7 @@ export const siteConfig = {
       title: "Blogs",
       href: "/blogs",
     },
+    
   ],
   links: {
     twitter: "/",

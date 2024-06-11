@@ -8,17 +8,17 @@ import MailImg from "@/assets/contactus/mail.png";
 const ContactUs = () => {
   return (
     <div>
-      <div className="mt-20 flex flex-col items-left gap-4">
+      <div className="mt-20 flex flex-col items-center gap-4">
         <h3 className="lg:text-2xl text-gray-600 dark:text-gray-400 text-left">
-          CONTACT US
+           ON A MISSION TO TEACH MILLIONS
         </h3>
-        <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-5xl text-left">
+        {/* <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-5xl text-left">
           Have any queries or suggestions? We&apos;re just a message away!
           <br className="hidden sm:inline" />
-        </h1>
+        </h1> */}
       </div>
 
-      <div className="flex flex-wrap gap-20 justify-left">
+      {/* <div className="flex flex-wrap gap-20 justify-left">
         <div className="p-6 max-w-sm mx-2 my-2 bg-white dark:bg-gray-800 rounded-xl shadow-md flex items-center space-x-4">
           <div className="flex-shrink-0">
             <Image
@@ -66,8 +66,8 @@ const ContactUs = () => {
             </p>
           </div>
         </div>
-      </div>
-    </div>
+      </div>*/}
+    </div> 
   );
 };
 
