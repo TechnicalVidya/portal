@@ -13,7 +13,6 @@ const HeroComponent = dynamic(() => import("@/components/hero/heroComponent"), {
   ssr: false,
 });
 
-
 export default function Home() {
   return (
     <div>
@@ -24,7 +23,9 @@ export default function Home() {
       <div className="space-y-20">
         <RecentEvents />
         <Stats />
-        <TestMarquee />
+        <div className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
+          <TestMarquee />
+        </div>  
         {/* <Testimonials /> */}
         {/* <ContactUs /> */}
       </div>

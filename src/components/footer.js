@@ -10,10 +10,9 @@ const Footer = () => {
         </div>
       </footer> */}
 
-      <footer className="justify-evenly hidden md:flex pl-20  ">
-        <div className="mx-auto px-4 sm:px-6 ">
-          <div className="grid sm:grid-cols-12 gap-8 py-8 md:py-12 border-t border-muted mt-36">
-
+      <footer className="justify-evenly md:flex md:pl-20 bg-muted md:bg-backgroundOpac">
+        <div className="mx-auto px-4 ">
+          <div className="grid grid-cols-2 md:grid-cols-12 gap-8 py-8 md:py-12 border-t border-muted mt-36">
           <div className="sm:col-span-6 md:col-span-3 lg:col-span-2">
               <h6 className="text-muted-foreground font-medium mb-2">
                 Quick Links
