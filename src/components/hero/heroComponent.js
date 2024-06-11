@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 const HeroComponent = () => {
   const { user } = useSelector((sta) => sta.user);
-  console.log(user)
+  // console.log(user)
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex flex-col gap-4 items-center justify-center">
