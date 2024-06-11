@@ -4,8 +4,11 @@ import Link from "next/link";
 import { buttonVariants } from "../ui/button";
 import { Badge } from "../ui/badge";
 import GradualSpacingText from "../gradualSpacingText";
+import { useSelector } from "react-redux";
 
 const HeroComponent = () => {
+  const { user } = useSelector((sta) => sta.user);
+  console.log(user)
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex flex-col gap-4 items-center justify-center">
@@ -42,11 +45,13 @@ const HeroComponent = () => {
           <Link href="/members" className={buttonVariants()}>
             See Members
           </Link>
-          <Link
-            href="/login"
-            className={buttonVariants({ variant: "outline" })}>
-            Login
-          </Link>
+          {user === undefined || user === null && (
+            <Link
+              href="/login"
+              className={buttonVariants({ variant: "outline" })}>
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </section>
