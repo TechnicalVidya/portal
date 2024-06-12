@@ -20,14 +20,15 @@ export default function Home() {
       <div className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
         <Company />
       </div>
+      <ContactUs />
       <div className="space-y-20">
         <RecentEvents />
         {/* <Stats /> */}
         <div className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
           <TestMarquee />
         </div>  
-        <Testimonials />
-        <ContactUs />
+        {/* <Testimonials /> */}
+
       </div>
     </div>
   );

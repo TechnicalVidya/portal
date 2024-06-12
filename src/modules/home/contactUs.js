@@ -78,7 +78,7 @@ import React from 'react'
 
 const contactUs = () => {
   return (
-    <section className='flex flex-col justify-center items-center'>
+    <section className='flex flex-col justify-center items-center pb-20'>
     <div className='items-center font-bold text-3xl md:text-5xl pb-6 md:pb-12 text-center'>
       Our Goal is to help people to Grow.
     </div>
