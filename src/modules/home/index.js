@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import Testimonials from "./testimonials";
 import Stats from "./stats";
 import RecentEvents from "./recentEvent";
-import ContactUs from "./contactUs";
+import OurGoal from "./ourGoal";
 import { Company } from "@/components/marqeecomp";
 import { TestMarquee } from "./testmonialMarquee";
 
@@ -20,7 +20,7 @@ export default function Home() {
       <div className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
         <Company />
       </div>
-      <ContactUs />
+      <OurGoal />
       <div className="space-y-20">
         <RecentEvents />
         {/* <Stats /> */}
