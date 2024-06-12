@@ -23,9 +23,9 @@ function Team() {
                         <div class="text-center text-gray-500 dark:text-gray-400">
                             <Image class="mx-auto mb-4 w-36 h-36 rounded-full" src={anshImg} alt="Bonnie Avatar" />
                             <h3 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                                <a href="#">Ansh Verma</a>
+                                <a href="#">Ansh Varma</a>
                             </h3>
-                            <p class="text-gray-700 dark:text-gray-300">Full-Stack Developer</p>
+                            <p class="text-gray-700 dark:text-gray-300">Frontend Developer</p>
 
 
 

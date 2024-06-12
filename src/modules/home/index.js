@@ -17,19 +17,22 @@ export default function Home() {
   return (
     <div>
       <HeroComponent />
+      
       <div className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
         <Company />
       </div>
+
       <OurGoal />
+
       <div className="space-y-20">
         <RecentEvents />
-        {/* <Stats /> */}
         <div className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
           <TestMarquee />
         </div>  
         {/* <Testimonials /> */}
-
+        <Stats />
       </div>
+
     </div>
   );
 }
