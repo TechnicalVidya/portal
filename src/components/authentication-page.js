@@ -24,15 +24,15 @@ export default function AuthenticationPage() {
           className="hidden dark:block"
         /> */}
       </div>
-      <div className="container relative hidden h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
+      <div className="container relative mt-20 md:mt-0 h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <p
           // href="/examples/authentication"
           className={cn(
             buttonVariants({ variant: "ghost" }),
-            "absolute right-4 top-4 md:right-8 md:top-8"
+            "absolute right-4 top-4 md:right-8 md:top-8 invisible md:visible"
           )}
         >
-          Login
+          Sign Up
         </p>
         <div className="relative hidden h-full flex-col bg-muted p-10 lg:flex dark:border-r">
           <div className="absolute inset-0 bg-muted" />
