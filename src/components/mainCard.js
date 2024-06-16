@@ -17,8 +17,9 @@ export function CardWithForm({ card, btnText, type }) {
   const [isHovered, setIsHovered] = React.useState(false);
   const [title, setTitle] = React.useState(card?.title);
 
-  const truncateString = (str, num) =>
-    str.length > num ? str.slice(0, num) + "..." : str;
+  const truncateString = (str, num) => {
+    return str.length > num ? str.slice(0, num) + "..." : str;
+  };
 
   React.useEffect(() => {
     const t = truncateString(card?.title, 16);
@@ -37,7 +38,6 @@ export function CardWithForm({ card, btnText, type }) {
     <Card className="pt-6 ">
       <CardContent>
         <div key={card?.id}>
-          {console.log(card)}
           <div
             className="relative overflow-hidden rounded-lg shadow-lg transition transform"
             onMouseEnter={handleMouseEnter}
@@ -97,7 +97,7 @@ export function CardWithForm({ card, btnText, type }) {
             - {card?.managedBy}
           </CardDescription>
           <CardDescription className="text-gray-500 text-sm mt-2">
-            {card?.description}
+            {truncateString(card?.description, 130)}
           </CardDescription>
         </div>
       </CardContent>
