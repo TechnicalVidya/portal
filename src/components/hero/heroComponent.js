@@ -45,7 +45,7 @@ const HeroComponent = () => {
           <Link href="/members" className={buttonVariants()}>
             See Members
           </Link>
-          {user === undefined || user === null && (
+          {!user && (
             <Link
               href="/login"
               className={buttonVariants({ variant: "outline" })}>
