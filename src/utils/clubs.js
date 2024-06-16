@@ -25,3 +25,26 @@ export const fetchAllClubs = async (setCardData, setLoading) => {
     setLoading(false);
   }
 };
+
+export const fetchClub = async (clubId, setClubInfo, setLoading) => {
+  try {
+    const { data } = await axios.get(`/api/club/get/${clubId}`);
+    console.log(data);
+    if (data.success) {
+      const resData = data.data;
+      const temp = {
+        id: resData._id,
+        clubName: resData.clubName,
+        description: resData.clubDesc,
+        social: [],
+        event: resData.event,
+        members: resData.members,
+      };
+      setClubInfo(resData);
+    }
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setLoading(false);
+  }
+};

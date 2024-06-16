@@ -79,3 +79,19 @@ export const clubInfo = {
     },
   ],
 };
+
+const someData = {
+  _id: "666e97ff00cea6480ab94c6c",
+  clubName: "Google Developer Student Clubs",
+  clubDesc:
+    "Check out Google Developer Student Clubs Lokmanya Tilak College of Engineering - Navi Mumbai, India events, learn more or contact this organizer.",
+  avatar:
+    "https://res.cloudinary.com/dahndiy4v/image/upload/v1718523903/clubAvatars/pzbnohgwerzynsm0wvxj.png",
+  team: [],
+  posts: [],
+  event: [],
+  members: [],
+  createdAt: "2024-06-16T07:45:03.431Z",
+  updatedAt: "2024-06-16T07:45:03.431Z",
+  __v: 0,
+};

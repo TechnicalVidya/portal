@@ -8,8 +8,9 @@ import {
 } from "@/components/ui/breadcrumb";
 import { usePathname } from "next/navigation";
 import React from "react";
+import { Skeleton } from "./ui/skeleton";
 
-export function BreadcrumbDemo({ clubName }) {
+export function BreadcrumbDemo({ clubName, loading }) {
   const pathname = usePathname();
   const pathParts = pathname.split("/").filter(Boolean);
 
@@ -28,6 +29,9 @@ export function BreadcrumbDemo({ clubName }) {
       </React.Fragment>
     );
   });
+
+  if (loading)
+    return <Skeleton className="h-4 w-[250px] bg-muted-foreground/15" />;
 
   return (
     <Breadcrumb>

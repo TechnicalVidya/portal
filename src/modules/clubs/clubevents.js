@@ -1,7 +1,7 @@
 import React from "react";
 import Cards from "../../components/cards";
 
-const Clubevents = ({ clubInfo }) => {
+const Clubevents = ({ clubInfo, loading }) => {
   return (
     <div className="md:space-y-16">
       <div className="my-10 md:my-0">
@@ -17,6 +17,7 @@ const Clubevents = ({ clubInfo }) => {
         cardData={clubInfo.event}
         btnText={"Participate"}
         type={"events"}
+        loading={loading}
       />
     </div>
   );

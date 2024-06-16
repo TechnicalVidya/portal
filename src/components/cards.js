@@ -30,7 +30,7 @@ const Cards = ({ cardData, btnText, type, loading }) => {
 
   return (
     <div className="container mx-auto px-4 md:px-0">
-      {cardData.length === 0 && !loading ? (
+      {cardData?.length === 0 && !loading ? (
         <div className="w-full grid place-items-center">
           <div className="md:w-[65%] w-full">
             <dotlottie-player src={"/animations/error.json"} autoplay loop="" />
