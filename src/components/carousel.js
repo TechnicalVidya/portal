@@ -15,7 +15,7 @@ export function CarouselDemo({ imgArray }) {
   return (
     <Carousel className="w-full max-w-6xl" plugins={[plugin.current]}>
       <CarouselContent>
-        {Array.from({ length: 3 }).map((_, index) => (
+        {Array.from({ length: 4 }).map((_, index) => (
           <CarouselItem key={index}>
             <div>
               <Card className="border-none shadow-none p-0 m-0">

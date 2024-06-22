@@ -19,9 +19,9 @@ const internship = () => {
           Unlock unforgettable moments with our platform, Explore Opportunities, Build Connections, and Celebrate Achievements with Us.
         </p>
 
-        <Button size="lg" asChild className="button w-full sm:w-fit">
-          <Link href="/">Upload Jobs</Link>
-        </Button>
+          <Button size="lg" asChild className="button w-full sm:w-fit">
+            <Link href="/">Upload Jobs</Link>
+          </Button>
       </div>
 
       <Image
