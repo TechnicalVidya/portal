@@ -13,9 +13,9 @@ const Clubs = () => {
   return (
     <div>
       <div className="grid items-center justify-center">
-        <CarouselDemo imgArray={imgArray} />
+        {/* <CarouselDemo imgArray={imgArray} /> */}
         <div className='items-center font-bold text-3xl md:text-5xl pb-6 md:pb-12 text-center pt-10'>
-        Our Team Members
+        Team Members
         </div>
       <Team />
       </div>
