@@ -21,7 +21,7 @@ const BentoGrid = () => {
             <div className="absolute  pt-60 z-1 max-w-[20rem] ml-auto">
               <h4 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4"><SparklesText text="The Cult"/></h4>
               <p className="md:text-lg ">
-                "Where music meets mysticism, and rock 'n' roll legends are born."
+              &quot;Where music meets mysticism, and rock &apos;n&apos; roll legends are born.&quot;
               </p>
             </div>
           </div>
