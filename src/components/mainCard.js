@@ -8,7 +8,6 @@ import {
   CardFooter,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "./icons";
 import { AnimatedTooltip } from "./ui/animated-tooltip";

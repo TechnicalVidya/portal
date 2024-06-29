@@ -20,7 +20,7 @@ const Clubs = () => {
   return (
     <div>
       <div className="grid items-center justify-center md:space-y-16 space-y-6">
-        <CarouselDemo imgArray={imgArray} />
+        {/* <CarouselDemo imgArray={imgArray} /> */}
         <div className="flex gap-4 items-center justify-between">
           <Heading heading={"Explore Clubs"} />
           <AddClub />

@@ -1,5 +1,7 @@
 import React from 'react'
 import { Badge } from "@/components/ui/badge";
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const Concession = () => {
     return (
@@ -20,24 +22,23 @@ const Concession = () => {
       </Badge>
     </div>
 
-    <div className="flex flex-col items-center gap-4">
-      <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-6xl text-center">
-        SmartRail Concession
-        <br className="hidden sm:inline" />
-        Application
-      </h1>
-    </div>
-
-    {/* Buttons */}
-    <div className="flex justify-center gap-4 mt-8">
-  <button className="bg-primary text-white px-4 py-2 rounded-lg transition duration-300 transform hover:scale-105 hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary">
-    Students
-  </button>
-  <button className="bg-secondary text-white px-4 py-2 rounded-lg transition duration-300 transform hover:scale-105 hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-secondary">
-    Admin
-  </button>
+    <div className="flex flex-col items-center gap-4 p-4">
+  <h1 className="scroll-m-20 text-3xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold tracking-tight text-center">
+    SmartRail Concession  <br />
+      Application
+  </h1>
 </div>
 
+
+      <div className='flex flex-row gap-5 pt-5'>
+        <Link href="/">
+          <Button>Admin</Button>  
+        </Link> 
+        <Link href="/">
+          <Button>Student</Button>   
+        </Link>
+      </div>
+        
   </main>
 </div>
 
