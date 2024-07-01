@@ -16,8 +16,8 @@ export function UserAuthForm({ className, ...props }) {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [formData, setFormData] = React.useState({
-    erpID: 222222,
-    erpPassword: "222222",
+    erpID: 111111,
+    erpPassword: "111111",
   });
   const router = useRouter();
 
@@ -87,17 +87,17 @@ export function UserAuthForm({ className, ...props }) {
         </div>
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-background px-2 text-muted-foreground">
-            Or continue with
+            Or 
           </span>
         </div>
       </div>
       <Button variant="outline" type="button" disabled={isLoading}>
-        {isLoading ? (
+        {/* {isLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
           <Icons.gitHub className="mr-2 h-4 w-4" />
-        )}{" "}
-        GitHub
+        )}{" "} */}
+        Sign Up
       </Button>
     </div>
   );
