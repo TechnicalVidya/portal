@@ -12,10 +12,10 @@ const internship = () => {
     <div className=" bg-contain pt-5 md:py-10">
     <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
       <div className="flex flex-col justify-center gap-8">
-        <h1 class="font-bold text-6xl">
+        <h1 className"font-bold text-6xl">
             Connect, Network, Succeed: Your Career Journey Starts Here!
         </h1>
-        <p class="text-lg md:text-xl">
+        <p className"text-lg md:text-xl">
           Unlock unforgettable moments with our platform, Explore Opportunities, Build Connections, and Celebrate Achievements with Us.
         </p>
 

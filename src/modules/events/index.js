@@ -10,6 +10,7 @@ import img3 from "@/assets/3.jpg";
 import Cards from "../../components/cards";
 import { cardData } from "./dummyEventData";
 import Heading from "@/components/ui/heading";
+import { AddEvent } from './event/addEvent'
 
 export default function eventHome() {
   const imgArray = [img1, img2, img3];
@@ -18,17 +19,16 @@ export default function eventHome() {
       <section className=" bg-contain pt-5 md:py-10">
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
-            <h1 class="font-bold text-6xl">
+            <h1 className="font-bold text-6xl">
               Host, Connect, Celebrate: Your Events, Our Platform!
             </h1>
-            <p class="text-lg md:text-xl">
+            <p className="text-lg md:text-xl">
               Unlock unforgettable moments with our platform, where booking and
               learning about exclusive events is just a click away.
             </p>
-
-            <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="/createEve">Create Now</Link>
-            </Button>
+            <div className="flex gap-4 items-center justify-between">
+              <AddEvent />
+            </div>
           </div>
 
           <Image

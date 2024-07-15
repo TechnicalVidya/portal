@@ -27,13 +27,13 @@ export const Company = () => {
   return (
     <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background py-20">
       <Marquee pauseOnHover className="[--duration:20s]">
-        {firstRow.map((companyImage) => (
-          <CompanyCard key={companyImage.username} {...companyImage} />
+        {firstRow.map((companyImage , index) => (
+          <CompanyCard key={index} {...companyImage} />
         ))}
       </Marquee>
       <Marquee reverse pauseOnHover className="[--duration:20s]">
-        {secondRow.map((companyImage) => (
-          <CompanyCard key={companyImage.username} {...companyImage} />
+        {secondRow.map((companyImage , index) => (
+          <CompanyCard key={index} {...companyImage} />
         ))}
       </Marquee>
       <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
