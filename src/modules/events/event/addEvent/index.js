@@ -17,7 +17,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import axios from "axios";
-import { DateField } from "./formcomponents";
+import { DateField, ImageUpload } from "./formcomponents";
 import { ReusableField } from "./formcomponents";
 
 
@@ -25,18 +25,42 @@ const FormSchema = z.object({
     eventName: z.string().min(2, {
         message: "Eventname must be at least 2 characters.",
     }),
-    clubDesc: z.string().min(20, {
-        message: "Club description must be at least 20 characters.",
+    eventDesc: z.string().min(20, {
+        message: "Event description must be at least 20 characters.",
     }),
-    startDate: z.date({
+    startDate: z.string({
         required_error: "Start date is required.",
-        invalid_type_error: "Start date must be a valid date.",
+        refine: (startDate, ctx) => {
+            const currentDate = new Date();
+            if (startDate >= currentDate) {
+                return true;
+            }
+            return ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: "Start date must be greater than or equal to today's date.",
+            });
+        },
     }),
-    endDate: z.date({
+    endDate: z.string({
         required_error: "End date is required.",
-        invalid_type_error: "End date must be a valid date.",
+        refine: (endDate, ctx) => {
+            if (endDate >= ctx.parent.startDate) {
+                return true;
+            }
+            return ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: "End date must be greater than or equal to start date.",
+            });
+        },
     }),
 });
+
+const ACCEPTED_IMAGE_TYPES = [
+    "image/jpeg",
+    "image/jpg",
+    "image/png",
+    "image/webp",
+];
 
 export function AddEvent() {
     const [logo, setLogo] = useState(null);
@@ -45,16 +69,23 @@ export function AddEvent() {
         defaultValues: {
             eventName: "",
             eventDesc: "",
-            startDate: "",
-            endDate: ""
+            startDate: new Date().toISOString().slice(0, 10),
+            endDate: new Date().toISOString().slice(0, 10)
         },
     });
 
     async function onSubmit(data) {
         try {
-            const response = await axios.post("/api/event/create", data);
+            const formData = new FormData();
+            for (const key in data) {
+                if (key === "image" && data[key] !== null) {
+                    formData.append(key, data[key][0]);
+                } else {
+                    formData.append(key, data[key]);
+                }
+            }
+            const response = await axios.post("/api/event/create/event", formData);
             console.log(response);
-
             if (response.data.success) {
                 form.reset();
                 setLogo(null);
@@ -78,34 +109,47 @@ export function AddEvent() {
                     <AlertDialogTitle>Add Event</AlertDialogTitle>
                 </AlertDialogHeader>
                 <div className="overflow-auto p-1">
-                    <Form {...form}>
+                    <Form {...form} >
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                            <div className="grid grid-cols-2 gap-6">
-                                <div className="grid col-span-2 gap-6">
-                                    <ReusableField
-                                        form={form}
-                                        name="eventName"
-                                        label="Name*"
-                                        placeholder="Event Name"
-                                        component={Input}
-                                    />
-                                    <ReusableField
-                                        form={form}
-                                        name="eventDesc"
-                                        label="Description*"
-                                        placeholder="Description"
-                                        component={Textarea}
-                                    />
-                                </div>
-                                <div className="grid grid-flow-col col-span-2 gap-x-5 row-span-1">
-                                    <DateField
-                                        form={form}
-                                        label="Start Date*"
-                                    />
-                                    <DateField
-                                        form={form}
-                                        label="End Date*"
-                                    />
+                            <div className="grid grid-cols-4 gap-2">
+                                <ImageUpload
+                                    form={form}
+                                    name="image"
+                                    label="Logo"
+                                    description="Choose your logo wisely."
+                                    preview={logo}
+                                    setPreview={setLogo}
+                                />
+
+                                <div className="col-span-2 grid">
+                                    <div className="grid col-span-2 gap-6">
+                                        <ReusableField
+                                            form={form}
+                                            name="eventName"
+                                            label="Name*"
+                                            placeholder="Event Name"
+                                            component={Input}
+                                        />
+                                        <ReusableField
+                                            form={form}
+                                            name="eventDesc"
+                                            label="Description*"
+                                            placeholder="Description"
+                                            component={Textarea}
+                                        />
+                                    </div>
+                                    <div className="grid grid-flow-col col-span-2 gap-x-5 row-span-1">
+                                        <DateField
+                                            form={form}
+                                            label="Start Date*"
+                                            name="startDate"
+                                        />
+                                        <DateField
+                                            form={form}
+                                            label="End Date*"
+                                            name="endDate"
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
