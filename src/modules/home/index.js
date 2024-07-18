@@ -16,7 +16,9 @@ const HeroComponent = dynamic(() => import("@/components/hero/heroComponent"), {
 export default function Home() {
   return (
     <div>
-      <HeroComponent />
+      <div className="min-h-[50vh]">
+          <HeroComponent />
+      </div>
       
       <div className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
         <Company />

@@ -32,6 +32,8 @@ export const fetchClub = async (clubId, setClubInfo, setLoading) => {
     console.log(data);
     if (data.success) {
       const resData = data.data;
+      console.log(resData)
+      const members = [{...resData.head}]
       const temp = {
         id: resData._id,
         clubName: resData.clubName,
