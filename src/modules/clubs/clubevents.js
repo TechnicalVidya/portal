@@ -1,7 +1,22 @@
 import React from "react";
 import Cards from "../../components/cards";
 
-const Clubevents = ({ clubInfo, loading }) => {
+const Clubevents = ({ event, loading }) => {
+  console.log(event)
+  const demo = event.map((e) => ({
+    id: e._id,
+    title: e.eventName,
+    imageUrl: e.eventImg,
+    github: "", // Assuming no GitHub link provided in the event data
+    twitter: "", // Assuming no Twitter link provided in the event data
+    managedBy: "", // Assuming no managedBy field provided in the event data
+    description: e.eventDesc,
+    members: e.eventParticipants.filter(Boolean).map((participant, index) => ({
+      name: participant ? participant.name : `Participant ${index + 1}`,
+      role: participant ? participant.role : "Unknown",
+    })),
+  }));
+  console.log(event);
   return (
     <div className="md:space-y-16">
       <div className="my-10 md:my-0">
@@ -14,7 +29,7 @@ const Clubevents = ({ clubInfo, loading }) => {
       </div>
 
       <Cards
-        cardData={clubInfo.event}
+        cardData={demo}
         btnText={"Participate"}
         type={"events"}
         loading={loading}
