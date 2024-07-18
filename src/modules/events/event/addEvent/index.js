@@ -20,6 +20,12 @@ import axios from "axios";
 import { DateField, ImageUpload } from "./formcomponents";
 import { ReusableField } from "./formcomponents";
 
+const ACCEPTED_IMAGE_TYPES = [
+    "image/jpeg",
+    "image/jpg",
+    "image/png",
+    "image/webp",
+];
 
 const FormSchema = z.object({
     eventName: z.string().min(2, {
@@ -53,20 +59,21 @@ const FormSchema = z.object({
             });
         },
     }),
+    image: z
+        .any()
+        .refine(
+            (file) => ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type),
+            "Only .jpg, .jpeg, .png and .webp formats are supported."
+        ),
 });
 
-const ACCEPTED_IMAGE_TYPES = [
-    "image/jpeg",
-    "image/jpg",
-    "image/png",
-    "image/webp",
-];
 
 export function AddEvent() {
     const [logo, setLogo] = useState(null);
     const form = useForm({
         resolver: zodResolver(FormSchema),
         defaultValues: {
+            image: null,
             eventName: "",
             eventDesc: "",
             startDate: new Date().toISOString().slice(0, 10),
@@ -78,13 +85,15 @@ export function AddEvent() {
         try {
             const formData = new FormData();
             for (const key in data) {
+                console.log(key)
                 if (key === "image" && data[key] !== null) {
                     formData.append(key, data[key][0]);
                 } else {
                     formData.append(key, data[key]);
                 }
             }
-            const response = await axios.post("/api/event/create/event", formData);
+            console.log(formData);
+            const response = await axios.post("/api/event/create", formData);
             console.log(response);
             if (response.data.success) {
                 form.reset();
@@ -111,7 +120,7 @@ export function AddEvent() {
                 <div className="overflow-auto p-1">
                     <Form {...form} >
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                            <div className="grid grid-cols-4 gap-2">
+                            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
                                 <ImageUpload
                                     form={form}
                                     name="image"
@@ -121,7 +130,7 @@ export function AddEvent() {
                                     setPreview={setLogo}
                                 />
 
-                                <div className="col-span-2 grid">
+                                <div className="col-span-2 grid gap-y-3">
                                     <div className="grid col-span-2 gap-6">
                                         <ReusableField
                                             form={form}

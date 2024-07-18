@@ -93,7 +93,7 @@ export const ImageUpload = ({
               <div className="flex">
                 <label
                   htmlFor={`${name}_input`}
-                  className="aspect-square w-32 overflow-hidden rounded-full cursor-pointer">
+                  className="aspect-square w-32 overflow-hidden rounded-lg cursor-pointer">
                   {preview === null ? (
                     <div className="h-full w-full bg-muted grid p-2 place-items-center">
                       Add Logo
