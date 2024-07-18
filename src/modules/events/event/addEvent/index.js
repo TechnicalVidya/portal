@@ -34,7 +34,7 @@ const FormSchema = z.object({
     eventDesc: z.string().min(20, {
         message: "Event description must be at least 20 characters.",
     }),
-    startDate: z.string({
+    firstDate: z.string({
         required_error: "Start date is required.",
         refine: (startDate, ctx) => {
             const currentDate = new Date();
@@ -47,10 +47,10 @@ const FormSchema = z.object({
             });
         },
     }),
-    endDate: z.string({
+    lastDate: z.string({
         required_error: "End date is required.",
         refine: (endDate, ctx) => {
-            if (endDate >= ctx.parent.startDate) {
+            if (endDate >= ctx.parent.firstDate) {
                 return true;
             }
             return ctx.addIssue({
@@ -76,8 +76,8 @@ export function AddEvent() {
             image: null,
             eventName: "",
             eventDesc: "",
-            startDate: new Date().toISOString().slice(0, 10),
-            endDate: new Date().toISOString().slice(0, 10)
+            firstDate: new Date().toISOString().slice(0, 10),
+            lastDate: new Date().toISOString().slice(0, 10)
         },
     });
 
@@ -92,7 +92,6 @@ export function AddEvent() {
                     formData.append(key, data[key]);
                 }
             }
-            console.log(formData);
             const response = await axios.post("/api/event/create", formData);
             console.log(response);
             if (response.data.success) {
@@ -151,12 +150,12 @@ export function AddEvent() {
                                         <DateField
                                             form={form}
                                             label="Start Date*"
-                                            name="startDate"
+                                            name="firstDate"
                                         />
                                         <DateField
                                             form={form}
                                             label="End Date*"
-                                            name="endDate"
+                                            name="lastDate"
                                         />
                                     </div>
                                 </div>
