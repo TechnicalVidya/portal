@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import Internship from "@/modules/internship";
 
