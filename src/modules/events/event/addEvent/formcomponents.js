@@ -1,3 +1,6 @@
+import { DateInput } from "@/components/ui/dateInput";
+import { Input } from "@/components/ui/input";
+
 const {
   FormField,
   FormItem,
@@ -6,35 +9,7 @@ const {
   FormMessage,
   FormDescription,
 } = require("@/components/ui/form");
-import { Input } from "@/components/ui/input";
 
-export function SocialMediaField({
-  form,
-  name,
-  label,
-  icon: Icon,
-  placeholder,
-}) {
-  return (
-    <FormField
-      control={form.control}
-      name={name}
-      render={({ field }) => (
-        <FormItem>
-          <div className="flex items-center gap-2">
-            <FormLabel>
-              <Icon className="text-3xl" />
-            </FormLabel>
-            <FormControl>
-              <Input placeholder={placeholder} {...field} />
-            </FormControl>
-          </div>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
-  );
-}
 
 export function ReusableField({
   form,
@@ -52,6 +27,32 @@ export function ReusableField({
           <FormLabel>{label}</FormLabel>
           <FormControl>
             <Component placeholder={placeholder} {...field} />
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+  );
+}
+
+export function DateField({
+  form,
+  label,
+  name
+}) {
+  return (
+    <FormField
+      control={form.control}
+      name={name}
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel>{label}</FormLabel>
+          <FormControl>
+            <DateInput
+              name={name}
+              value={field.value}
+              onChange={(date) => field.onChange(date)}
+            />
           </FormControl>
           <FormMessage />
         </FormItem>
