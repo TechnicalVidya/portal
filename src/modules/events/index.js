@@ -1,7 +1,7 @@
 // import { CarouselDemo } from "@/components/carousel";
 import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+// import { Button } from "@/components/ui/button";
+// import Link from "next/link";
 import Image from "next/image";
 import heroImg from "@/assets/events/hero.png";
 import Cards from "../../components/cards";
@@ -9,13 +9,14 @@ import Heading from "@/components/ui/heading";
 import { AddEvent } from './event/addEvent'
 import { fetchAllEvents } from "@/utils/events";
 
-export default function eventHome() {
+export default function EventHome() {
   const [loading, setLoading] = useState(true);
   const [cardData, setCardData] = useState([]);
 
   useEffect(() => {
     fetchAllEvents(setCardData, setLoading);
   }, []);
+
   return (
     <>
       <section className=" bg-contain pt-5 md:py-10">
