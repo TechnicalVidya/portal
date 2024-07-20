@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import heroImg from "@/assets/internHero.svg";
+import { AddInternship } from './addInternship';
 
 const internship = () => {
   return (
@@ -18,10 +19,7 @@ const internship = () => {
             <p className="text-lg md:text-xl">
               Unlock unforgettable moments with our platform, Explore Opportunities, Build Connections, and Celebrate Achievements with Us.
             </p>
-
-            <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="/">Upload Jobs</Link>
-            </Button>
+            <AddInternship />
           </div>
 
           <Image

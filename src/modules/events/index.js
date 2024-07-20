@@ -1,19 +1,21 @@
 // import { CarouselDemo } from "@/components/carousel";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import heroImg from "@/assets/events/hero.png";
-import img1 from "@/assets/1.jpg";
-import img2 from "@/assets/2.jpg";
-import img3 from "@/assets/3.jpg";
 import Cards from "../../components/cards";
-import { cardData } from "./dummyEventData";
 import Heading from "@/components/ui/heading";
 import { AddEvent } from './event/addEvent'
+import { fetchAllEvents } from "@/utils/events";
 
 export default function eventHome() {
-  const imgArray = [img1, img2, img3];
+  const [loading, setLoading] = useState(true);
+  const [cardData, setCardData] = useState([]);
+
+  useEffect(() => {
+    fetchAllEvents(setCardData, setLoading);
+  }, []);
   return (
     <>
       <section className=" bg-contain pt-5 md:py-10">
@@ -51,6 +53,7 @@ export default function eventHome() {
               cardData={cardData}
               btnText={"Participate"}
               type={"events"}
+              loading={loading}
             />
           </div>
         </div>
