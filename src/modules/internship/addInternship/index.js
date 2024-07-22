@@ -29,7 +29,7 @@ const ACCEPTED_IMAGE_TYPES = [
 
 const FormSchema = z.object({
     title: z.string().min(2, {
-        message: "title must be at least 2 characters.",
+        message: "Title must be at least 2 characters.",
     }),
     desc: z.string().min(20, {
         message: "Event description must be at least 20 characters.",
@@ -39,34 +39,19 @@ const FormSchema = z.object({
     }),
     startDate: z.string({
         required_error: "Start date is required.",
-        refine: (startDate, ctx) => {
-            const currentDate = new Date();
-            if (startDate >= currentDate) {
-                return true;
-            }
-            return ctx.addIssue({
-                code: z.ZodIssueCode.custom,
-                message: "Start date must be greater than or equal to today's date.",
-            });
-        },
-    }),
-    endDate: z.string({
-        required_error: "End date is required.",
-        refine: (endDate, ctx) => {
-            if (endDate >= ctx.parent.startDate) {
-                return true;
-            }
-            return ctx.addIssue({
-                code: z.ZodIssueCode.custom,
-                message: "End date must be greater than or equal to start date.",
-            });
-        },
-    }),
+    }).refine((startDate) => {
+        const currentDate = new Date();
+        const parsedDate = new Date(startDate);
+        return parsedDate >= currentDate.setHours(0, 0, 0, 0);
+    }, {
+        message: "Start date must be greater than or equal to today's date.",
+    }
+    ),
     image: z
         .any()
         .refine(
             (file) => ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type),
-            "Only .jpg, .jpeg, .png and .webp formats are supported."
+            "Only .jpg, .jpeg, .png, and .webp formats are supported."
         ),
 });
 
@@ -79,11 +64,11 @@ export function AddInternship() {
             image: null,
             title: "",
             desc: "",
-            url:"",
+            url: "",
             startDate: new Date().toISOString().slice(0, 10),
-            endDate: new Date().toISOString().slice(0, 10)
         },
     });
+
 
     async function onSubmit(data) {
         try {
@@ -101,7 +86,7 @@ export function AddInternship() {
             if (response.data.success) {
                 form.reset();
                 setLogo(null);
-                toast.success("Event added successfully!");
+                toast.success("Internship added successfully!");
             } else {
                 toast.error("Failed to add club. Please try again.");
             }
@@ -118,12 +103,12 @@ export function AddInternship() {
             </AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Add Event</AlertDialogTitle>
+                    <AlertDialogTitle>Add Internship</AlertDialogTitle>
                 </AlertDialogHeader>
                 <div className="overflow-auto p-1">
                     <Form {...form} >
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                            <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
                                 <ImageUpload
                                     form={form}
                                     name="image"
@@ -155,17 +140,10 @@ export function AddInternship() {
                                             placeholder="Form URL"
                                             component={Input}
                                         />
-                                    </div>
-                                    <div className="grid grid-flow-col col-span-2 gap-x-5 row-span-1">
                                         <DateField
                                             form={form}
-                                            label="Start Date*"
+                                            label="Application Deadline*"
                                             name="startDate"
-                                        />
-                                        <DateField
-                                            form={form}
-                                            label="End Date*"
-                                            name="endDate"
                                         />
                                     </div>
                                 </div>

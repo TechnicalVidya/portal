@@ -111,7 +111,7 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
                 {card.status}
               </CardDescription>
           }
-          <CardDescription className="text-gray-500 text-sm mt-2">
+          <CardDescription className="text-gray-500 text-sm mt-2 line-clamp-2">
             {truncateString(card?.description, 130)}
           </CardDescription>
         </div>
