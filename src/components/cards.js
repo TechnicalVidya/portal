@@ -7,7 +7,7 @@ const CardLoading = dynamic(() => import("./skeleton/cardSkeletion"), {
   ssr: false,
 });
 
-const Cards = ({ cardData, btnText, type, loading }) => {
+const Cards = ({ cardData, btnText, type, loading, functionToBeExecuted }) => {
   const renderCards = () => {
     if (loading) {
       return (
@@ -24,7 +24,13 @@ const Cards = ({ cardData, btnText, type, loading }) => {
     }
 
     return cardData.map((card, index) => (
-      <CardWithForm card={card} key={index} btnText={btnText} type={type} />
+      <CardWithForm
+        card={card}
+        key={index}
+        btnText={btnText}
+        type={type}
+        functionToBeExecuted={functionToBeExecuted}
+      />
     ));
   };
 

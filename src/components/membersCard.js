@@ -42,8 +42,14 @@ const MembersCard = ({ clubData, loading }) => {
                 alt={member.name}
               />
               <div className="flex flex-col justify-center">
-                <p className="text-lg font-bold">{member.name}</p>
-                <p className="text-sm text-muted-foreground">{member.role}</p>
+                <p className="text-lg font-bold">
+                  {member.firstName + " " + member.lastName}
+                </p>
+
+                {/* TODO: Add role in user schema */}
+                <p className="text-sm text-muted-foreground">
+                  {member.role ? member.role : "Club Member"}
+                </p>
               </div>
             </div>
           ))

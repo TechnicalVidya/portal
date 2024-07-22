@@ -12,7 +12,7 @@ import Link from "next/link";
 import { Icons } from "./icons";
 import { AnimatedTooltip } from "./ui/animated-tooltip";
 
-export function CardWithForm({ card, btnText, type }) {
+export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
   const [isHovered, setIsHovered] = React.useState(false);
   const [title, setTitle] = React.useState(card?.title);
 
@@ -40,11 +40,13 @@ export function CardWithForm({ card, btnText, type }) {
           <div
             className="relative overflow-hidden rounded-lg shadow-lg transition transform"
             onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}>
+            onMouseLeave={handleMouseLeave}
+          >
             <div
               className={`absolute inset-0 bg-opacity-50 transition-opacity ${
                 isHovered ? "opacity-0" : "opacity-100"
-              }`}></div>
+              }`}
+            ></div>
             <img
               className={`object-cover aspect-square transition-transform duration-300 cursor-pointer ${
                 isHovered ? "scale-110" : ""
@@ -66,12 +68,14 @@ export function CardWithForm({ card, btnText, type }) {
                 <Link
                   href={card.github ? card.github : ""}
                   target="_blank"
-                  rel="noreferrer">
+                  rel="noreferrer"
+                >
                   <div
                     className={buttonVariants({
                       size: "icon",
                       variant: "ghost",
-                    })}>
+                    })}
+                  >
                     <Icons.gitHub className="h-5 w-5" />
                     <span className="sr-only">GitHub</span>
                   </div>
@@ -79,12 +83,14 @@ export function CardWithForm({ card, btnText, type }) {
                 <Link
                   href={card.twitter ? card.twitter : ""}
                   target="_blank"
-                  rel="noreferrer">
+                  rel="noreferrer"
+                >
                   <div
                     className={buttonVariants({
                       size: "icon",
                       variant: "ghost",
-                    })}>
+                    })}
+                  >
                     <Icons.twitter className="h-5 w-5 fill-current" />
                     <span className="sr-only">Twitter</span>
                   </div>
@@ -104,9 +110,25 @@ export function CardWithForm({ card, btnText, type }) {
         <div className="flex flex-row items-center justify-center">
           <AnimatedTooltip items={card?.members} />
         </div>
-        <Link href={`/${type}/${card.id}`}>
-          <Button>{btnText}</Button>
-        </Link>
+        {type === "events" ? (
+          <Button
+            onClick={() => {
+              if (functionToBeExecuted) functionToBeExecuted(card.id);
+            }}
+          >
+            {btnText}
+          </Button>
+        ) : (
+          <Link href={`/${type}/${card.id}`}>
+            <Button
+              onClick={() => {
+                if (functionToBeExecuted) functionToBeExecuted(id);
+              }}
+            >
+              {btnText}
+            </Button>
+          </Link>
+        )}
       </CardFooter>
     </Card>
   );

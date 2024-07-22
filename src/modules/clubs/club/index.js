@@ -11,7 +11,7 @@ import { UpdateClubDetails } from "./updateClub";
 const Club = ({ clubId }) => {
   const [loading, setLoading] = useState(true);
   const [clubInfo, setClubInfo] = useState({});
-  console.log(clubInfo);
+  // console.log(clubInfo);
 
   useEffect(() => {
     fetchClub(clubId, setClubInfo, setLoading);
@@ -35,7 +35,7 @@ const Club = ({ clubId }) => {
         event={clubInfo.event ? clubInfo.event : []}
         loading={loading}
       />
-      <ClubTeamMembers clubData={clubInfo} loading={loading} />
+      <ClubTeamMembers clubData={clubInfo} loading={loading} setClubInfo={setClubInfo} />
     </div>
   );
 };

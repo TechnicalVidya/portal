@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import MembersCard from "./membersCard";
 import { UpdateTeamMembers } from "@/modules/clubs/club/updateClub/updateClubTeamMembers";
+import { toast } from "sonner";
 
-const ClubTeamMembers = ({ clubData, loading }) => {
+const ClubTeamMembers = ({ clubData, loading, setClubInfo }) => {
+  const addNewMember = (member) => {
+    console.log(member);
+    setClubInfo((prev) => ({
+      ...prev,
+      members: [...prev.members, member],
+    }));
+    toast("New Member is added!");
+  };
+
   return (
     <div>
       <div className="flex items-center justify-between w-full">
@@ -11,15 +21,15 @@ const ClubTeamMembers = ({ clubData, loading }) => {
           Club Members
         </h1>
         <div>
-          <UpdateTeamMembers />
+          <UpdateTeamMembers addNewMember={addNewMember} />
         </div>
       </div>
 
       <p className="leading-7 text-center">Meet our team members</p>
+
       <MembersCard clubData={clubData} loading={loading} />
     </div>
   );
 };
 
 export default ClubTeamMembers;
-

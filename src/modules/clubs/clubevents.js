@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Cards from "../../components/cards";
+import axios from "axios";
 
 const Clubevents = ({ event, loading }) => {
-  console.log(event)
-  const demo = event.map((e) => ({
+  const foramattedData = event.map((e) => ({
     id: e._id,
     title: e.eventName,
     imageUrl: e.eventImg,
@@ -16,7 +16,24 @@ const Clubevents = ({ event, loading }) => {
       role: participant ? participant.role : "Unknown",
     })),
   }));
-  console.log(event);
+  // console.log(event)
+  console.log(foramattedData);
+  const [clubEventData, setClubEventData] = useState(foramattedData);
+  // useEffect(() => {
+  //   setClubEventData(foramattedData);
+  // }, [foramattedData]);
+
+  const participateInEvent = async (eventId) => {
+    try {
+      console.log(eventId)
+      const { data } = await axios.put(`/api/event/addParticipant/${eventId}`);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // console.log(event);
   return (
     <div className="md:space-y-16">
       <div className="my-10 md:my-0">
@@ -29,10 +46,11 @@ const Clubevents = ({ event, loading }) => {
       </div>
 
       <Cards
-        cardData={demo}
+        cardData={foramattedData}
         btnText={"Participate"}
         type={"events"}
         loading={loading}
+        functionToBeExecuted={participateInEvent}
       />
     </div>
   );
