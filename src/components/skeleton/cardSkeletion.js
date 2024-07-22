@@ -22,9 +22,9 @@ const CardLoading = () => (
           </div>
           <h3 className="leading-none tracking-tight mt-4">
             <div className="w-full flex justify-between items-center">
-              <p>
+              <div>
                 <Skeleton className="w-[48px] max-w-full" />
-              </p>
+              </div>
               <div>
                 <a>
                   <div className="inline-flex items-center justify-center transition-colors h-10 w-10">
@@ -39,12 +39,12 @@ const CardLoading = () => (
               </div>
             </div>
           </h3>
-          <p>
+          <div>
             <Skeleton className="w-[136px] bg-muted-foreground/15 animate-pulse transform transition-all duration-1000 rounded-lg max-w-full" />
-          </p>
-          <p className="mt-2">
+          </div>
+          <div className="mt-2">
             <Skeleton className="w-[176px] bg-muted-foreground/15 animate-pulse transform transition-all duration-1000 rounded-lg max-w-full" />
-          </p>
+          </div>
         </div>
       </div>
       <div className="items-center p-6 pt-0 flex justify-between">

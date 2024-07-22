@@ -1,7 +1,6 @@
 import { CardWithForm } from "@/components/mainCard";
 import React from "react";
 import dynamic from "next/dynamic";
-import "@aarsteinmedia/dotlottie-player";
 
 const CardLoading = dynamic(() => import("./skeleton/cardSkeletion"), {
   ssr: false,
