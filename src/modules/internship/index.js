@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Heading from '@/components/ui/heading'
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import heroImg from "@/assets/internHero.svg";
 import { AddInternship } from './addInternship';
+import Cards from '@/components/cards';
+import { fetchInternships } from '@/utils/internships';
 
 const internship = () => {
+  const [cardData, setCardDate] = useState([])
+  const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    fetchInternships(setCardDate, setLoading)
+  }, [])
   return (
 
     <section>
@@ -33,6 +40,14 @@ const internship = () => {
       </div>
       <div className="pt-10  md:space-y-16 space-y-6 ">
         <Heading heading={"Explore Internship"} />
+        <div className="pt-16 center">
+          <Cards
+            cardData={cardData}
+            btnText={"Participate"}
+            type={"internship"}
+            loading={loading}
+          />
+        </div>
       </div>
     </section>
   )

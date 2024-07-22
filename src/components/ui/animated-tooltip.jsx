@@ -64,12 +64,12 @@ export const AnimatedTooltip = ({ items }) => {
               <div className="font-bold text-white relative z-30 text-base">
                 {item.name}
               </div>
-              <div className="text-white text-xs">{item.designation}</div>
+              <div className="text-white text-xs group-hover:z-30">{item.firstName}</div>
             </motion.div>
           )}
           <img
             onMouseMove={handleMouseMove}
-            src={item.image}
+            src={item.avatar}
             alt={item.name}
             className="object-cover w-10 h-10 !m-0 !p-0 object-top rounded-full border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
           />

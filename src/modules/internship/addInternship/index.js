@@ -28,13 +28,16 @@ const ACCEPTED_IMAGE_TYPES = [
 ];
 
 const FormSchema = z.object({
-    eventName: z.string().min(2, {
-        message: "Eventname must be at least 2 characters.",
+    title: z.string().min(2, {
+        message: "title must be at least 2 characters.",
     }),
-    eventDesc: z.string().min(20, {
+    desc: z.string().min(20, {
         message: "Event description must be at least 20 characters.",
     }),
-    firstDate: z.string({
+    url: z.string().min(10, {
+        message: "Form URL must be at least 10 characters.",
+    }),
+    startDate: z.string({
         required_error: "Start date is required.",
         refine: (startDate, ctx) => {
             const currentDate = new Date();
@@ -47,10 +50,10 @@ const FormSchema = z.object({
             });
         },
     }),
-    lastDate: z.string({
+    endDate: z.string({
         required_error: "End date is required.",
         refine: (endDate, ctx) => {
-            if (endDate >= ctx.parent.firstDate) {
+            if (endDate >= ctx.parent.startDate) {
                 return true;
             }
             return ctx.addIssue({
@@ -74,10 +77,11 @@ export function AddInternship() {
         resolver: zodResolver(FormSchema),
         defaultValues: {
             image: null,
-            eventName: "",
-            eventDesc: "",
-            firstDate: new Date().toISOString().slice(0, 10),
-            lastDate: new Date().toISOString().slice(0, 10)
+            title: "",
+            desc: "",
+            url:"",
+            startDate: new Date().toISOString().slice(0, 10),
+            endDate: new Date().toISOString().slice(0, 10)
         },
     });
 
@@ -92,7 +96,7 @@ export function AddInternship() {
                     formData.append(key, data[key]);
                 }
             }
-            const response = await axios.post("/api/event/create", formData);
+            const response = await axios.post("/api/internship/create", formData);
             console.log(response);
             if (response.data.success) {
                 form.reset();
@@ -117,57 +121,64 @@ export function AddInternship() {
                     <AlertDialogTitle>Add Event</AlertDialogTitle>
                 </AlertDialogHeader>
                 <div className="overflow-auto p-1">
-                <Form {...form} >
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-                            <ImageUpload
-                                form={form}
-                                name="image"
-                                label="Logo"
-                                description="Choose your logo wisely."
-                                preview={logo}
-                                setPreview={setLogo}
-                            />
-                            <div className="col-span-2 grid gap-y-3">
-                                <div className="grid col-span-2 gap-6">
-                                    <ReusableField
-                                        form={form}
-                                        name="eventName"
-                                        label="Name*"
-                                        placeholder="Event Name"
-                                        component={Input}
-                                    />
-                                    <ReusableField
-                                        form={form}
-                                        name="eventDesc"
-                                        label="Description*"
-                                        placeholder="Description"
-                                        component={Textarea}
-                                    />
-                                </div>
-                                <div className="grid grid-flow-col col-span-2 gap-x-5 row-span-1">
-                                    <DateField
-                                        form={form}
-                                        label="Start Date*"
-                                        name="firstDate"
-                                    />
-                                    <DateField
-                                        form={form}
-                                        label="End Date*"
-                                        name="lastDate"
-                                    />
+                    <Form {...form} >
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                                <ImageUpload
+                                    form={form}
+                                    name="image"
+                                    label="Image"
+                                    description="Choose your logo wisely."
+                                    preview={logo}
+                                    setPreview={setLogo}
+                                />
+                                <div className="col-span-2 grid gap-y-3">
+                                    <div className="grid col-span-2 gap-6">
+                                        <ReusableField
+                                            form={form}
+                                            name="title"
+                                            label="Title*"
+                                            placeholder="Title"
+                                            component={Input}
+                                        />
+                                        <ReusableField
+                                            form={form}
+                                            name="desc"
+                                            label="Description*"
+                                            placeholder="Description"
+                                            component={Textarea}
+                                        />
+                                        <ReusableField
+                                            form={form}
+                                            name="url"
+                                            label="URL*"
+                                            placeholder="Form URL"
+                                            component={Input}
+                                        />
+                                    </div>
+                                    <div className="grid grid-flow-col col-span-2 gap-x-5 row-span-1">
+                                        <DateField
+                                            form={form}
+                                            label="Start Date*"
+                                            name="startDate"
+                                        />
+                                        <DateField
+                                            form={form}
+                                            label="End Date*"
+                                            name="endDate"
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <AlertDialogFooter>
-                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                            <Button type="submit">Continue</Button>
-                        </AlertDialogFooter>
-                    </form>
-                </Form>
-            </div>
-        </AlertDialogContent>
+                            <AlertDialogFooter>
+                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                <Button type="submit">Continue</Button>
+                            </AlertDialogFooter>
+                        </form>
+                    </Form>
+                </div>
+            </AlertDialogContent>
         </AlertDialog >
     );
 }
