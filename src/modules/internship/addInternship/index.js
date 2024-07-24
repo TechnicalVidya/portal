@@ -101,13 +101,13 @@ export function AddInternship() {
             <AlertDialogTrigger asChild>
                 <Button size="lg" className="button w-full sm:w-fit">Upload Jobs</Button>
             </AlertDialogTrigger>
-            <AlertDialogContent>
+            <AlertDialogContent className="md:h-max h-svh">
                 <AlertDialogHeader>
                     <AlertDialogTitle>Add Internship</AlertDialogTitle>
                 </AlertDialogHeader>
                 <div className="overflow-auto p-1">
                     <Form {...form} >
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 select-none">
                             <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
                                 <ImageUpload
                                     form={form}
