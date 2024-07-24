@@ -7,6 +7,7 @@ import axios from "axios";
 const EventParticipants = ({ eventData, loading }) => {
     const participate = async () => {
         try {
+            console.log('first')
             const response = await axios.put(`/api/event/addParticipant/${eventData.id}`);
             console.log(response);
             if (response.data.success) {
@@ -34,6 +35,7 @@ const EventParticipants = ({ eventData, loading }) => {
             <div className="flex justify-end w-full">
                 <Button onClick={participate}>Participate</Button>
             </div>
+            {/* {console.log(eventData)} */}
             <MembersCard clubData={eventData} loading={loading} />
         </div>
     );

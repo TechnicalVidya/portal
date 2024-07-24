@@ -43,12 +43,14 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
             onMouseLeave={handleMouseLeave}
           >
             <div
-              className={`absolute inset-0 bg-opacity-50 transition-opacity ${isHovered ? "opacity-0" : "opacity-100"
-                }`}
+              className={`absolute inset-0 bg-opacity-50 transition-opacity ${
+                isHovered ? "opacity-0" : "opacity-100"
+              }`}
             ></div>
             <img
-              className={`object-cover aspect-square transition-transform duration-300 cursor-pointer ${isHovered ? "scale-110" : ""
-                }`}
+              className={`object-cover aspect-square transition-transform duration-300 cursor-pointer ${
+                isHovered ? "scale-110" : ""
+              }`}
               src={card?.imageUrl}
               alt={card?.title}
               width={500} // Example width
@@ -61,8 +63,7 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
               <p>
                 {title.charAt(0).toUpperCase() + title.slice(1).toLowerCase()}
               </p>
-              {
-                type != 'internship' &&
+              {type != "internship" && (
                 <div>
                   {/* {console.log(console.log(card))} */}
                   <Link
@@ -96,60 +97,71 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
                       <span className="sr-only">Twitter</span>
                     </div>
                   </Link>
-
                 </div>
-              }
+              )}
             </div>
           </CardTitle>
-          {
-            type != 'internship' ?
-              <CardDescription variant="outline">
-                - {card?.managedBy}
-              </CardDescription>
-              :
-              <CardDescription variant="outline" className={`text-${card.status.includes('pending') ? 'green' : 'red'}-500 font-bold`}>
-                {card.status}
-              </CardDescription>
-          }
+          {type != "internship" ? (
+            <CardDescription variant="outline">
+              - {card?.managedBy}
+            </CardDescription>
+          ) : (
+            <CardDescription
+              variant="outline"
+              className={`text-${
+                card.status.includes("pending") ? "green" : "red"
+              }-500 font-bold`}
+            >
+              {card.status}
+            </CardDescription>
+          )}
           <CardDescription className="text-gray-500 text-sm mt-2 line-clamp-2">
             {truncateString(card?.description, 130)}
           </CardDescription>
         </div>
       </CardContent>
       <CardFooter className="flex justify-between">
-        {
-          type != 'internship' &&
+        {type != "internship" && (
           <div className="flex flex-row items-center justify-center">
             <AnimatedTooltip items={card?.members} />
           </div>
-        }
-        {
-          type != 'internship' ?
-            type === "events" ? (
+        )}
+        {type != "internship" ? (
+          type === "events" ? (
+            <div className="flex items-center gap-2">
+              <Link href={`/${type}/${card.id}`}>
+                <p className="text-xs text-muted-foreground hover:underline cursor-pointer">
+                  View more
+                </p>
+              </Link>
+
               <Button
                 onClick={() => {
-                  if (functionToBeExecuted) functionToBeExecuted(card.id);
+                  console.log(functionToBeExecuted)
+                  if (functionToBeExecuted){
+                    console.log('first')
+                    functionToBeExecuted(card.id);}
                 }}
               >
                 {btnText}
               </Button>
-            ) : (
-              <Link href={`/${type}/${card.id}`}>
-                <Button
-                  onClick={() => {
-                    if (functionToBeExecuted) functionToBeExecuted(id);
-                  }}
-                >
-                  {btnText}
-                </Button>
-              </Link>
-            )
-            :
-            (
-              <div className="hover:text-blue-500 hover:cursor-pointer hover:italic">
-                {card.url}
-              </div>
-            )}
+            </div>
+          ) : (
+            <Link href={`/${type}/${card.id}`}>
+              <Button
+                onClick={() => {
+                  if (functionToBeExecuted) functionToBeExecuted(id);
+                }}
+              >
+                {btnText}
+              </Button>
+            </Link>
+          )
+        ) : (
+          <div className="hover:text-blue-500 hover:cursor-pointer hover:italic">
+            {card.url}
+          </div>
+        )}
       </CardFooter>
     </Card>
   );

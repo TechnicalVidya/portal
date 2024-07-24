@@ -35,10 +35,10 @@ export const AnimatedTooltip = ({ items }) => {
         <div
           className="-mr-4  relative group"
           key={idx}
-          onMouseEnter={() => setHoveredIndex(item.id)}
+          onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
-          {hoveredIndex === item.id && (
+          {hoveredIndex === idx && (
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.6 }}
               animate={{
@@ -64,7 +64,9 @@ export const AnimatedTooltip = ({ items }) => {
               <div className="font-bold text-white relative z-30 text-base">
                 {item.name}
               </div>
-              <div className="text-white text-xs group-hover:z-30">{item.firstName}</div>
+              <div className="text-white text-xs group-hover:z-30">
+                {item.firstName + " " + item.lastName}
+              </div>
             </motion.div>
           )}
           <img

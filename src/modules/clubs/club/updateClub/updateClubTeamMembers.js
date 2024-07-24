@@ -52,12 +52,9 @@ export const UpdateTeamMembers = ({ addNewMember }) => {
   const [data, setData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const pathName = useParams();
-  const [userToBeAdded, setUserToBeAdded] = useState("111111");
-  console.log(pathName);
-  console.log(`/api/club/add/member/${pathName.club}/${userToBeAdded}`);
-  const addTeamMember = async () => {
+  const addTeamMember = async (id) => {
     const { data } = await axios.post(
-      `/api/club/add/member/${pathName.club}/${userToBeAdded}`
+      `/api/club/add/member/${pathName.club}/${id}`
     );
     console.log(data);
     if (data.success) {

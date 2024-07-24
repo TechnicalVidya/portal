@@ -43,7 +43,9 @@ const MembersCard = ({ clubData, loading }) => {
               />
               <div className="flex flex-col justify-center">
                 <p className="text-lg font-bold">
-                  {member.firstName + " " + member.lastName}
+                  {member.firstName
+                    ? member.firstName + " " + member.lastName
+                    : member.name}
                 </p>
 
                 {/* TODO: Add role in user schema */}

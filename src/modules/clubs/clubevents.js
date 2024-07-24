@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../../components/cards";
 import axios from "axios";
+import { toast } from "sonner";
 
 const Clubevents = ({ event, loading }) => {
+  console.log(event[0])
   const foramattedData = event.map((e) => ({
     id: e._id,
     title: e.eventName,
@@ -29,7 +31,8 @@ const Clubevents = ({ event, loading }) => {
       const { data } = await axios.put(`/api/event/addParticipant/${eventId}`);
       console.log(data);
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message)
+      // toast()
     }
   };
 
