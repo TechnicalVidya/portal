@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import Heading from '@/components/ui/heading'
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import Heading from "@/components/ui/heading";
 import Image from "next/image";
 import heroImg from "@/assets/internHero.svg";
-import { AddInternship } from './addInternship';
-import Cards from '@/components/cards';
-import { fetchInternships } from '@/utils/internships';
+import { AddInternship } from "./addInternship";
+import Cards from "@/components/cards";
+import { fetchInternships } from "@/utils/internships";
+import { useEffect, useState } from "react";
 
-const internship = () => {
-  const [cardData, setCardDate] = useState([])
-  const [loading, setLoading] = useState(false)
+const Internship = () => {
+  const [cardData, setCardDate] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetchInternships(setCardDate, setLoading)
-  }, [])
+    fetchInternships(setCardDate, setLoading);
+  }, []);
   return (
-
     <section>
       <div className=" bg-contain pt-5 md:py-10">
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
@@ -24,7 +21,9 @@ const internship = () => {
               Connect, Network, Succeed: Your Career Journey Starts Here!
             </h1>
             <p className="text-lg md:text-xl">
-              Unlock unforgettable moments with our platform, Explore Opportunities, Build Connections, and Celebrate Achievements with Us.
+              Unlock unforgettable moments with our platform, Explore
+              Opportunities, Build Connections, and Celebrate Achievements with
+              Us.
             </p>
             <AddInternship />
           </div>
@@ -50,11 +49,7 @@ const internship = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-
-
-
-
-export default internship
+export default Internship;
