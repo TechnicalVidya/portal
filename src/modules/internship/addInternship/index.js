@@ -37,16 +37,14 @@ const FormSchema = z.object({
     url: z.string().min(10, {
         message: "Form URL must be at least 10 characters.",
     }),
-    startDate: z.string({
+    startDate: z.date({
         required_error: "Start date is required.",
     }).refine((startDate) => {
         const currentDate = new Date();
-        const parsedDate = new Date(startDate);
-        return parsedDate >= currentDate.setHours(0, 0, 0, 0);
+        return startDate >= currentDate.setHours(0, 0, 0, 0);
     }, {
         message: "Start date must be greater than or equal to today's date.",
-    }
-    ),
+    }),
     image: z
         .any()
         .refine(

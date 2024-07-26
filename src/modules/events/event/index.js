@@ -29,7 +29,7 @@ const Event = ({ eventId }) => {
         }
     }
     return (
-        <div className="w-full bg-red-500 justify-center flex flex-col items-center">
+        <div className="w-full justify-center flex flex-col items-center">
             <div className="hidden md:flex items-center justify-center">
                 <div></div>
                 <BreadcrumbDemo clubName={eventInfo.title} loading={loading} />

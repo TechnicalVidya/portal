@@ -29,42 +29,36 @@ const ACCEPTED_IMAGE_TYPES = [
 
 const FormSchema = z.object({
     eventName: z.string().min(2, {
-        message: "Eventname must be at least 2 characters.",
+        message: "Event name must be at least 2 characters.",
     }),
     eventDesc: z.string().min(20, {
         message: "Event description must be at least 20 characters.",
     }),
-    firstDate: z.string({
+    firstDate: z.date({
         required_error: "Start date is required.",
-        refine: (startDate, ctx) => {
-            const currentDate = new Date();
-            if (startDate >= currentDate) {
-                return true;
-            }
-            return ctx.addIssue({
-                code: z.ZodIssueCode.custom,
-                message: "Start date must be greater than or equal to today's date.",
-            });
-        },
+    }).refine((startDate) => {
+        const currentDate = new Date();
+        return startDate >= currentDate;
+    }, {
+        message: "Start date must be greater than or equal to today's date.",
     }),
-    lastDate: z.string({
+    lastDate: z.date({
         required_error: "End date is required.",
-        refine: (endDate, ctx) => {
-            if (endDate >= ctx.parent.firstDate) {
-                return true;
-            }
-            return ctx.addIssue({
-                code: z.ZodIssueCode.custom,
-                message: "End date must be greater than or equal to start date.",
-            });
-        },
     }),
     image: z
         .any()
         .refine(
-            (file) => ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type),
+            (file) => file && ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type),
             "Only .jpg, .jpeg, .png and .webp formats are supported."
         ),
+}).superRefine((data, ctx) => {
+    if (data.lastDate < data.firstDate) {
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "End date must be greater than or equal to start date.",
+            path: ["lastDate"], // Specify the path for the issue
+        });
+    }
 });
 
 
@@ -76,8 +70,8 @@ export function AddEvent() {
             image: null,
             eventName: "",
             eventDesc: "",
-            firstDate: new Date().toISOString().slice(0, 10),
-            lastDate: new Date().toISOString().slice(0, 10)
+            firstDate: new Date(),
+            lastDate: new Date()
         },
     });
 

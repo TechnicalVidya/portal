@@ -8,7 +8,6 @@ const MembersLoadingSkeleton = dynamic(
 );
 
 const MembersCard = ({ clubData, loading }) => {
-  // Display loading skeleton UI when loading is true
   if (loading) {
     return (
       <div className="py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">

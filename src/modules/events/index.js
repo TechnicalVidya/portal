@@ -14,7 +14,8 @@ export default function EventHome() {
   const [cardData, setCardData] = useState([]);
 
   useEffect(() => {
-    fetchAllEvents(setCardData, setLoading);
+    if (loading)
+      fetchAllEvents(setCardData, setLoading);
   }, []);
 
   return (

@@ -1,30 +1,40 @@
-import * as React from "react";
-import { cn } from "@/lib/utils";
+import * as React from "react"
+import { format } from "date-fns"
+import { Calendar as CalendarIcon } from "lucide-react"
 
-const DateInput = React.forwardRef(
-  ({ className, value, onChange, ...props }, ref) => {
-    const handleChange = (event) => {
-      const selectedDate = event.target.value
-      onChange(selectedDate);
-    };
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 
-    return (
-      <input
-        type="date"
-        className={cn(
-          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-          className
-        )}
-        ref={ref}
-        value={value}
-        onChange={handleChange}
-        {...props}
-        required
-      />
-    );
-  }
-);
+export function DateInput({value , onChange}) {
 
-DateInput.displayName = "DateInput";
-
-export { DateInput };
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <Button
+          variant={"outline"}
+          className={cn(
+            "w-full justify-start text-left font-normal",
+            !value && "text-muted-foreground"
+          )}
+        >
+          <CalendarIcon className="mr-1 h-4 w-4" />
+          {value ? format(value, "PPP") : <span>Pick a date</span>}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-auto p-0">
+        <Calendar
+          mode="single"
+          selected={value}
+          onSelect={onChange}
+          initialFocus
+        />
+      </PopoverContent>
+    </Popover>
+  )
+}
