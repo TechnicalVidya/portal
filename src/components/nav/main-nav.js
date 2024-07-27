@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { Icons } from "./icons";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 function MainNav({ items, isVisible, isOpen, setIsOpen }) {
   const [activeIndex, setActiveIndex] = useState(-1);
