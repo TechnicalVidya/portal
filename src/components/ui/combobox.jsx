@@ -14,7 +14,7 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 
-const Combobox = ({ frameworks, value, onChange }) => {
+const Combobox = ({ frameworks, value, onChange, placeholder }) => {
     const [open, setOpen] = React.useState(false);
 
     return (
@@ -28,7 +28,7 @@ const Combobox = ({ frameworks, value, onChange }) => {
                 >
                     {value
                         ? frameworks.find((framework) => framework.value === value)?.label
-                        : "Select framework..."}
+                        : placeholder || "Select option..."}
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>

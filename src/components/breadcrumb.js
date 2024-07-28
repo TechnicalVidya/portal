@@ -13,6 +13,7 @@ import { Skeleton } from "./ui/skeleton";
 export function BreadcrumbDemo({ clubName, loading }) {
   const pathname = usePathname();
   const pathParts = pathname.split("/").filter(Boolean);
+  console.log(pathParts)
 
   const breadcrumbItems = pathParts.map((part, index) => {
     const isLast = index === pathParts.length - 1;

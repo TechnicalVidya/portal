@@ -7,7 +7,7 @@ import heroImg from "@/assets/events/hero.png";
 import Cards from "../../components/cards";
 import Heading from "@/components/ui/heading";
 import { AddEvent } from './event/addEvent'
-import { fetchAllEvents } from "@/utils/events";
+import { fetchAllEvents, participate } from "@/utils/events";
 
 export default function EventHome() {
   const [loading, setLoading] = useState(true);
@@ -56,6 +56,7 @@ export default function EventHome() {
               btnText={"Participate"}
               type={"events"}
               loading={loading}
+              functionToBeExecuted={participate}
             />
           </div>
         </div>

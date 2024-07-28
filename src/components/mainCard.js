@@ -43,14 +43,12 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
             onMouseLeave={handleMouseLeave}
           >
             <div
-              className={`absolute inset-0 bg-opacity-50 transition-opacity ${
-                isHovered ? "opacity-0" : "opacity-100"
-              }`}
+              className={`absolute inset-0 bg-opacity-50 transition-opacity ${isHovered ? "opacity-0" : "opacity-100"
+                }`}
             ></div>
             <img
-              className={`object-cover aspect-square transition-transform duration-300 cursor-pointer ${
-                isHovered ? "scale-110" : ""
-              }`}
+              className={`object-cover aspect-square transition-transform duration-300 cursor-pointer ${isHovered ? "scale-110" : ""
+                }`}
               src={card?.imageUrl}
               alt={card?.title}
               width={500} // Example width
@@ -65,9 +63,8 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
               </p>
               {type != "internship" && (
                 <div>
-                  {/* {console.log(console.log(card))} */}
-                  <Link
-                    href={card.github ? card.github : ""}
+                  {card.github && <Link
+                    href={card.github}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -80,10 +77,10 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
                       <Icons.gitHub className="h-5 w-5" />
                       <span className="sr-only">GitHub</span>
                     </div>
-                  </Link>
+                  </Link>}
 
-                  <Link
-                    href={card.twitter ? card.twitter : ""}
+                  {card.twitter && <Link
+                    href={card.twitter}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -96,7 +93,7 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
                       <Icons.twitter className="h-5 w-5 fill-current" />
                       <span className="sr-only">Twitter</span>
                     </div>
-                  </Link>
+                  </Link>}
                 </div>
               )}
             </div>
@@ -108,9 +105,8 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
           ) : (
             <CardDescription
               variant="outline"
-              className={`text-${
-                card.status.includes("pending") ? "green" : "red"
-              }-500 font-bold`}
+              className={`text-${card.status.includes("pending") ? "green" : "red"
+                }-500 font-bold`}
             >
               {card.status}
             </CardDescription>
@@ -138,9 +134,10 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
               <Button
                 onClick={() => {
                   console.log(functionToBeExecuted)
-                  if (functionToBeExecuted){
+                  if (functionToBeExecuted) {
                     console.log('first')
-                    functionToBeExecuted(card.id);}
+                    functionToBeExecuted(card.id);
+                  }
                 }}
               >
                 {btnText}
@@ -158,9 +155,15 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
             </Link>
           )
         ) : (
-          <div className="hover:text-blue-500 hover:cursor-pointer hover:italic">
-            {card.url}
-          </div>
+          card.url && <Link
+            href={card.url}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div className="hover:text-blue-500 hover:cursor-pointer hover:italic">
+              {card.url}
+            </div>
+          </Link>
         )}
       </CardFooter>
     </Card>

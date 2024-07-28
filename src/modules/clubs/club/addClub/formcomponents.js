@@ -7,6 +7,8 @@ const {
   FormDescription,
 } = require("@/components/ui/form");
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { useDropzone } from "react-dropzone";
 
 export function SocialMediaField({
   form,
@@ -68,7 +70,25 @@ export const ImageUpload = ({
   preview,
   setPreview,
 }) => {
-  // const [preview, setPreview] = useState(null);
+  const [isDragActive, setIsDragActive] = useState(false);
+
+  const onDrop = (acceptedFiles) => {
+    if (acceptedFiles.length > 0) {
+      const displayUrl = URL.createObjectURL(acceptedFiles[0]);
+      setPreview(displayUrl);
+      form.setValue(name, acceptedFiles[0]); // Assuming form.setValue is available
+    }
+    setIsDragActive(false); // Reset drag active state after drop
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: 'image/*',
+    onDrop,
+    onDragEnter: () => setIsDragActive(true),
+    onDragLeave: () => setIsDragActive(false),
+    onDropAccepted: () => setIsDragActive(false),
+    onDropRejected: () => setIsDragActive(false),
+  });
 
   const getImageData = (event) => {
     try {
@@ -89,34 +109,40 @@ export const ImageUpload = ({
           <FormItem>
             <FormLabel>{label}</FormLabel>
             <FormControl>
-              <div className="flex">
-                <label
-                  htmlFor={`${name}_input`}
-                  className="aspect-square w-32 overflow-hidden rounded-lg cursor-pointer">
-                  {preview === null ? (
-                    <div className="h-full w-full bg-muted grid p-2 place-items-center">
-                      Add Logo
-                    </div>
-                  ) : (
-                    <img
-                      src={preview}
-                      className="w-full h-full"
-                      alt="Circle Preview"
-                    />
-                  )}
-                </label>
+              <div
+                {...getRootProps()}
+                style={{
+                  border: isDragActive ? '2px solid blue' : '2px dashed gray',
+                  padding: '20px',
+                  borderRadius: '8px',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  transition: 'border-color 0.2s ease',
+                }}
+              >
                 <Input
+                  {...getInputProps()}
                   id={`${name}_input`}
                   type="file"
                   {...rest}
-                  onChange={(event, err) => {
-                    console.log(err);
+                  onChange={(event) => {
                     const { files, displayUrl } = getImageData(event);
                     setPreview(displayUrl);
                     onChange(files);
                   }}
                   className="hidden"
                 />
+                {preview === null ? (
+                  <div className="h-full w-full grid p-2 place-items-center">
+                    Add Logo
+                  </div>
+                ) : (
+                  <img
+                    src={preview}
+                    className="w-full h-full rounded-lg"
+                    alt="Circle Preview"
+                  />
+                )}
               </div>
             </FormControl>
             {description && <FormDescription>{description}</FormDescription>}
