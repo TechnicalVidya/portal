@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { handleLogin } from "@/utils/login";
 import UserSignup from "./user-signup";
+import Link from "next/link";
 
 export function UserAuthForm({ className, isLogin, ...props }) {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -35,7 +36,7 @@ export function UserAuthForm({ className, isLogin, ...props }) {
       {
         !isLogin ? (
           <div className={cn("grid gap-6", className)} {...props} >
-              <UserSignup/>
+            <UserSignup />
           </div>
         )
           : (
@@ -107,7 +108,9 @@ export function UserAuthForm({ className, isLogin, ...props }) {
         ) : (
           <Icons.gitHub className="mr-2 h-4 w-4" />
         )}{" "} */}
-                Sign Up
+                <Link href='/signup'>
+                  Sign Up
+                </Link>
               </Button>
             </div >
           )

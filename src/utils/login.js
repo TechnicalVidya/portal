@@ -3,18 +3,18 @@ import axios from "axios";
 import { toast } from "sonner";
 
 export const handleLogin = async (formData, dispatchFunction) => {
-  let succes = false;
+  let success = false;
 
   if (formData.erpID !== 0 && formData.erpPassword.length > 0) {
     try {
       const { data } = await axios.post("/api/auth/signin", formData);
       console.log(data)
-      if (data.succes) {
+      if (data.success) {
         const { user } = data;
-        const userSlice = { authenticated: data.succes, ...user };
+        const userSlice = { authenticated: data.success, ...user };
         dispatchFunction(setUser(userSlice));
         toast("Logged in.");
-        succes = true;
+        success = true;
       } else {
         toast.error("Login failed. Please check your credentials.");
       }
@@ -25,7 +25,7 @@ export const handleLogin = async (formData, dispatchFunction) => {
       );
     }
   }
-  console.log(succes);
+  console.log(success);
 
-  return succes;
+  return success;
 };
