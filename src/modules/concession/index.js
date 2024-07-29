@@ -13,7 +13,7 @@ const Concession = () => {
 
   useEffect(() => {
     fetchForms(setData, setLoading)
-  })
+  },[])
 
   return (
     <div className="flex flex-col pt-8">

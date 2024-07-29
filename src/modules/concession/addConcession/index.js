@@ -59,7 +59,7 @@ export function AddConcession() {
                 toast.error("Failed to send request. Please try again.");
             }
         } catch (error) {
-            toast.error("An error occurred. Please try again.");
+            toast.error(error.response.data.message);
             console.error("Error:", error);
         }
     }
