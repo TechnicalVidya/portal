@@ -155,15 +155,16 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
             </Link>
           )
         ) : (
-          card.url && <Link
+          card.url && <Button variant="outline" type="button"> <Link
             href={card.url}
             target="_blank"
             rel="noreferrer"
           >
             <div className="hover:text-blue-500 hover:cursor-pointer hover:italic">
-              {card.url}
+              Click Here
             </div>
           </Link>
+          </Button>
         )}
       </CardFooter>
     </Card>

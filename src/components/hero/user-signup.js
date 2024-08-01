@@ -12,6 +12,7 @@ import { toast } from 'sonner';
 import axios from 'axios';
 import OtpForm from './otp-form';
 import { Icons } from '../icons';
+import Link from 'next/link';
 
 const FormSchema = z.object({
     erpID: z.string().min(1, "ERP ID is required"),
@@ -236,12 +237,19 @@ export default function UserSignup() {
                             component={Input}
                         />
                     </div>
-                    <div className='flex w-full justify-center'>
+                    <div className='flex w-full justify-center gap-6'>
                         <Button type="submit" disabled={isLoading}>
                             {isLoading && (
                                 <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                             )}
                             Continue
+                        </Button>
+
+                        <Button variant="outline" type="button" disabled={isLoading}>
+
+                            <Link href='/login'>
+                                Sign In
+                            </Link>
                         </Button>
                         <OtpForm isOpen={isOpen} setIsOpen={setIsOpen} formData={data} />
                     </div>

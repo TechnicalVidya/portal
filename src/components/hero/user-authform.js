@@ -49,8 +49,8 @@ export function UserAuthForm({ className, isLogin, ...props }) {
                       Email
                     </Label>
                     <Input
-                      id="email"
-                      placeholder="name@example.com"
+                      id="erpID"
+                      placeholder="000000"
                       value={formData.erpID}
                       onChange={(e) =>
                         setFormData({
@@ -88,7 +88,7 @@ export function UserAuthForm({ className, isLogin, ...props }) {
                     {isLoading && (
                       <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                     )}
-                    Sign In with Email
+                    Sign In 
                   </Button>
                 </div >
               </form >
