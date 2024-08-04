@@ -13,7 +13,7 @@ const Concession = () => {
 
   useEffect(() => {
     fetchForms(setData, setLoading)
-  },[])
+  }, [])
 
   return (
     <div className="flex flex-col pt-8">
@@ -44,7 +44,12 @@ const Concession = () => {
         <div className="pt-10  md:space-y-16 space-y-6 ">
           <Heading heading={"Previous Forms"} />
           <div className="pt-16 center flex flex-wrap">
-            <FormDisplay data={data} loading={loading} />
+            {
+              data.length ?
+                <FormDisplay data={data} loading={loading} />
+                :
+                <p className='text-center w-full font-semibold text-xl'>No forms found</p>
+            }
           </div>
         </div>
       </main>
