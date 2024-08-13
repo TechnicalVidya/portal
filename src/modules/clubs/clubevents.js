@@ -23,9 +23,9 @@ const Clubevents = ({ event, loading }) => {
   // console.log(event)
   console.log(foramattedData);
   const [clubEventData, setClubEventData] = useState(foramattedData);
-  // useEffect(() => {
-  //   setClubEventData(foramattedData);
-  // }, [foramattedData]);
+  useEffect(() => {
+    setClubEventData(foramattedData);
+  }, [foramattedData]);
 
   const participateInEvent = async (eventId) => {
     try {
