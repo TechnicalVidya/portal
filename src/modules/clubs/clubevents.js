@@ -5,40 +5,41 @@ import { toast } from "sonner";
 import { Loader } from "lucide-react";
 
 const Clubevents = ({ event, loading }) => {
-  console.log(event[0])
-  if(!event) return <Loader />
-  const foramattedData = event.map((e) => ({
-    id: e._id,
-    title: e.eventName,
-    imageUrl: e.eventImg,
-    github: "", // Assuming no GitHub link provided in the event data
-    twitter: "", // Assuming no Twitter link provided in the event data
-    managedBy: "", // Assuming no managedBy field provided in the event data
-    description: e.eventDesc,
-    members: e.eventParticipants.filter(Boolean).map((participant, index) => ({
-      name: participant ? participant.name : `Participant ${index + 1}`,
-      role: participant ? participant.role : "Unknown",
-    })),
-  }));
-  // console.log(event)
-  console.log(foramattedData);
-  const [clubEventData, setClubEventData] = useState(foramattedData);
+  const [clubEventData, setClubEventData] = useState([]);
+
   useEffect(() => {
-    setClubEventData(foramattedData);
-  }, [foramattedData]);
+    if (event) {
+      const foramattedData = event.map((e) => ({
+        id: e._id,
+        title: e.eventName,
+        imageUrl: e.eventImg,
+        github: "", // Assuming no GitHub link provided in the event data
+        twitter: "", // Assuming no Twitter link provided in the event data
+        managedBy: "", // Assuming no managedBy field provided in the event data
+        description: e.eventDesc,
+        members: e.eventParticipants.filter(Boolean).map((participant, index) => ({
+          name: participant ? participant.name : `Participant ${index + 1}`,
+          role: participant ? participant.role : "Unknown",
+        })),
+      }));
+      setClubEventData(foramattedData);
+    }
+  }, [event]);
 
   const participateInEvent = async (eventId) => {
     try {
-      console.log(eventId)
+      console.log(eventId);
       const { data } = await axios.put(`/api/event/addParticipant/${eventId}`);
       console.log(data);
     } catch (error) {
-      toast.error(error.response.data.message)
-      // toast()
+      toast.error(error.response.data.message);
     }
   };
 
-  // console.log(event);
+  if (!clubEventData.length) {
+    return <Loader />;
+  }
+
   return (
     <div className="md:space-y-16">
       <div className="my-10 md:my-0">
@@ -51,7 +52,7 @@ const Clubevents = ({ event, loading }) => {
       </div>
 
       <Cards
-        cardData={foramattedData}
+        cardData={clubEventData}
         btnText={"Participate"}
         type={"events"}
         loading={loading}
