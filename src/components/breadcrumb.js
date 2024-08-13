@@ -9,11 +9,13 @@ import {
 import { usePathname } from "next/navigation";
 import React from "react";
 import { Skeleton } from "./ui/skeleton";
+import { Loader } from "lucide-react";
 
 export function BreadcrumbDemo({ clubName, loading }) {
   const pathname = usePathname();
   const pathParts = pathname.split("/").filter(Boolean);
   console.log(pathParts)
+  if(loading) return <Loader />
 
   const breadcrumbItems = pathParts.map((part, index) => {
     const isLast = index === pathParts.length - 1;

@@ -81,7 +81,7 @@ export const UpdateClubDetails = () => {
             <div className="mt-5 grid gap-4">
               <div className="flex items-center justify-center">
                 <Label
-                  htmlFor={`${name}_input`}
+                  // htmlFor={`${name}_input`}
                   className="aspect-square w-32 overflow-hidden rounded-full cursor-pointer"
                 >
                   {preview === null ? (
@@ -97,7 +97,7 @@ export const UpdateClubDetails = () => {
                   )}
                 </Label>
                 <Input
-                  id={`${name}_input`}
+                  // id={`${name}_input`}
                   type="file"
                   onChange={(event) => {
                     const { files, displayUrl } = getImageData(event);

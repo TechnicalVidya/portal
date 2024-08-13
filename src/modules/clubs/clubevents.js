@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import Cards from "../../components/cards";
 import axios from "axios";
 import { toast } from "sonner";
+import { Loader } from "lucide-react";
 
 const Clubevents = ({ event, loading }) => {
   console.log(event[0])
+  if(!event) return <Loader />
   const foramattedData = event.map((e) => ({
     id: e._id,
     title: e.eventName,

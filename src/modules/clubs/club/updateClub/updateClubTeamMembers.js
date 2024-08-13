@@ -80,29 +80,29 @@ export const UpdateTeamMembers = ({ addNewMember }) => {
   //   token:
   //     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ODI5OWQ5ZDcwODE3MjBmNTY3MmRhMCIsImlhdCI6MTcyMTYzOTk5NywiZXhwIjoxNzIyNTAzOTk3fQ.tFJ8WgCq97Zkvw93PnIvtf6XJcLXjT9wUtjiGsJmTg4'
   // },
-  const getAddedUsers = async (id) => {
-    try {
-      const { data } = await axios.post("/api/auth/search-user", {
-        erpID: id,
-      });
+  // const getAddedUsers = async (id) => {
+  //   try {
+  //     const { data } = await axios.post("/api/auth/search-user", {
+  //       erpID: id,
+  //     });
 
-      if (data.success) {
-        console.log(data.data);
-        setErpIds(data.data);
-      }
+  //     if (data.success) {
+  //       console.log(data.data);
+  //       setErpIds(data.data);
+  //     }
 
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-      toast.error(
-        "An error occurred while fetching data. Please try again later."
-      );
-    }
-  };
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //     toast.error(
+  //       "An error occurred while fetching data. Please try again later."
+  //     );
+  //   }
+  // };
 
-  useEffect(() => {
-    getAddedUsers();
-  }, [searchInput]);
+  // useEffect(() => {
+  //   getAddedUsers();
+  // }, [searchInput]);
 
   const [erpIds, setErpIds] = useState([]);
 
