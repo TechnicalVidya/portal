@@ -115,19 +115,17 @@ export default function UserSignup() {
     async function onSubmit(data) {
         setLoading(true);
         try {
-            if (isLoading) {
-                const response = await axios.post("/api/auth/otp", data);
-                console.log(response);
-                if (response.data.success) {
-                    form.reset();
-                    setData(data);
-                    setLoading(false);
-                    toast.success("Otp has been sent to your gmail !");
-                    setIsOpen(true)
-                } else {
-                    setLoading(false);
-                    toast.error("Failed to sent otp. Please try again.");
-                }
+            const response = await axios.post("/api/auth/otp", data);
+            console.log(response);
+            if (response.data.success) {
+                form.reset();
+                setData(data);
+                setLoading(false);
+                toast.success("Otp has been sent to your gmail !");
+                setIsOpen(true)
+            } else {
+                setLoading(false);
+                toast.error("Failed to sent otp. Please try again.");
             }
         } catch (error) {
             setLoading(false);
