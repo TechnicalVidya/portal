@@ -10,17 +10,17 @@ const withPWA = withPWAInit({
   reloadOnOnline: true,
   swcMinify: true,
   disable: process.env.NODE_ENV === "development",
-  // disable: false,
   workboxOptions: {
     disableDevLogs: true,
   },
 });
+
 const nextConfig = {
   async rewrites() {
     return [
       {
         source: "/api/:path*",
-        destination: `${API_URL}/api/v1/:path*`,
+        destination: `${API_URL}/api/v1/:path*`, // Fixed the syntax here
       },
     ];
   },
