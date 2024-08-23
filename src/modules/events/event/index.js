@@ -1,3 +1,4 @@
+import AuthenticationAlert from "@/components/authentication-alert";
 import { BreadcrumbDemo } from "@/components/breadcrumb";
 import ClubTeamMembers from "@/components/clubTeamMembers";
 import EventParticipants from "@/components/eventParticipants";
@@ -5,14 +6,17 @@ import { Button } from "@/components/ui/button";
 import { fetchEvent } from "@/utils/events";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { toast } from "sonner";
 
 
 const Event = ({ eventId }) => {
+    const { user } = useSelector((state) => state.user)
     const [loading, setLoading] = useState(true);
     const [eventInfo, setEventInfo] = useState({});
     useEffect(() => {
-        fetchEvent(eventId, setEventInfo, setLoading)
+        if (user?.authenticated)
+            fetchEvent(eventId, setEventInfo, setLoading)
     }, []);
     const deleteEvent = async () => {
         try {
@@ -29,16 +33,27 @@ const Event = ({ eventId }) => {
         }
     }
     return (
-        <div className="w-full justify-center flex flex-col items-center">
-            <div className="hidden md:flex items-center justify-center">
-                <div></div>
-                <BreadcrumbDemo clubName={eventInfo.title} loading={loading} />
-            </div>
-            <div className="flex justify-end w-full">
-                <Button onClick={deleteEvent}>Delete</Button>
-            </div>
-            <EventParticipants eventData={eventInfo} loading={loading} />
-        </div>
+        <>
+            {
+                user?.authenticated ?
+                    (
+                        <div className="w-full justify-center flex flex-col items-center">
+                            <div className="hidden md:flex items-center justify-center">
+                                <div></div>
+                                <BreadcrumbDemo clubName={eventInfo.title} loading={loading} />
+                            </div>
+                            <div className="flex justify-end w-full">
+                                <Button onClick={deleteEvent}>Delete</Button>
+                            </div>
+                            <EventParticipants eventData={eventInfo} loading={loading} />
+                        </div>
+                    )
+                    :
+                    (
+                        <AuthenticationAlert />
+                    )
+            }
+        </>
     );
 };
 

@@ -1,6 +1,7 @@
 'use client'
+import dynamic from 'next/dynamic';
 import React from 'react'
-import Internship from "@/modules/internship";
+const Internship = dynamic(() => import('@/modules/internship'), { ssr: false });
 
 
 const page = () => {

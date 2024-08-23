@@ -1,11 +1,7 @@
 "use client";
-import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { buttonVariants } from "@/components/ui/button";
-import { Icons } from "@/components/nav/icons";
 import MainNav from "./main-nav";
 import { ThemeToggle } from "./toggle-theme";
-import { NavAlert } from "./nav-alert";
 import { useSelector } from "react-redux";
 import { AvatarDemo } from "../avatar";
 import { useEffect, useState } from "react";
