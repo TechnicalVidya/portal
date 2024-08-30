@@ -1,4 +1,4 @@
-const Skeleton = ({ className }) => (
+export const Skeleton = ({ className }) => (
   <div className={className}>
     <span className="inline-flex w-full animate-pulse select-none rounded-md bg-muted-foreground/15 leading-none"></span>
     <br />

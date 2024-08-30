@@ -24,7 +24,7 @@ const FormSchema = z.object({
     address: z.string().min(20, "Address must be atleast 20 characters long"),
     gender: z.enum(['Male', 'Female', 'Other'], { required_error: "Gender is required" }),
     contactNo: z.string().length(10, "Contact number must be 10 digits").regex(/^\d+$/, "Contact number must be numeric"),
-    dept: z.string().min(1, "Department is required"),
+    branch: z.string().min(1, "Branch is required"),
     batch: z.string().min(1, "Batch is required"),
     dob: z.string().refine((date) => {
         const parsedDate = new Date(date);
@@ -106,7 +106,7 @@ export default function UserSignup() {
             address: '',
             gender: '',
             contactNo: '',
-            dept: '',
+            branch: '',
             batch: '',
             dob: ''
         },
@@ -214,18 +214,26 @@ export default function UserSignup() {
                             form={form}
                             name="dob"
                             label="Date Of Birth*"
-                            placeholder="Department"
+                            placeholder="Date of birth"
                             component={Input}
                             type='date'
                         />
                     </div>
                     <div className='grid grid-cols-2 gap-2'>
-                        <ReusableField
+                        <DropDownField
                             form={form}
-                            name="dept"
-                            label="Department*"
-                            placeholder="Department"
-                            component={Input}
+                            name="branch"
+                            label="Branch*"
+                            placeholder="Branch"
+                            options={[
+                                { value: 'CE', label: 'Computer Engineering' },
+                                { value: 'IoT', label: 'Internet Of Things' },
+                                { value: 'DS', label: 'Data Science' },
+                                { value: 'ME', label: 'Mechanical Engineering' },
+                                { value: 'EXTC', label: 'Electronics & Telecommunications Engineering' },
+                                { value: 'ELE', label: 'Electrical Engineering' },
+                                { value: 'AIML', label: 'Artificial Intelligence & Machine Learning' }
+                            ]}
                         />
                         <ReusableField
                             form={form}

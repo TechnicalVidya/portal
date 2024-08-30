@@ -5,6 +5,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { handleLogout } from "@/utils/logout";
+import { Separator } from "@radix-ui/react-dropdown-menu";
+import Link from "next/link";
 import { useDispatch } from "react-redux";
 
 export function AvatarDemo({ imgURI }) {
@@ -21,13 +23,20 @@ export function AvatarDemo({ imgURI }) {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
         </PopoverTrigger>
-        <PopoverContent className="max-w-[50%] ml-[22%]">
+        <PopoverContent className="max-w-[50%] ml-[22%] flex flex-col gap-y-2">
           <div
-            className="grid gap-4 cursor-pointer hover:text-red-500"
+            className="grid items-center cursor-pointer hover:text-red-500"
             onClick={logout}
           >
             <p>Logout</p>
           </div>
+          
+          <Link
+            className="grid items-center cursor-pointer hover:text-red-500"
+            href="/profile"
+          >
+            <p>Profile</p>
+          </Link>
         </PopoverContent>
       </Popover>
     </div>
