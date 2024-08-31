@@ -24,7 +24,7 @@ const Clubs = () => {
         </div>
         <Cards
           cardData={cardData}
-          btnText={"Join"}
+          btnText={"view"}
           type={"clubs"}
           loading={loading}
         />
