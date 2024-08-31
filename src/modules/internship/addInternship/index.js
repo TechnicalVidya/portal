@@ -1,12 +1,4 @@
-import {
-    AlertDialog,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form } from "@/components/ui/form";
@@ -19,6 +11,7 @@ import { useState } from "react";
 import axios from "axios";
 import { DateField, ImageUpload } from "./formcomponents";
 import { ReusableField } from "./formcomponents";
+import { useSelector } from "react-redux";
 
 const ACCEPTED_IMAGE_TYPES = [
     "image/jpeg",
@@ -53,9 +46,12 @@ const FormSchema = z.object({
         ),
 });
 
-
 export function AddInternship() {
     const [logo, setLogo] = useState(null);
+    const { user } = useSelector((state) => state.user);
+
+    const hasPermission = user && user.erpID === "111111";
+
     const form = useForm({
         resolver: zodResolver(FormSchema),
         defaultValues: {
@@ -66,7 +62,6 @@ export function AddInternship() {
             startDate: new Date().toISOString().slice(0, 10),
         },
     });
-
 
     async function onSubmit(data) {
         try {
@@ -86,12 +81,16 @@ export function AddInternship() {
                 setLogo(null);
                 toast.success("Internship added successfully!");
             } else {
-                toast.error("Failed to add club. Please try again.");
+                toast.error("Failed to add. Please try again.");
             }
         } catch (error) {
             toast.error("An error occurred. Please try again.");
             console.error("Error:", error);
         }
+    }
+
+    if (!hasPermission) {
+        return null; 
     }
 
     return (

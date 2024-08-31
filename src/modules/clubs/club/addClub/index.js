@@ -20,6 +20,8 @@ import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
 import { ImageUpload, ReusableField, SocialMediaField } from "./formcomponents";
+import { useSelector } from "react-redux";
+
 
 // const MAX_FILE_SIZE = 5000000;
 const ACCEPTED_IMAGE_TYPES = [
@@ -48,6 +50,8 @@ const FormSchema = z.object({
 });
 
 export function AddClub() {
+  const { user } = useSelector((state) => state.user);
+  const hasPermission = user && user.erpID === "111111";
   const [logo, setLogo] = useState(null);
   const form = useForm({
     resolver: zodResolver(FormSchema),
@@ -87,6 +91,12 @@ export function AddClub() {
       console.error("Error:", error);
     }
   }
+
+  if (!hasPermission) {
+    return null; 
+}
+
+
 
   return (
     <AlertDialog>

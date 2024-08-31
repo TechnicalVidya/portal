@@ -16,6 +16,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import { useParams } from "next/navigation";
 import { Combobox } from "@/components/combo-box";
+import { useSelector } from "react-redux";
 
 const sampleData = {
   _id: "6682a53de02cbdad4c72005c",
@@ -38,6 +39,8 @@ const sampleData = {
 };
 
 export const UpdateTeamMembers = ({ addNewMember }) => {
+  const { user } = useSelector((state) => state.user);
+  const hasPermission = user && user.erpID === "111111";
   const [isOpen, setIsOpen] = useState(false);
   const [clubName, setClubName] = useState(sampleData.clubName);
   const [clubDesc, setClubDesc] = useState(sampleData.clubDesc);
@@ -105,6 +108,10 @@ export const UpdateTeamMembers = ({ addNewMember }) => {
   // }, [searchInput]);
 
   const [erpIds, setErpIds] = useState([]);
+
+  if (!hasPermission) {
+    return null; 
+}
 
   return (
     <section className="max-w-[264px]">

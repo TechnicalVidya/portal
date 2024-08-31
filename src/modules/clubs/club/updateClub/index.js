@@ -12,6 +12,7 @@ import { IoMenuSharp } from "react-icons/io5";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useSelector } from "react-redux";
 
 const sampleData = {
   _id: "6682a53de02cbdad4c72005c",
@@ -34,6 +35,8 @@ const sampleData = {
 };
 
 export const UpdateClubDetails = () => {
+  const { user } = useSelector((state) => state.user);
+  const hasPermission = user && user.erpID === "111111";
   const [isOpen, setIsOpen] = useState(false);
   const [clubName, setClubName] = useState(sampleData.clubName);
   const [clubDesc, setClubDesc] = useState(sampleData.clubDesc);
@@ -57,6 +60,12 @@ export const UpdateClubDetails = () => {
       console.log(error);
     }
   };
+
+  if (!hasPermission) {
+    return null; 
+}
+
+
 
   return (
     <section className="max-w-[264px]">

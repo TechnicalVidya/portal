@@ -19,6 +19,9 @@ import { useState } from "react";
 import axios from "axios";
 import { DateField, ImageUpload } from "./formcomponents";
 import { ReusableField } from "./formcomponents";
+import { useSelector } from "react-redux";
+
+
 
 const ACCEPTED_IMAGE_TYPES = [
     "image/jpeg",
@@ -63,6 +66,8 @@ const FormSchema = z.object({
 
 
 export function AddEvent() {
+    const { user } = useSelector((state) => state.user);
+    const hasPermission = user && user.erpID === "111111";
     const [logo, setLogo] = useState(null);
     const form = useForm({
         resolver: zodResolver(FormSchema),
@@ -101,6 +106,11 @@ export function AddEvent() {
         }
     }
 
+    if (!hasPermission) {
+        return null; 
+    }
+
+    
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>

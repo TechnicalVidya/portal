@@ -44,9 +44,6 @@ const Concession = () => {
                   </h1>
                 </div>
                 <div className='flex flex-row gap-5 pt-5'>
-                  <Link href="/">
-                    <Button>Admin</Button>
-                  </Link>
                   <AddConcession />
                 </div>
                 <div className="pt-10  md:space-y-16 space-y-6 ">
