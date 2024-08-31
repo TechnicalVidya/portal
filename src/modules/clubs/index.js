@@ -1,8 +1,5 @@
 import { CarouselDemo } from "@/components/carousel";
 import React, { useEffect, useState } from "react";
-import img1 from "@/assets/1.jpg";
-import img2 from "@/assets/2.jpg";
-import img3 from "@/assets/3.jpg";
 import Cards from "../../components/cards";
 import Heading from "@/components/ui/heading";
 import { AddClub } from "./club/addClub";
@@ -11,7 +8,7 @@ import { fetchAllClubs } from "@/utils/clubs";
 const Clubs = () => {
   const [loading, setLoading] = useState(true);
   const [cardData, setCardData] = useState([]);
-  const imgArray = [img1, img2, img3];
+  // const imgArray = [img1, img2, img3];
 
   useEffect(() => {
     fetchAllClubs(setCardData, setLoading);
