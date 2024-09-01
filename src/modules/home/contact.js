@@ -24,7 +24,7 @@ const Contact = () => {
                 </div>
             </div>
     
-            <div className="flex flex-col">
+            <div className="flex flex-col items-center text-center">
                 <Image src={callImg} className='h-10 w-10' />
                 <div className='mt-3'>
                     <a className='text-gray-500 ' href="tel:+91 9372179120">+91 93721 79120</a>
