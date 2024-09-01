@@ -45,7 +45,6 @@ export const PDFUpload = ({
   };
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: 'application/pdf',
     multiple: false,
     onDrop,
     onDragEnter: () => setIsDragActive(true),

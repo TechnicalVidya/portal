@@ -11,7 +11,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-export function DateInput({value , onChange}) {
+export function DateInput({ value, onChange }) {
 
   return (
     <Popover>
@@ -33,6 +33,8 @@ export function DateInput({value , onChange}) {
           selected={value}
           onSelect={onChange}
           initialFocus
+          captionLayout="dropdown-buttons"
+          className={'pointer-events-auto'}
         />
       </PopoverContent>
     </Popover>
