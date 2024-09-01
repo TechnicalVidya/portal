@@ -8,6 +8,7 @@ import RecentEvents from "./recentEvent";
 import OurGoal from "./ourGoal";
 import { Company } from "@/components/marqeecomp";
 import { TestMarquee } from "./testmonialMarquee";
+import Contact from "./contact";
 
 const HeroComponent = dynamic(() => import("@/components/hero/heroComponent"), {
   ssr: false,
@@ -33,6 +34,7 @@ export default function Home() {
         </div>  
         {/* <Testimonials /> */}
         <Stats />
+        <Contact />
       </div>
 
     </div>
