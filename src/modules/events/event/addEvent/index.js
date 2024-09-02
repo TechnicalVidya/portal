@@ -97,7 +97,7 @@ export function AddEvent() {
             }
         } catch (error) {
             toast.error("An error occurred. Please try again.");
-            console.error("Error:", error);
+            console.error("Error:", error); 
         }
     }
 

@@ -41,8 +41,7 @@ function MainNav({ items, isVisible, isOpen, setIsOpen }) {
         className="flex items-center space-x-2"
         onClick={handleSlider}
         passHref>
-        {/* <Icons.logo className="h-6 w-6" /> */}
-        <Image src={Logo} className="h-6 w-6"/>
+        <Image src={Logo} className="h-9 w-9"/>
         <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>
       {items && items.length && isVisible ? (
