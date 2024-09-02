@@ -77,13 +77,12 @@ export const ImageUpload = ({
     if (acceptedFiles.length > 0) {
       const displayUrl = URL.createObjectURL(acceptedFiles[0]);
       setPreview(displayUrl);
-      form.setValue(name, acceptedFiles[0]); // Assuming form.setValue is available
+      form.setValue(name, acceptedFiles[0]); 
     }
-    setIsDragActive(false); // Reset drag active state after drop
+    setIsDragActive(false); 
   };
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: 'image/*',
     onDrop,
     onDragEnter: () => setIsDragActive(true),
     onDragLeave: () => setIsDragActive(false),

@@ -51,7 +51,7 @@ const FormSchema = z.object({
     image: z
         .any()
         .refine(
-            (file) => file && ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type),
+            (file) => file && ACCEPTED_IMAGE_TYPES.includes(file?.type),
             "Only .jpg, .jpeg, .png and .webp formats are supported."
         ),
 }).superRefine((data, ctx) => {
@@ -84,12 +84,7 @@ export function AddEvent() {
         try {
             const formData = new FormData();
             for (const key in data) {
-                console.log(key)
-                if (key === "image" && data[key] !== null) {
-                    formData.append(key, data[key][0]);
-                } else {
-                    formData.append(key, data[key]);
-                }
+                formData.append(key, data[key]);
             }
             const response = await axios.post("/api/event/create", formData);
             console.log(response);
@@ -107,10 +102,10 @@ export function AddEvent() {
     }
 
     if (!hasPermission) {
-        return null; 
+        return null;
     }
 
-    
+
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
@@ -123,7 +118,7 @@ export function AddEvent() {
                 <div className="overflow-auto p-1">
                     <Form {...form} >
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                            <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
                                 <ImageUpload
                                     form={form}
                                     name="image"
@@ -150,24 +145,26 @@ export function AddEvent() {
                                             component={Textarea}
                                         />
                                     </div>
-                                    <div className="grid grid-flow-col col-span-2 gap-x-5 row-span-1">
-                                        <DateField
-                                            form={form}
-                                            label="Start Date*"
-                                            name="firstDate"
-                                        />
-                                        <DateField
-                                            form={form}
-                                            label="End Date*"
-                                            name="lastDate"
-                                        />
-                                    </div>
+                                </div>
+                                <div className="flex gap-x-10 px-2 flex-wrap md:flex-nowrap">
+                                    <DateField
+                                        form={form}
+                                        label="Start Date*"
+                                        name="firstDate"
+                                    />
+                                    <DateField
+                                        form={form}
+                                        label="End Date*"
+                                        name="lastDate"
+                                    />
                                 </div>
                             </div>
 
                             <AlertDialogFooter>
-                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <Button type="submit">Continue</Button>
+                                <div className="flex justify-center gap-x-6 w-full items-center">
+                                    <Button type="submit">Continue</Button>
+                                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                </div>
                             </AlertDialogFooter>
                         </form>
                     </Form>

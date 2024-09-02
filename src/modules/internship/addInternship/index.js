@@ -41,7 +41,7 @@ const FormSchema = z.object({
     image: z
         .any()
         .refine(
-            (file) => ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type),
+            (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
             "Only .jpg, .jpeg, .png, and .webp formats are supported."
         ),
 });
@@ -65,14 +65,10 @@ export function AddInternship() {
 
     async function onSubmit(data) {
         try {
+            console.log(data)
             const formData = new FormData();
             for (const key in data) {
-                console.log(key)
-                if (key === "image" && data[key] !== null) {
-                    formData.append(key, data[key][0]);
-                } else {
-                    formData.append(key, data[key]);
-                }
+                formData.append(key, data[key]);
             }
             const response = await axios.post("/api/internship/create", formData);
             console.log(response);
@@ -90,7 +86,7 @@ export function AddInternship() {
     }
 
     if (!hasPermission) {
-        return null; 
+        return null;
     }
 
     return (
