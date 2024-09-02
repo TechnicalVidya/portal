@@ -59,7 +59,7 @@ export function AddInternship() {
             title: "",
             desc: "",
             url: "",
-            startDate: new Date().toISOString().slice(0, 10),
+            startDate: new Date(),
         },
     });
 
