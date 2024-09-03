@@ -18,100 +18,47 @@ import { useParams } from "next/navigation";
 import { Combobox } from "@/components/combo-box";
 import { useSelector } from "react-redux";
 
-const sampleData = {
-  _id: "6682a53de02cbdad4c72005c",
-  clubName: "GDSC",
-  clubDesc: "Where techies Innovate",
-  avatar:
-    "https://res.cloudinary.com/dahndiy4v/image/upload/v1719838013/clubAvatars/dwlp4oglilwdhta6xtbx.jpg",
-  head: {
-    _id: "668299d9d7081720f5672da0",
-    firstName: "Technical",
-    lastName: "Vidya",
-    email: "techvidya1905@gmail.com",
-    gender: "Male",
-    dob: "10-03-2004",
-    dept: "Iot",
-    batch: 2022,
-    avatar: "https://api.dicebear.com/5.x/initials/svg?seed=Technical%20Vidya",
-  },
-  // teams: [{erp: 451}]
-};
-
 export const UpdateTeamMembers = ({ addNewMember }) => {
   const { user } = useSelector((state) => state.user);
   const hasPermission = user && user.erpID === "111111";
   const [isOpen, setIsOpen] = useState(false);
-  const [clubName, setClubName] = useState(sampleData.clubName);
-  const [clubDesc, setClubDesc] = useState(sampleData.clubDesc);
-  const [avatar, setAvatar] = useState(sampleData.avatar);
-  const [firstName, setFirstName] = useState(sampleData.head.firstName);
-  const [lastName, setLastName] = useState(sampleData.head.lastName);
-  const [email, setEmail] = useState(sampleData.head.email);
-  const [gender, setGender] = useState(sampleData.head.gender);
-  const [dob, setDob] = useState(sampleData.head.dob);
-  const [dept, setDept] = useState(sampleData.head.dept);
-  const [batch, setBatch] = useState(sampleData.head.batch);
-  const [data, setData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const pathName = useParams();
+
   const addTeamMember = async (id) => {
     const { data } = await axios.post(
       `/api/club/add/member/${pathName.club}/${id}`
     );
-    console.log(data);
     if (data.success) {
       addNewMember(data.data);
     }
   };
-  // {
-  //   _id: '668299d9d7081720f5672da0',
-  //   erpID: '111111',
-  //   erpPassword: '$2a$10$Eh5w3J8R3ENqEYYsfTVCHOf.qH0ZfaKdZb3JCB75KlBNjpfbsT4D6',
-  //   firstName: 'Technical',
-  //   lastName: 'Vidya',
-  //   email: 'techvidya1905@gmail.com',
-  //   gender: 'Male',
-  //   dob: '10-03-2004',
-  //   archiveForms: [],
-  //   avatar: 'https://api.dicebear.com/5.x/initials/svg?seed=Technical%20Vidya',
-  //   dept: 'Iot',
-  //   batch: 2022,
-  //   createdAt: '2024-07-01T11:58:17.065Z',
-  //   updatedAt: '2024-07-22T09:19:57.431Z',
-  //   __v: 0,
-  //   token:
-  //     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ODI5OWQ5ZDcwODE3MjBmNTY3MmRhMCIsImlhdCI6MTcyMTYzOTk5NywiZXhwIjoxNzIyNTAzOTk3fQ.tFJ8WgCq97Zkvw93PnIvtf6XJcLXjT9wUtjiGsJmTg4'
-  // },
-  // const getAddedUsers = async (id) => {
-  //   try {
-  //     const { data } = await axios.post("/api/auth/search-user", {
-  //       erpID: id,
-  //     });
+  const getAddedUsers = async (id) => {
+    try {
+      const { data } = await axios.post("/api/auth/search-user", {
+        erpID: id,
+      });
 
-  //     if (data.success) {
-  //       console.log(data.data);
-  //       setErpIds(data.data);
-  //     }
+      if (data.successs) {
+        setErpIds(data.data);
+      }
+    } catch (error) {
+      console.log(error.message);
+      toast.error(
+        "An error occurred while fetching data. Please try again later."
+      );
+    }
+  };
 
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //     toast.error(
-  //       "An error occurred while fetching data. Please try again later."
-  //     );
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getAddedUsers();
-  // }, [searchInput]);
+  useEffect(() => {
+    getAddedUsers(searchInput);
+  }, [searchInput]);
 
   const [erpIds, setErpIds] = useState([]);
 
   if (!hasPermission) {
-    return null; 
-}
+    return null;
+  }
 
   return (
     <section className="max-w-[264px]">

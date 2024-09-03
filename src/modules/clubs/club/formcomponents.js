@@ -6,6 +6,8 @@ const {
   FormMessage,
   FormDescription,
 } = require("@/components/ui/form");
+import { Combobox } from "@/components/ui/combobox";
+import { DateInput } from "@/components/ui/dateInput";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useDropzone } from "react-dropzone";
@@ -44,6 +46,7 @@ export function ReusableField({
   label,
   placeholder,
   component: Component,
+  ...props
 }) {
   return (
     <FormField
@@ -53,7 +56,7 @@ export function ReusableField({
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
-            <Component placeholder={placeholder} {...field} />
+            <Component placeholder={placeholder} {...field} {...props} />
           </FormControl>
           <FormMessage />
         </FormItem>
@@ -61,6 +64,64 @@ export function ReusableField({
     />
   );
 }
+
+export function DropDownField({
+  form,
+  name,
+  label,
+  options,
+  placeholder
+}) {
+  return (
+    <FormField
+      control={form.control}
+      name={name}
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel>{label}</FormLabel>
+          <FormControl>
+            <Combobox
+              frameworks={options}
+              value={field.value}
+              onChange={(selectedValue) => {
+                field.onChange(selectedValue);
+              }}
+              placeholder={placeholder}
+            />
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+  );
+}
+
+export function DateField({
+  form,
+  label,
+  name
+}) {
+  return (
+    <FormField
+      control={form.control}
+      name={name}
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel>{label}</FormLabel>
+          <FormControl>
+            <DateInput
+              name={name}
+              value={field.value}
+              onChange={(date) => field.onChange(date)}
+            />
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+  );
+}
+
 
 export const ImageUpload = ({
   form,
@@ -82,7 +143,6 @@ export const ImageUpload = ({
   };
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: 'image/*',
     onDrop,
     onDragEnter: () => setIsDragActive(true),
     onDragLeave: () => setIsDragActive(false),

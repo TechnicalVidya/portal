@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
-import { ImageUpload, ReusableField, SocialMediaField } from "./formcomponents";
+import { ImageUpload, ReusableField, SocialMediaField } from "../formcomponents";
 import { useSelector } from "react-redux";
 
 
