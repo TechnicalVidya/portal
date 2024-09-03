@@ -2,8 +2,10 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
   SheetOverlay,
   SheetPortal,
+  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { X } from "lucide-react";
@@ -18,13 +20,12 @@ import { useParams } from "next/navigation";
 import { Combobox } from "@/components/combo-box";
 import { useSelector } from "react-redux";
 
-export const UpdateTeamMembers = ({ addNewMember }) => {
+export const UpdateTeamMembers = ({ addNewMember, clubData }) => {
   const { user } = useSelector((state) => state.user);
   const hasPermission = user && user.erpID === "111111";
   const [isOpen, setIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const pathName = useParams();
-
   const addTeamMember = async (id) => {
     const { data } = await axios.post(
       `/api/club/add/member/${pathName.club}/${id}`
@@ -39,8 +40,11 @@ export const UpdateTeamMembers = ({ addNewMember }) => {
         erpID: id,
       });
 
+
       if (data.successs) {
-        setErpIds(data.data);
+        const existingMemberIds = new Set(clubData.members.map(member => member.erpID));
+        const newUsers = data.data.filter(user => !existingMemberIds.has(user.erpID));
+        setErpIds(newUsers);
       }
     } catch (error) {
       console.log(error.message);
@@ -49,7 +53,6 @@ export const UpdateTeamMembers = ({ addNewMember }) => {
       );
     }
   };
-
   useEffect(() => {
     getAddedUsers(searchInput);
   }, [searchInput]);
@@ -76,9 +79,12 @@ export const UpdateTeamMembers = ({ addNewMember }) => {
               <X className="h-4 w-4" />
               <span className="sr-only">Close</span>
             </SheetClose>
-
-            <div className="text-xl font-semibold">Update Club Details</div>
-            <p className="text-muted-foreground">Description</p>
+            <SheetTitle>
+              <div className="text-xl font-semibold">Update Club Details</div>
+            </SheetTitle>
+            <SheetDescription className="mb-3">
+              Description
+            </SheetDescription>
             <Input
               className="w-full"
               onChange={(e) => setSearchInput(e.target.value)}
@@ -109,6 +115,6 @@ export const UpdateTeamMembers = ({ addNewMember }) => {
           </SheetContent>
         </SheetPortal>
       </Sheet>
-    </section>
+    </section >
   );
 };

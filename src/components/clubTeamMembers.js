@@ -5,7 +5,6 @@ import { toast } from "sonner";
 
 const ClubTeamMembers = ({ clubData, loading, setClubInfo }) => {
   const addNewMember = (member) => {
-    console.log(member);
     setClubInfo((prev) => ({
       ...prev,
       members: [...prev.members, member],
@@ -21,7 +20,7 @@ const ClubTeamMembers = ({ clubData, loading, setClubInfo }) => {
           Club Members
         </h1>
         <div>
-          <UpdateTeamMembers addNewMember={addNewMember} />
+          <UpdateTeamMembers addNewMember={addNewMember} clubData={clubData} />
         </div>
       </div>
 
