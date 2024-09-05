@@ -221,7 +221,7 @@ export default function UpdateClubDetails({ clubData }) {
                   <DropDownField
                     form={form}
                     name="gender"
-                    label="Gender*"
+                    label="Head Gender*"
                     options={[
                       { value: 'Male', label: 'Male' },
                       { value: 'Female', label: 'Female' },
@@ -231,13 +231,13 @@ export default function UpdateClubDetails({ clubData }) {
                   />
                   <DateField
                     form={form}
-                    label="Date of Birth*"
+                    label="Head Date of Birth*"
                     name="dob"
                   />
                   <DropDownField
                     form={form}
                     name="branch"
-                    label="Branch*"
+                    label="Head Branch*"
                     placeholder="Branch"
                     options={[
                       { value: 'CE', label: 'Computer Engineering' },
