@@ -24,19 +24,18 @@ export function AvatarDemo({ imgURI }) {
           </Avatar>
         </PopoverTrigger>
         <PopoverContent className="max-w-[50%] ml-[22%] flex flex-col gap-y-2">
-          <div
-            className="grid items-center cursor-pointer hover:text-red-500"
-            onClick={logout}
-          >
-            <p>Logout</p>
-          </div>
-          
           <Link
             className="grid items-center cursor-pointer hover:text-red-500"
             href="/profile"
           >
             <p>Profile</p>
           </Link>
+          <div
+            className="grid items-center cursor-pointer hover:text-red-500"
+            onClick={logout}
+          >
+            <p>Logout</p>
+          </div>
         </PopoverContent>
       </Popover>
     </div>
