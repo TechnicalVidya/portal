@@ -13,10 +13,11 @@ export default function AuthenticationPage({ isLogin }) {
         !isLogin ?
           (
             <>
-              <div className="container relative mt-20 md:mt-0 max-h-auto flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-                <div className="relative hidden flex-col p-10 lg:flex dark:border-r">
-                  <Image src={loginImg} className="rounded-xl"/>
-                </div>
+              <div className="container relative mt-20 md:mt-0 max-h-auto flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0 gap-20">
+              <div className="relative flex-col lg:flex dark:border-r">
+  <Image src={loginImg} className="hidden lg:block rounded-xl w-[472px] h-[761.92px]" />
+</div>
+
                 <div className="lg:p-8">
                   <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                     <div className="flex flex-col space-y-2 text-center">
@@ -53,10 +54,11 @@ export default function AuthenticationPage({ isLogin }) {
             <>
               <div className="md:hidden">
               </div>
-              <div className="container relative mt-20 md:mt-0 h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-                <div className="relative flex-col p-10 lg:flex dark:border-r">
-                  <Image src={loginImg} className="rounded-xl"/>
-                </div>
+              <div className="container relative  md:mt-0 h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0 gap-20">
+              <div className="relative flex-col lg:flex dark:border-r">
+  <Image src={loginImg} className="hidden lg:block rounded-xl w-[472px] h-[761.92px]" />
+</div>
+
                 <div className="lg:p-8">
                   <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                     <div className="flex flex-col space-y-2 text-center">
