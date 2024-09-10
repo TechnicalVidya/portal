@@ -33,8 +33,8 @@ const FormSchema = z.object({
     startDate: z.date({
         required_error: "Start date is required.",
     }).refine((startDate) => {
-        const currentDate = new Date();
-        return startDate >= currentDate.setHours(0, 0, 0, 0);
+        const currentDate = new Date().toDateString();
+        return startDate.toDateString() >= currentDate;
     }, {
         message: "Start date must be greater than or equal to today's date.",
     }),

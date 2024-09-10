@@ -69,11 +69,7 @@ export function AddClub() {
     try {
       const formData = new FormData();
       for (const key in data) {
-        if (key === "image" && data[key] !== null) {
-          formData.append(key, data[key][0]);
-        } else {
-          formData.append(key, data[key]);
-        }
+        formData.append(key, data[key]);
       }
 
       const response = await axios.post("/api/club/create", formData);
@@ -87,14 +83,14 @@ export function AddClub() {
         toast.error("Failed to add club. Please try again.");
       }
     } catch (error) {
-      toast.error("An error occurred. Please try again.");
+      toast.error("An error occurred. Try Logging in again");
       console.error("Error:", error);
     }
   }
 
   if (!hasPermission) {
-    return null; 
-}
+    return null;
+  }
 
 
 

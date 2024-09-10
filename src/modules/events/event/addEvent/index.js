@@ -40,8 +40,8 @@ const FormSchema = z.object({
     firstDate: z.date({
         required_error: "Start date is required.",
     }).refine((startDate) => {
-        const currentDate = new Date();
-        return startDate >= currentDate;
+        const currentDate = new Date().toDateString();
+        return startDate.toDateString() >= currentDate;
     }, {
         message: "Start date must be greater than or equal to today's date.",
     }),
@@ -51,8 +51,10 @@ const FormSchema = z.object({
     image: z
         .any()
         .refine(
-            (file) => file && ACCEPTED_IMAGE_TYPES.includes(file?.type),
+            (file) =>
+                file && ACCEPTED_IMAGE_TYPES.includes(file?.type),
             "Only .jpg, .jpeg, .png and .webp formats are supported."
+
         ),
 }).superRefine((data, ctx) => {
     if (data.lastDate < data.firstDate) {
@@ -96,8 +98,8 @@ export function AddEvent() {
                 toast.error("Failed to add club. Please try again.");
             }
         } catch (error) {
-            toast.error("An error occurred. Please try again.");
-            console.error("Error:", error); 
+            toast.error("An error occurred. Try Logging in again");
+            console.error("Error:", error);
         }
     }
 

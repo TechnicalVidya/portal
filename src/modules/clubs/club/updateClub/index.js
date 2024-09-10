@@ -38,7 +38,7 @@ const FormSchema = z.object({
   }),
   avatar: z.union([
     z.any().refine(
-      (file) => ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type),
+      (file) => ACCEPTED_IMAGE_TYPES.includes(file?.type),
       "Only .jpg, .jpeg, .png and .webp formats are supported."
     ),
     z.string().url("Please enter a valid URL."),
@@ -56,7 +56,7 @@ const FormSchema = z.object({
     message: "Gender selection is required.",
   }),
   dob: z.date().refine(
-    (dob) => new Date() >= dob,
+    (dob) => new Date().toDateString() >= dob.toDateString(),
     "Date of birth should be less than or equal to today's date."
   ),
   branch: z.string().min(1, {
@@ -111,9 +111,7 @@ export default function UpdateClubDetails({ clubData }) {
 
       for (const key in data) {
         if (data[key] !== originalData[key]) {
-          if (key === "avatar" && data[key] !== null) {
-            formData.append(key, data[key][0]);
-          } else {
+          for (const key in data) {
             formData.append(key, data[key]);
           }
         }
@@ -129,7 +127,7 @@ export default function UpdateClubDetails({ clubData }) {
         toast.error("Failed to update club. Please try again.");
       }
     } catch (error) {
-      toast.error("An error occurred. Please try again.");
+      toast.error("An error occurred. Try Logging in again");
       console.error("Error:", error);
     }
   }
