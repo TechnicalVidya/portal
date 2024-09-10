@@ -50,7 +50,7 @@ const Concession = () => {
                   <Heading heading={"Previous Forms"} />
                   <div className="pt-16 center flex flex-wrap">
                     {
-                      data.length ?
+                      data ?
                         <FormDisplay data={data} loading={loading} />
                         :
                         <p className='text-center w-full font-semibold text-xl'>No forms found</p>
