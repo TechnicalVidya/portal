@@ -11,7 +11,7 @@ import AuthenticationAlert from '@/components/authentication-alert';
 
 const Concession = () => {
   const { user } = useSelector((state) => state.user)
-  const [data, setData] = useState({})
+  const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
