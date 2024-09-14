@@ -37,7 +37,9 @@ const Clubevents = ({ event, loading }) => {
   };
 
   if (!clubEventData.length) {
-    return <Loader />;
+    if (loading)
+      return <Loader />;
+    return <p className="flex w-full justify-center items-center p-5 text-muted-foreground">No Events Found</p>
   }
 
   return (

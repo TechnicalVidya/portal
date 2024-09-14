@@ -5,12 +5,14 @@ import EventParticipants from "@/components/eventParticipants";
 import { Button } from "@/components/ui/button";
 import { fetchEvent } from "@/utils/events";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
 
 
 const Event = ({ eventId }) => {
+    const router = useRouter()
     const { user } = useSelector((state) => state.user)
     const [loading, setLoading] = useState(true);
     const [eventInfo, setEventInfo] = useState({});
@@ -24,6 +26,7 @@ const Event = ({ eventId }) => {
             console.log(response);
             if (response.data.success) {
                 toast.success("Event Deleted successfully!");
+                router.push('/events')
             } else {
                 toast.error("Failed to Delete Event. Please try again.");
             }
