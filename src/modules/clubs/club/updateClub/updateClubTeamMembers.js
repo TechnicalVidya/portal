@@ -26,6 +26,7 @@ export const UpdateTeamMembers = ({ addNewMember, clubData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const pathName = useParams();
+
   const addTeamMember = async (id) => {
     const { data } = await axios.post(
       `/api/club/add/member/${pathName.club}/${id}`
@@ -39,8 +40,6 @@ export const UpdateTeamMembers = ({ addNewMember, clubData }) => {
       const { data } = await axios.post("/api/auth/search-user", {
         erpID: id,
       });
-
-
       if (data.successs) {
         const existingMemberIds = new Set(clubData.members.map(member => member.erpID));
         const newUsers = data.data.filter(user => !existingMemberIds.has(user.erpID));
@@ -54,7 +53,8 @@ export const UpdateTeamMembers = ({ addNewMember, clubData }) => {
     }
   };
   useEffect(() => {
-    getAddedUsers(searchInput);
+    if (searchInput != '')
+      getAddedUsers(searchInput);
   }, [searchInput]);
 
   const [erpIds, setErpIds] = useState([]);
