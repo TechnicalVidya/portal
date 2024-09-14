@@ -147,8 +147,8 @@ export default function UserSignup() {
                     <ReusableField
                         form={form}
                         name="erpPassword"
-                        label="Password*"
-                        placeholder="password"
+                        label="Create Password*"
+                        placeholder="create password"
                         component={Input}
                         type="password"
                     />
