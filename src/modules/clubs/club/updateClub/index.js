@@ -246,7 +246,7 @@ export default function UpdateClubDetails({ clubData }) {
                       { value: 'ELE', label: 'Electrical Engineering' },
                       { value: 'AIML', label: 'Artificial Intelligence & Machine Learning' }
                     ]}
-                  />
+                  />  
                   <div className="flex w-full justify-center">
                     <Button type="submit">Update</Button>
                   </div>

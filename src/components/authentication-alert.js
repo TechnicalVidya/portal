@@ -9,15 +9,31 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { buttonVariants } from "./ui/button"
+import Link from "next/link"
+import loginAlert from "@/assets/loginAlert.svg"
+import Image from "next/image"
 
 export default function AuthenticationAlert() {
     return (
         <AlertDialog defaultOpen={true} >
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Wanna See More?</AlertDialogTitle>
+                    <Image src={loginAlert}/>
+                    <AlertDialogTitle className=" text-center">Please log in to access more features and information. </AlertDialogTitle>
                     <AlertDialogDescription>
-                        Try logging in first <a href='/login' className="border-b-2 border-b-gray-400 hover:border-b-blue-400 pb-1 text-blue-700">click here to login</a>
+                    <div className="flex justify-center mt-3">
+        <div className="flex gap-4">
+          <Link href="/login" className={buttonVariants()}>
+            Login
+          </Link>
+            <Link
+              href="/signup"
+              className={buttonVariants({ variant: "outline" })}>
+              Sign Up
+            </Link>
+        </div>
+      </div>
                     </AlertDialogDescription>
                 </AlertDialogHeader>
             </AlertDialogContent>
