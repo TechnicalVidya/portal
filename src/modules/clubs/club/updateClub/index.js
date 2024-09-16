@@ -56,7 +56,7 @@ const FormSchema = z.object({
     message: "Gender selection is required.",
   }),
   dob: z.date().refine(
-    (dob) => new Date().toDateString() >= dob.toDateString(),
+    (dob) => new Date().setHours(0, 0, 0, 0) >= dob.setHours(0, 0, 0, 0),
     "Date of birth should be less than or equal to today's date."
   ),
   branch: z.string().min(1, {
@@ -108,12 +108,9 @@ export default function UpdateClubDetails({ clubData }) {
   async function onSubmit(data) {
     try {
       const formData = new FormData();
-
       for (const key in data) {
         if (data[key] !== originalData[key]) {
-          for (const key in data) {
-            formData.append(key, data[key]);
-          }
+          formData.append(key, data[key]);
         }
       }
 
@@ -132,7 +129,7 @@ export default function UpdateClubDetails({ clubData }) {
     }
   }
 
-
+  console.log(form.watch('dob').setHours(0, 0, 0, 0), new Date().setHours(0, 0, 0, 0))
 
   return (
     <section className="max-w-[264px]">
@@ -246,7 +243,7 @@ export default function UpdateClubDetails({ clubData }) {
                       { value: 'ELE', label: 'Electrical Engineering' },
                       { value: 'AIML', label: 'Artificial Intelligence & Machine Learning' }
                     ]}
-                  />  
+                  />
                   <div className="flex w-full justify-center">
                     <Button type="submit">Update</Button>
                   </div>

@@ -9,7 +9,7 @@ const ClubTeamMembers = ({ clubData, loading, setClubInfo }) => {
       ...prev,
       members: [...prev.members, member],
     }));
-    toast("New Member is added!");
+    toast.success("New Member is added!");
   };
 
   return (

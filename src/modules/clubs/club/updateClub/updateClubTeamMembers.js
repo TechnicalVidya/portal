@@ -8,33 +8,23 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { X } from "lucide-react";
+import { Loader, X } from "lucide-react";
 import { IoMenuSharp } from "react-icons/io5";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
-import { useParams } from "next/navigation";
-import { Combobox } from "@/components/combo-box";
 import { useSelector } from "react-redux";
+import MemberCard from "./MemberCard";
+import { useParams } from "next/navigation";
 
 export const UpdateTeamMembers = ({ addNewMember, clubData }) => {
+  const pathName = useParams()
   const { user } = useSelector((state) => state.user);
   const hasPermission = user && user.erpID === "111111";
   const [isOpen, setIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const pathName = useParams();
 
-  const addTeamMember = async (id) => {
-    const { data } = await axios.post(
-      `/api/club/add/member/${pathName.club}/${id}`
-    );
-    if (data.success) {
-      addNewMember(data.data);
-    }
-  };
   const getAddedUsers = async (id) => {
     try {
       const { data } = await axios.post("/api/auth/search-user", {
@@ -51,6 +41,10 @@ export const UpdateTeamMembers = ({ addNewMember, clubData }) => {
         "An error occurred while fetching data. Please try again later."
       );
     }
+  };
+
+  const removeMember = (id) => {
+    setErpIds(prev => prev.filter(member => member.erpID !== id));
   };
   useEffect(() => {
     if (searchInput != '')
@@ -92,24 +86,16 @@ export const UpdateTeamMembers = ({ addNewMember, clubData }) => {
 
             <div className="mt-6 flex flex-col w-full gap-2">
               {erpIds.length > 0 &&
-                erpIds.map((id, index) => (
-                  <div
-                    key={index}
-                    className="w-full px-4 py-2 hover:bg-muted border flex gap-2 items-center"
-                    onClick={() => addTeamMember(id.erpID)}
-                  >
-                    <div>
-                      <img src={id.avatar} className="w-10 h-10 rounded-full" />
-                    </div>
-                    <div className="grid">
-                      <p className="capitalize">
-                        {id.firstName + " " + id.lastName}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {id.erpID}
-                      </p>
-                    </div>
-                  </div>
+                erpIds.map(id => (
+                  <MemberCard
+                    key={id.erpID}
+                    id={id}
+                    addNewMember={(newMember) => {
+                      addNewMember(newMember);
+                      removeMember(id.erpID);
+                    }}
+                    club={pathName.club}
+                  />
                 ))}
             </div>
           </SheetContent>
