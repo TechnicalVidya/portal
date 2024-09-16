@@ -129,7 +129,6 @@ export default function UpdateClubDetails({ clubData }) {
     }
   }
 
-  console.log(form.watch('dob').setHours(0, 0, 0, 0), new Date().setHours(0, 0, 0, 0))
 
   return (
     <section className="max-w-[264px]">
