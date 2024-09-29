@@ -1,7 +1,7 @@
 // import Image from "next/image";
 // import React from "react";
 import Img1 from '@/assets/workshops/img1.JPG'
-import Img2 from '@/assets/workshops/img3.JPG'
+import Img2 from '@/assets/workshops/img3.jpg'
 import Image from 'next/image'
 
 
