@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { Icons } from "./icons";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import Logo from "@/assets/512-512.png"
+import Logo from "@/assets/logoTv.svg"
 
 function MainNav({ items, isVisible, isOpen, setIsOpen }) {
   const [activeIndex, setActiveIndex] = useState(-1);

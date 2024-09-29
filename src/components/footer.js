@@ -1,15 +1,15 @@
 "use client";
-import Icon1 from '@/assets/nav-icon1.svg'
-import Icon2 from '@/assets/nav-icon2.svg'
-import Icon3 from '@/assets/nav-icon3.svg'
-import Icon4 from '@/assets/nav-icon4.svg'
+import Icon1 from '@/assets/socials/nav-icon1.svg'
+import Icon2 from '@/assets/socials/nav-icon2.svg'
+import Icon3 from '@/assets/socials/nav-icon3.svg'
+import Icon4 from '@/assets/socials/nav-icon4.svg'
 import Image from 'next/image';
 import React from "react";
 const Footer = () => {
   return (
 <div className="flex bg-muted items-center gap mt-24 h-28 justify-center py-2 -my-4 md:py-8 border-t border-muted flex-wrap sm:flex-nowrap">
 <div className="block md:hidden text-center text-muted-foreground">
-    Developed with ❤ By Technical Vidya Of LTCE
+    Developed with ❤ By <a href='/members' className='underline'>Technical Vidya </a>Of LTCE
   </div>
   <div className="">
     {/* Social icons */}
@@ -63,7 +63,7 @@ const Footer = () => {
     </a>
   </div>
   <div className=" hidden lg:block text-center text-muted-foreground ml-7">
-    Developed with ❤ By Technical Vidya Of LTCE
+    Developed with ❤ By <a href='/members' className='underline'>Technical Vidya </a> Of LTCE
   </div>
 </div>
 

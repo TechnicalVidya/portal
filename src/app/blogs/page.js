@@ -1,10 +1,10 @@
 import React from 'react'
-import heroImg from "@/assets/underconst.png"
+import heroImg from "@/assets/underconstruction.svg"
 import Image from 'next/image'
 
 const Blogs = () => {
   return (
-    <div>Blogs
+    <div> 
       <Image 
       src={heroImg}
       />

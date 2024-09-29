@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useState } from "react";
 import Image from "next/image";
-import heroImg from "@/assets/events/hero.png";
+import heroImg from "@/assets/EveHero.png";
 import Cards from "../../components/cards";
 import Heading from "@/components/ui/heading";
 import { AddEvent } from './event/addEvent'

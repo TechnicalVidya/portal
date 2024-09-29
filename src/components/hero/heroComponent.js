@@ -41,20 +41,20 @@ const HeroComponent = () => {
         </p>
       </div>
 
-        <div className="flex justify-center mt-3">
-          <div className="flex gap-4">
-            <Link href="/members" className={buttonVariants()}>
-              See Members
+      <div className="flex justify-center mt-3">
+        <div className="flex gap-4">
+          <Link href="/members" className={buttonVariants()}>
+            See Members
+          </Link>
+          {!user && (
+            <Link
+              href="/login"
+              className={buttonVariants({ variant: "outline" })}>
+              Login
             </Link>
-            {!user && (
-              <Link
-                href="/login"
-                className={buttonVariants({ variant: "outline" })}>
-                Login
-              </Link>
-            )}
-          </div>
+          )}
         </div>
+      </div>
     </section>
   );
 };
