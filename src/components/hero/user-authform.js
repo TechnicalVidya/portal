@@ -23,6 +23,7 @@ export function UserAuthForm({ className, isLogin, ...props }) {
   async function onSubmit(event) {
     event.preventDefault();
     setIsLoading(true);
+    formData.erpID = parseInt(formData.erpID)
     const loginStatus = await handleLogin(formData, dispatch);
     setIsLoading(false);
     if (loginStatus) router.push("/");
@@ -52,7 +53,7 @@ export function UserAuthForm({ className, isLogin, ...props }) {
                       onChange={(e) =>
                         setFormData({
                           ...formData,
-                          erpID: parseInt(e.target.value) || 0,
+                          erpID:e.target.value,
                         })
                       }
                       type="text"
