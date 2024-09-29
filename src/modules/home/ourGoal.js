@@ -1,8 +1,7 @@
 // import Image from "next/image";
 // import React from "react";
 import Img1 from '@/assets/workshops/img1.JPG'
-import Img2 from '@/assets/workshops/img2.JPG'
-import Img3 from '@/assets/workshops/img3.JPG'
+import Img2 from '@/assets/workshops/img3.JPG'
 import Image from 'next/image'
 
 
@@ -28,7 +27,7 @@ const OurGoal = () => {
   
       <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
         <div className="h-96 w-100 md:h-96 md:w-100">
-          <Image className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-125" src={Img3} alt="" />
+          <Image className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-125" src={Img2} alt="" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
         <div className="absolute inset-0 flex translate-y-[60%] flex-col items-center justify-center px-4 md:px-9 text-center transition-all duration-500 group-hover:translate-y-0">
