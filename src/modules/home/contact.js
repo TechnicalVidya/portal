@@ -3,7 +3,6 @@ import Image from 'next/image'
 import callImg from '@/assets/contactus/call.png'
 import locImg from '@/assets/contactus/location.png'
 import mailImg from '@/assets/contactus/mail.png'
-import lineImg from '@/assets/contactus/line.png'
 
 const Contact = () => {
     return (
@@ -19,7 +18,7 @@ const Contact = () => {
             <div className="flex flex-col items-center text-center">
                 <Image src={locImg} className='h-9 w-9' />
                 <div className='mt-3'>
-                    <p className="text-gray-500">LTCE, koparkhairane, Maharashtra, India</p>
+                    <a href='https://maps.app.goo.gl/DrmQqhmA2Jo4MfPaA' target='_blank'><p className="text-gray-500">LTCE, koparkhairane, Maharashtra, India</p></a>
                     <p className="text-gray-500">400705</p>
                 </div>
             </div>

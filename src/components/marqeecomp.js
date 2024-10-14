@@ -10,7 +10,7 @@ const CompanyCard = ({ img }) => {
   return (
     <figure
       className={cn(
-        "relative w-64 cursor-pointer overflow-hidden rounded-xl border py-4 flex items-center justify-center",
+        "relative h-32 w-64 cursor-pointer overflow-hidden rounded-xl border py-4 flex items-center justify-center",
         // light styles
         "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
         // dark styles

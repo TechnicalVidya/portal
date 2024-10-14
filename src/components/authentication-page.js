@@ -3,7 +3,7 @@ import Link from "next/link";
 import { UserAuthForm } from "./hero/user-authform";
 import loginImg from '@/assets/loginHero.png'
 
-export default function AuthenticationPage({ isLogin }) {
+export default function  AuthenticationPage({ isLogin }) {
   return (
     <>
       {
