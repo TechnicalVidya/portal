@@ -2,12 +2,12 @@ import axios from "axios";
 import { toast } from "sonner";
 
 // Set up the base URL for axios requests
-const API_BASE_URL = process.env.REACT_APP_API_URL + "/api/blog";
+// const API_BASE_URL = process.env.REACT_APP_API_URL + "/api/blog";
 
 // Fetch all blogs
 export const fetchAllBlogs = async (setCardData, setLoading) => {
   try {
-    const { data } = await axios.get(`${API_BASE_URL}/getAll`);
+    const { data } = await axios.get(`/api/blog/getAll`);
     if (data.success) {
       const resData = data.data;
       const blogs = resData.map((blog) => ({
@@ -26,6 +26,7 @@ export const fetchAllBlogs = async (setCardData, setLoading) => {
     }
   } catch (error) {
     toast.error(error.message);
+    console.log(error);
   } finally {
     setLoading(false);
   }
@@ -34,7 +35,7 @@ export const fetchAllBlogs = async (setCardData, setLoading) => {
 // Fetch a specific blog by ID
 export const fetchBlogById = async (blogId, setBlogData, setLoading) => {
   try {
-    const { data } = await axios.get(`${API_BASE_URL}/get/${blogId}`);
+    const { data } = await axios.get(`/api/blog/get/${blogId}`);
     if (data.success) {
       const blog = data.data;
       setBlogData({
@@ -60,7 +61,7 @@ export const fetchBlogById = async (blogId, setBlogData, setLoading) => {
 // Create a new blog
 export const createBlog = async (blogData, setLoading) => {
   try {
-    const { data } = await axios.post(`${API_BASE_URL}/create`, blogData);
+    const { data } = await axios.post(`/api/blog/create`, blogData);
     if (data.success) {
       toast.success("Blog created successfully!");
     } else {
@@ -76,10 +77,7 @@ export const createBlog = async (blogData, setLoading) => {
 // Update an existing blog
 export const updateBlog = async (blogId, blogData, setLoading) => {
   try {
-    const { data } = await axios.post(
-      `${API_BASE_URL}/update/${blogId}`,
-      blogData
-    );
+    const { data } = await axios.post(`/api/blog/update/${blogId}`, blogData);
     if (data.success) {
       toast.success("Blog updated successfully!");
     } else {
@@ -95,7 +93,7 @@ export const updateBlog = async (blogId, blogData, setLoading) => {
 // Delete a blog
 export const deleteBlog = async (blogId, setLoading) => {
   try {
-    const { data } = await axios.delete(`${API_BASE_URL}/delete/${blogId}`);
+    const { data } = await axios.delete(`/api/blog/delete/${blogId}`);
     if (data.success) {
       toast.success("Blog deleted successfully!");
     } else {
