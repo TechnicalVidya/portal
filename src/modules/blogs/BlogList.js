@@ -74,8 +74,7 @@ export default function BlogList() {
   useEffect(() => {
     const loadBlogs = async () => {
       setLoading(true);
-      await fetchAllBlogs(setBlogs);
-      setLoading(false);
+      await fetchAllBlogs(setBlogs, setLoading);
     };
     loadBlogs();
   }, []);
