@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 
 import withPWAInit from "@ducanh2912/next-pwa";
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const withPWA = withPWAInit({
   dest: "public",
@@ -20,8 +19,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        // destination: `${API_URL}/api/v1/:path*`, // Fixed the syntax here
-        destination: `${API_BASE_URL}/api/v1/:path*`,
+        destination: `${process.env.API_URL}/api/v1/:path*`, // Fixed the syntax here
       },
     ];
   },
