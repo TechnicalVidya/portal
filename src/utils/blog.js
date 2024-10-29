@@ -1,13 +1,11 @@
 import axios from "axios";
 import { toast } from "sonner";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
-
 // Fetch all blogs
 export const fetchAllBlogs = async (setCardData, setLoading) => {
   setLoading(true); // Set loading to true before making the API call
   try {
-    const { data } = await axios.get(`${API_URL}/api/v1/blog/getAll`);
+    const { data } = await axios.get('/api/blog/getAll');
     if (data.success) {
       const blogs = data.data.map((blog) => ({
         id: blog._id,
@@ -28,7 +26,7 @@ export const fetchAllBlogs = async (setCardData, setLoading) => {
   } catch (error) {
     toast.error(
       "Error fetching blogs: " +
-        (error.response?.data?.message || error.message)
+      (error.response?.data?.message || error.message)
     );
     console.error("Fetch all blogs error:", error);
   } finally {
@@ -40,7 +38,7 @@ export const fetchAllBlogs = async (setCardData, setLoading) => {
 export const fetchBlogById = async (blogId, setBlogData, setLoading) => {
   setLoading(true); // Set loading to true before making the API call
   try {
-    const { data } = await axios.get(`${API_URL}/api/v1/blog/get/${blogId}`);
+    const { data } = await axios.get(`/api/blog/get/${blogId}`);
     if (data.success) {
       const blog = data.data;
       setBlogData({
@@ -106,7 +104,7 @@ export const createBlog = async (blogData, setLoading) => {
     console.log("Sending blog data:", [...formData]);
 
     const { data } = await axios.post(
-      `${API_URL}/api/v1/blog/create`,
+      `/api/blog/create`,
       formData,
       {
         headers: {
@@ -156,7 +154,7 @@ export const updateBlog = async (blogId, blogData, setLoading) => {
   setLoading(true); // Set loading to true before making the API call
   try {
     const { data } = await axios.post(
-      `${API_URL}/api/v1/blog/update/${blogId}`,
+      `/api/blog/update/${blogId}`,
       blogData
     );
     if (data.success) {
@@ -179,7 +177,7 @@ export const deleteBlog = async (blogId, setLoading) => {
   setLoading(true); // Set loading to true before making the API call
   try {
     const { data } = await axios.delete(
-      `${API_URL}/api/v1/blog/delete/${blogId}`
+      `/api/blog/delete/${blogId}`
     );
     if (data.success) {
       toast.success("Blog deleted successfully!");
