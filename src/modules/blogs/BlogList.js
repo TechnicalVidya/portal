@@ -9,20 +9,26 @@
 //   const [editingBlog, setEditingBlog] = useState(null);
 //   const isAdmin = true; // Replace with actual admin check logic
 
-//   // Sample data (replace with your real data source or API)
+//   // Load blogs from localStorage on component mount
 //   useEffect(() => {
-//     const sampleBlogs = [
-//       // Sample blog data for illustration
-//       {
-//         id: 1,
-//         title: "Sample Blog",
-//         date: "2023-10-10",
-//         content: "Sample content here...",
-//         tags: ["Tag1", "Tag2"],
-//         file: "",
-//       },
-//     ];
-//     setBlogs(sampleBlogs);
+//     const savedBlogs = localStorage.getItem("blogs");
+//     if (savedBlogs) {
+//       setBlogs(JSON.parse(savedBlogs));
+//     } else {
+//       // Sample data (replace with your real data source or API)
+//       const sampleBlogs = [
+//         {
+//           id: 1,
+//           title: "Sample Blog",
+//           date: "2023-10-10",
+//           content: "Sample content here...",
+//           tags: ["Tag1", "Tag2"],
+//           file: "",
+//         },
+//       ];
+//       setBlogs(sampleBlogs);
+//       localStorage.setItem("blogs", JSON.stringify(sampleBlogs));
+//     }
 //   }, []);
 
 //   const handleViewMore = (blog) => {
@@ -37,9 +43,15 @@
 
 //   const handleSave = (updatedBlog) => {
 //     if (editingBlog) {
-//       setBlogs(blogs.map((b) => (b.id === updatedBlog.id ? updatedBlog : b)));
+//       const updatedBlogs = blogs.map((b) =>
+//         b.id === updatedBlog.id ? updatedBlog : b
+//       );
+//       setBlogs(updatedBlogs);
+//       localStorage.setItem("blogs", JSON.stringify(updatedBlogs)); // Save to localStorage
 //     } else {
-//       setBlogs([updatedBlog, ...blogs]);
+//       const newBlogs = [updatedBlog, ...blogs];
+//       setBlogs(newBlogs);
+//       localStorage.setItem("blogs", JSON.stringify(newBlogs)); // Save to localStorage
 //     }
 //     setEditingBlog(null);
 //   };
@@ -74,7 +86,14 @@ export default function BlogList() {
   useEffect(() => {
     const loadBlogs = async () => {
       setLoading(true);
-      await fetchAllBlogs(setBlogs, setLoading);
+      try {
+        await fetchAllBlogs(setBlogs, setLoading);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+        alert("Failed to load blogs. Please try again.");
+      } finally {
+        setLoading(false);
+      }
     };
     loadBlogs();
   }, []);
@@ -92,12 +111,12 @@ export default function BlogList() {
     setLoading(true);
     try {
       if (editingBlog) {
-        // Update existing blog in the backend
         const updatedData = await updateBlog(editingBlog.id, updatedBlog);
+
         setBlogs(blogs.map((b) => (b.id === editingBlog.id ? updatedData : b)));
       } else {
         // Create new blog in the backend
-        const newBlog = await createBlog(updatedBlog);
+        const newBlog = await createBlog(updatedBlog, setLoading);
         setBlogs([newBlog, ...blogs]);
       }
       setEditingBlog(null);
@@ -108,22 +127,30 @@ export default function BlogList() {
       setLoading(false);
     }
   };
-
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Blogs</h2>
       <BlogForm blogData={editingBlog} onSuccess={handleSave} />
+
       {loading ? (
         <p>Loading...</p>
       ) : (
-        blogs.map((blog) => (
-          <BlogCard
-            key={blog.id}
-            blog={blog}
-            onViewMore={handleViewMore}
-            onEdit={handleEdit}
-          />
-        ))
+        <>
+          {blogs.length > 0 ? (
+            blogs.map((blog) =>
+              blog ? (
+                <BlogCard
+                  key={blog.id} // Safe access to id
+                  blog={blog}
+                  onViewMore={handleViewMore}
+                  onEdit={handleEdit}
+                />
+              ) : null
+            )
+          ) : (
+            <p>No blogs available.</p>
+          )}
+        </>
       )}
     </div>
   );
