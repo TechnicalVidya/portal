@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
@@ -7,9 +7,31 @@ import { Select } from "@/components/select";
 import { TagInput } from "@/components/TagInput";
 import RichTextEditor from "./RichTextEditor";
 import { createBlog, updateBlog } from "@/utils/blog";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+
+// const FormSchema = z.object({
+//   title: z.string().min(2, {
+//     message: "Title cannot be empty.",
+//   }),
+//   content: z.string().min(2, {
+//     message: "Content cannot be empty.",
+//   }),
+//   category: z.string().min(1, {
+//     message: "Category selection is required.",
+//   }),
+//   tags: z.string().min(1, {
+//     message: "tags are required.",
+//   }),
+//   files: z.string().min(1, {
+//     message: "files are required.",
+//   }),
+// });
 
 const BlogForm = ({ blogData = null, onSuccess }) => {
   const { control, handleSubmit, reset } = useForm({
+    // resolver: zodResolver(FormSchema),
     defaultValues: blogData || {
       title: "",
       content: "",
@@ -20,7 +42,6 @@ const BlogForm = ({ blogData = null, onSuccess }) => {
     },
   });
   const [loading, setLoading] = useState(false);
-  const [files, setFiles] = useState([]);
 
   const onSubmit = async (data) => {
     if (!data.content || data.content.trim() === "") {
@@ -29,45 +50,24 @@ const BlogForm = ({ blogData = null, onSuccess }) => {
     }
 
     setLoading(true);
-    const formData = new FormData();
-    formData.append("title", data.title);
-    formData.append("content", data.content);
-    formData.append("category", data.category);
-
-    data.tags.forEach((tag) => formData.append("tags[]", tag));
-
-    if (files.length === 0) {
-      toast.error("At least one file is required.");
-      setLoading(false);
-      return;
-    }
-
-    files.forEach((file) => formData.append("files", file));
-
     try {
       if (blogData) {
-        await updateBlog(blogData.id, formData, setLoading);
+        await updateBlog(blogData.id, data, setLoading);
       } else {
-        await createBlog(formData, setLoading);
+        await createBlog(data, setLoading);
       }
       toast.success(`Blog ${blogData ? "updated" : "created"} successfully!`);
       onSuccess({ ...data, id: blogData ? blogData.id : Date.now() });
-      reset();
-      setFiles([]);
+      reset()
     } catch (error) {
       console.error("Error storing data:", error);
       toast.error(
-        `Failed to ${blogData ? "update" : "create"} blog: ${
-          error.response?.data?.message || "An error occurred."
+        `Failed to ${blogData ? "update" : "create"} blog: ${error.response?.data?.message || "An error occurred."
         }`
       );
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleFileChange = (event) => {
-    setFiles([...event.target.files]);
   };
 
   return (
@@ -110,15 +110,19 @@ const BlogForm = ({ blogData = null, onSuccess }) => {
           <TagInput label="Tags" placeholder="Add tags" {...field} />
         )}
       />
-      <div>
-        <label className="block text-sm font-medium">Upload Files</label>
-        <input
-          type="file"
-          multiple
-          onChange={handleFileChange}
-          className="mt-1"
-        />
-      </div>
+      <Controller
+        name="files"
+        control={control}
+        render={({ field }) => (
+          <Input
+            type="file"
+            multiple
+            onChange={(event) => {
+              field.onChange(Array.from(event.target.files)); // Pass to form data
+            }}
+          />
+        )}
+      />
       <Button type="submit" loading={loading}>
         {blogData ? "Update Blog" : "Create Blog"}
       </Button>

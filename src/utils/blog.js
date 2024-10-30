@@ -93,19 +93,11 @@ export const createBlog = async (blogData, setLoading) => {
   setLoading(true);
 
   try {
-    const formData = new FormData();
-
-    for (const key in blogData) {
-      if (Object.hasOwnProperty.call(blogData, key)) {
-        formData.append(key, blogData[key]);
-      }
-    }
-
-    console.log("Sending blog data:", [...formData]);
+    console.log(blogData)
 
     const { data } = await axios.post(
       `/api/blog/create`,
-      formData,
+      blogData,
       {
         headers: {
           "Content-Type": "multipart/form-data",
