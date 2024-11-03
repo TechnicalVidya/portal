@@ -33,7 +33,7 @@ export default function Home() {
           <TestMarquee />
         </div>  
         <Testimonials />
-        <Stats />
+        {/* <Stats /> */}
         <Contact />
       </div>
 

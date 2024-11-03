@@ -28,7 +28,7 @@ const HeroComponent = () => {
       <div className="flex flex-col items-center gap-4">
         <div className="grid scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-6xl text-center">
           <GradualSpacingText
-            text={"Technical Vidya"}
+            text={"INGENIA 1.O"}
             className={" tracking-[-0.12em]"}
           />
           <GradualSpacingText

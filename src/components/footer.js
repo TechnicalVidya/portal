@@ -7,14 +7,14 @@ import Image from 'next/image';
 import React from "react";
 const Footer = () => {
   return (
-<div className="flex bg-muted items-center gap mt-24 h-28 justify-center py-2 -my-4 md:py-8 border-t border-muted flex-wrap sm:flex-nowrap">
+<div className="flex bg-muted items-center gap mt-24 h-28 lg:justify-between py-2 -my-4 md:py-8 border-t border-muted flex-wrap sm:flex-nowrap lg:px-40 justify-center">
 <div className="block md:hidden text-center text-muted-foreground">
     Developed with ❤ By <a href='/members' className='underline'>Technical Vidya </a>Of LTCE
   </div>
-  <div className="">
+  <div className="flex items-center">
     {/* Social icons */}
     <a
-      href="https://linkedin.com/in/anshhvarma"
+      href="https://linkedin.com/in/"
       target="_blank"
       className="relative w-[50px] h-[50px] inline-flex rounded-full items-center justify-center overflow-hidden"
     >
@@ -26,7 +26,7 @@ const Footer = () => {
       />
     </a>
     <a
-      href="https://github.com/ANSHHVARMA"
+      href="https://github.com/"
       target="_blank"
       className="relative w-[50px] h-[50px] inline-flex rounded-full items-center justify-center overflow-hidden "
     >
@@ -38,7 +38,7 @@ const Footer = () => {
       />
     </a>
     <a
-      href="https://www.instagram.com/anshhvarma/"
+      href="https://www.instagram.com/"
       target="_blank"
       className="relative w-[50px] h-[50px] inline-flex rounded-full items-center justify-center overflow-hidden "
     >
@@ -50,7 +50,7 @@ const Footer = () => {
       />
     </a>
     <a
-      href="https://twitter.com/AnshhVarma"
+      href="https://twitter.com/"
       target="_blank"
       className="relative w-[50px] h-[50px] inline-flex rounded-full items-center justify-center overflow-hidden "
     >
@@ -61,6 +61,10 @@ const Footer = () => {
         className="w-2/5 z-10 "
       />
     </a>
+
+    <p className='text-slate-600 ml-5'>
+      - Follow us.                                          
+    </p>
   </div>
   <div className=" hidden lg:block text-center text-muted-foreground ml-7">
     Developed with ❤ By <a href='/members' className='underline'>Technical Vidya </a> Of LTCE
