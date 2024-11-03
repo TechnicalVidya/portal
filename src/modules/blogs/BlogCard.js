@@ -15,9 +15,9 @@ export default function BlogCard({ blog, onViewMore, onEdit }) {
   const sanitizedContent = DOMPurify.sanitize(blog.content);
 
   return (
-    <Card className="my-4 shadow-lg bg-[#00373e] text-white">
+    <Card className="my-4 shadow-lg bg-white text-black">
       <CardHeader className="text-2xl font-bold">{blog.title}</CardHeader>
-      <CardContent className="text-gray-200">
+      <CardContent className="text-slate-600">
         <div className="text-sm mb-2">{blog.date}</div>
         <p
           dangerouslySetInnerHTML={{ __html: sanitizedContent.slice(0, 100) }}
@@ -46,7 +46,7 @@ export default function BlogCard({ blog, onViewMore, onEdit }) {
           <Button
             variant="link"
             onClick={() => onViewMore(blog)}
-            className="text-yellow-300"
+            className="text-black"
           >
             View More
           </Button>
@@ -54,7 +54,7 @@ export default function BlogCard({ blog, onViewMore, onEdit }) {
             <Button
               variant="link"
               onClick={() => onEdit(blog)}
-              className="text-yellow-300"
+              className="text-black"
             >
               Edit Blog
             </Button>
