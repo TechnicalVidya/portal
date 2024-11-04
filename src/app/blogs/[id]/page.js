@@ -27,6 +27,9 @@ export default function BlogDetailsPage() {
     };
     loadBlogData(); 
   }, [id]);
+
+  if (error) return <p className="text-red-500">{error}</p>;
+  if (!blog) return <p>Loading...</p>;
   
   // Sanitize the blog content before rendering
   const sanitizedContent = DOMPurify.sanitize(blog.content);
