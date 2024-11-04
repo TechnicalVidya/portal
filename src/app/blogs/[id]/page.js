@@ -2,13 +2,12 @@
 
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import Heading from "@/components/ui/heading"; // Assuming you have a heading component for consistency
-import { fetchBlogById } from "@/utils/blog";
-import { Card, CardContent, CardHeader } from "@/components/ui/card"; // Adjust imports according to your structure
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import DOMPurify from "dompurify";
+import { fetchBlogById } from "@/utils/blog";
 
 export default function BlogDetailsPage() {
-  const { id } = useParams(); // Use useParams to access the dynamic route parameter
+  const { id } = useParams(); // useParams to access the dynamic route parameter
   const [blog, setBlog] = useState(null);
   const [error, setError] = useState(null);
 
