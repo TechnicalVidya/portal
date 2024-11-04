@@ -1,6 +1,7 @@
-'use client'
+'use client';
 import { useState, useEffect } from "react";
-import heroImg from "@/assets/EveHero.png"
+import { useRouter } from "next/navigation"; 
+import heroImg from "@/assets/EveHero.png";
 import { fetchAllBlogs, createBlog, updateBlog } from "@/utils/blog";
 import Heading from "@/components/ui/heading";
 import Image from "next/image";
@@ -10,6 +11,7 @@ import BlogCard from "./BlogCard";
 export default function BlogPage() {
     const [loading, setLoading] = useState(false);
     const [blogs, setBlogs] = useState([]);
+    const router = useRouter(); 
 
     useEffect(() => {
         const loadBlogs = async () => {
@@ -27,7 +29,7 @@ export default function BlogPage() {
     }, []);
 
     const handleViewMore = (blog) => {
-        alert(`Viewing full content for: ${blog.title}`);
+        router.push(`/blogs/${blog.id}`); // Navigate 
     };
 
     const handleEdit = (blog) => {
@@ -82,8 +84,8 @@ export default function BlogPage() {
                                         <BlogCard
                                             key={blog.id} // Safe access to id
                                             blog={blog}
-                                            onViewMore={handleViewMore}
-                                            onEdit={handleEdit}
+                                            onViewMore={() => handleViewMore(blog)}
+                                            onEdit={() => handleEdit(blog)}
                                         />
                                     ) : null
                                 )
