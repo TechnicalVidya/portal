@@ -8,6 +8,7 @@ import { fetchBlogById } from "@/utils/blog";
 
 export default function BlogDetailsPage() {
   const { id } = useParams(); // useParams to access the dynamic route parameter
+  const [loading,setLoading] = useState(true)
   const [blog, setBlog] = useState(null);
   const [error, setError] = useState(null);
 
@@ -29,7 +30,7 @@ export default function BlogDetailsPage() {
   }, [id]);
 
   if (error) return <p className="text-red-500">{error}</p>;
-  if (!blog) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
   
   // Sanitize the blog content before rendering
   const sanitizedContent = DOMPurify.sanitize(blog.content);
