@@ -10,6 +10,7 @@ export const fetchAllBlogs = async (setCardData, setLoading) => {
       const blogs = data.data.map((blog) => ({
         id: blog._id,
         title: blog.title,
+        date : blog.createdAt,
         content: blog.content,
         category: blog.category,
         tags: blog.tags || [],
@@ -44,6 +45,7 @@ export const fetchBlogById = async (blogId, setBlogData, setLoading) => {
       setBlogData({
         id: blog._id,
         title: blog.title,
+        date: blog.createdAt, 
         content: blog.content,
         category: blog.category,
         tags: blog.tags || [],
