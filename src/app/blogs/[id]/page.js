@@ -37,7 +37,7 @@ export default function BlogDetailsPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Card className="my-4 shadow-lg bg-white text-black">
+      <Card className="my-4 shadow-lg bg-white text-black min-h-[40vh] min-w-[80vw]">
         <CardHeader className="text-2xl font-bold">{blog.title}</CardHeader>
         <CardContent>
           <div className="text-sm text-gray-500 mb-2">{new Date(blog.date).toLocaleDateString()}</div>
