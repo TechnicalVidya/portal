@@ -68,7 +68,10 @@ const BlogForm = ({ blogData = null, onSuccess }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="space-y-4 max-h-[60vh] overflow-y-auto "
+    >
       <Controller
         name="title"
         control={control}
