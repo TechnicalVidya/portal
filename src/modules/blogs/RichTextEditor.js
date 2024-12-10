@@ -30,22 +30,24 @@ const RichTextEditor = ({ value, onChange }) => {
         .ql-container {
           box-sizing: border-box;
           width: 100%;
-          max-width: 470px;
+          max-width: 460px;
           border: 1px solid #ccc;
           border-radius: 6px;
           overflow: hidden;
         }
 
+
         .ql-editor {
-          min-height: 150px;
-          max-height: 350px;
+          min-height: 100px;
           padding: 10px;
           font-size: 16px;
           line-height: 1.5;
-          white-space: pre-wrap;
-          word-wrap: break-word;
-          overflow-wrap: break-word;
-          overflow-y: auto;
+          white-space: pre; 
+          word-wrap: normal; 
+          overflow-wrap: normal; 
+          overflow-x: auto; 
+          overflow-y: hidden; 
+          max-width: 460px; 
         }
 
         .ql-toolbar {
