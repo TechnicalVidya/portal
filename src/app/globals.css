@@ -57,12 +57,28 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
-/* nswjkd */
 
+.custom-scroll {
+  &::-webkit-scrollbar {
+    appearance: none;
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #E0E0E0;
+  }
+
+  &::-webkit-scrollbar-button {
+    width: 5px;
+    height: 15px;
+  }
+}
 
 @layer base {
   :root {
@@ -140,6 +156,5 @@ body {
 }
 
 .filter-grey {
-  filter: brightness(0) saturate(100%) invert(47%) sepia(0%) saturate(217%)
-    hue-rotate(32deg) brightness(98%) contrast(92%);
+  filter: brightness(0) saturate(100%) invert(47%) sepia(0%) saturate(217%) hue-rotate(32deg) brightness(98%) contrast(92%);
 }

@@ -73,7 +73,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-export default function BlogList({ editingBlog, onSave, onCancel }) {
+export default function BlogList({ editingBlog, onSave, onCancel , isOpen , setIsOpen }) {
   const [loading, setLoading] = useState(false);
 
   const handleSave = async (updatedBlog) => {
@@ -96,7 +96,7 @@ export default function BlogList({ editingBlog, onSave, onCancel }) {
 
   return (
     <div>
-      <Dialog>
+      <Dialog open={isOpen} onOpenChange={(val) => setIsOpen(val)}>
         <DialogTrigger className="bg-black text-white rounded-lg p-2">
           Add New Blog
         </DialogTrigger>
