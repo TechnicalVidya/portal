@@ -3,14 +3,14 @@ import { toast } from "sonner";
 
 // Fetch all blogs
 export const fetchAllBlogs = async (setCardData, setLoading) => {
-  setLoading(true); // Set loading to true before making the API call
+  setLoading(true);
   try {
-    const { data } = await axios.get('/api/blog/getAll');
+    const { data } = await axios.get("/api/blog/getAll");
     if (data.success) {
       const blogs = data.data.map((blog) => ({
         id: blog._id,
         title: blog.title,
-        date : blog.createdAt,
+        date: blog.createdAt,
         content: blog.content,
         category: blog.category,
         tags: blog.tags || [],
@@ -27,7 +27,7 @@ export const fetchAllBlogs = async (setCardData, setLoading) => {
   } catch (error) {
     toast.error(
       "Error fetching blogs: " +
-      (error.response?.data?.message || error.message)
+        (error.response?.data?.message || error.message)
     );
     console.error("Fetch all blogs error:", error);
   } finally {
@@ -37,7 +37,7 @@ export const fetchAllBlogs = async (setCardData, setLoading) => {
 
 // Fetch a specific blog by ID
 export const fetchBlogById = async (blogId, setBlogData, setLoading) => {
-  setLoading(true); // Set loading to true before making the API call
+  setLoading(true);
   try {
     const { data } = await axios.get(`/api/blog/get/${blogId}`);
     if (data.success) {
@@ -45,7 +45,7 @@ export const fetchBlogById = async (blogId, setBlogData, setLoading) => {
       setBlogData({
         id: blog._id,
         title: blog.title,
-        date: blog.createdAt, 
+        date: blog.createdAt,
         content: blog.content,
         category: blog.category,
         tags: blog.tags || [],
@@ -68,89 +68,52 @@ export const fetchBlogById = async (blogId, setBlogData, setLoading) => {
   }
 };
 
-// // Create a new blog
-// export const createBlog = async (blogData, setLoading) => {
-//   setLoading(true); // Set loading to true before making the API call
-//   try {
-//     const { data } = await axios.post(
-//       `${API_BASE_URL}/api/blog/create`,
-//       blogData
-//     );
-//     if (data.success) {
-//       toast.success("Blog created successfully!");
-//     } else {
-//       toast.error("Failed to create the blog. Please try again.");
-//     }
-//   } catch (error) {
-//     toast.error(
-//       "Error creating blog: " + (error.response?.data?.message || error.message)
-//     );
-//     console.error("Create blog error:", error);
-//   } finally {
-//     setLoading(false); // Set loading to false after the API call completes
-//   }
-// };
-
-export const createBlog = async (blogData, setLoading) => {
-  setLoading(true);
-
+export const createBlog = async (blogData) => {
   try {
-    console.log(blogData)
+    const response = await axios.post(`/api/blog/create`, blogData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
-    const { data } = await axios.post(
-      `/api/blog/create`,
-      blogData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
-
-    if (data.success) {
+    if (response?.data?.success) {
       toast.success("Blog created successfully!");
+      return response.data.data;
     } else {
-      toast.error("Failed to create the blog. Please try again.");
+      throw new Error("Create failed: Success flag not set");
     }
   } catch (error) {
     const errorMessage = error.response?.data?.message || error.message;
     toast.error("Error creating blog: " + errorMessage);
     console.error("Create blog error:", error);
-  } finally {
-    setLoading(false);
+    throw error;
   }
 };
 
-// export const createBlog = async (blogData, setLoading) => {
-//   setLoading(true); // Set loading to true before making the API call
-//   try {
-//     console.log("Sending blog data:", blogData); // Debug log
-//     const { data } = await axios.post(
-//       `${API_URL}/api/v1/blog/create`,
-//       blogData
-//     );
-//     if (data.success) {
-//       toast.success("Blog created successfully!");
-//     } else {
-//       toast.error("Failed to create the blog. Please try again.");
-//     }
-//   } catch (error) {
-//     const errorMessage = error.response?.data?.message || error.message;
-//     toast.error("Error creating blog: " + errorMessage);
-//     console.error("Create blog error:", error);
-//   } finally {
-//     setLoading(false); // Set loading to false after the API call completes
-//   }
-// };
+export const updateBlog = async (blogId, blogData) => {
+  try {
+    const { data } = await axios.post(`/api/blog/update/${blogId}`, blogData);
+    if (data.success) {
+      toast.success("Blog updated successfully!");
+      return data; // Return the response if needed
+    } else {
+      toast.error("Failed to update the blog. Please try again.");
+      throw new Error("Update failed");
+    }
+  } catch (error) {
+    toast.error(
+      "Error updating blog: " + (error.response?.data?.message || error.message)
+    );
+    console.error("Update blog error:", error);
+    throw error; // Re-throw the error to handle it in the caller
+  }
+};
 
 // Update an existing blog
-export const updateBlog = async (blogId, blogData, setLoading) => {
+/*export const updateBlog = async (blogId, blogData, setLoading) => {
   setLoading(true); // Set loading to true before making the API call
   try {
-    const { data } = await axios.post(
-      `/api/blog/update/${blogId}`,
-      blogData
-    );
+    const { data } = await axios.post(`/api/blog/update/${blogId}`, blogData);
     if (data.success) {
       toast.success("Blog updated successfully!");
     } else {
@@ -165,14 +128,13 @@ export const updateBlog = async (blogId, blogData, setLoading) => {
     setLoading(false); // Set loading to false after the API call completes
   }
 };
+*/
 
 // Delete a blog
 export const deleteBlog = async (blogId, setLoading) => {
   setLoading(true); // Set loading to true before making the API call
   try {
-    const { data } = await axios.delete(
-      `/api/blog/delete/${blogId}`
-    );
+    const { data } = await axios.delete(`/api/blog/delete/${blogId}`);
     if (data.success) {
       toast.success("Blog deleted successfully!");
     } else {
