@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
-import "quill-emoji/dist/quill-emoji.css"; // Import emoji CSS
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -20,7 +19,6 @@ const RichTextEditor = ({ value, onChange }) => {
       ["clean"],
       ["superscript", "subscript"],
       ["undo", "redo"],
-      ["emoji"],
     ],
   };
 
