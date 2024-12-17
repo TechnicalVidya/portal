@@ -9,7 +9,7 @@ import BlogList from "./BlogList";
 import BlogCard from "./BlogCard";
 
 export default function BlogPage() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [blogs, setBlogs] = useState([]);
   const [editingBlog, setEditingBlog] = useState(null); // Manage editingBlog state here
@@ -35,7 +35,7 @@ export default function BlogPage() {
   };
 
   const handleEdit = (blog) => {
-    setIsOpen(true)
+    setIsOpen(true);
     setEditingBlog(blog);
   };
 

@@ -48,9 +48,9 @@ const BlogForm = ({ blogData = null, onSuccess }) => {
     setLoading(true);
     try {
       if (blogData) {
-        await updateBlog(blogData.id, formData, setLoading);
+        await updateBlog(blogData.id, formData);
       } else {
-        await createBlog(formData, setLoading);
+        await createBlog(formData);
       }
       toast.success(`Blog ${blogData ? "updated" : "created"} successfully!`);
       onSuccess({ ...data, id: blogData ? blogData.id : Date.now() });
@@ -81,6 +81,7 @@ const BlogForm = ({ blogData = null, onSuccess }) => {
             placeholder="Enter blog title"
             required
             {...field}
+            name={field.name}
           />
         )}
       />
@@ -100,6 +101,7 @@ const BlogForm = ({ blogData = null, onSuccess }) => {
             placeholder="Select category"
             options={["Results", "Notices", "Events", "General"]}
             {...field}
+            name={field.name}
           />
         )}
       />
@@ -107,7 +109,12 @@ const BlogForm = ({ blogData = null, onSuccess }) => {
         name="tags"
         control={control}
         render={({ field }) => (
-          <TagInput label="Tags" placeholder="Add tags" {...field} />
+          <TagInput
+            name={field.name}
+            label="Tags"
+            placeholder="Add tags"
+            {...field}
+          />
         )}
       />
       <Controller
@@ -120,6 +127,7 @@ const BlogForm = ({ blogData = null, onSuccess }) => {
               checked={field.value}
               onChange={(e) => field.onChange(e.target.checked)}
               id="urgent"
+              name={field.name}
             />
             <label htmlFor="urgent" className="ml-2">
               Urgent
@@ -137,6 +145,7 @@ const BlogForm = ({ blogData = null, onSuccess }) => {
             onChange={(event) => {
               field.onChange(Array.from(event.target.files));
             }}
+            name={field.name}
           />
         )}
       />
