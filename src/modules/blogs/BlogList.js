@@ -17,6 +17,7 @@ export default function BlogList({
   onCancel,
   isOpen,
   setIsOpen,
+  setEditingBlog
 }) {
   const [loading, setLoading] = useState(false);
 
@@ -39,24 +40,24 @@ export default function BlogList({
   //   }
   // };
 
-  const handleSave = async (updatedBlog) => {
-    try {
-      if (editingBlog) {
-        const updatedData = await updateBlog(editingBlog.id, updatedBlog);
-        onSave(updatedData);
-      } else {
-        const newBlog = await createBlog(updatedBlog); // Pass setLoading here
-        onSave(newBlog); // You may need to modify this depending on the response
-      }
-    } catch (error) {
-      console.error("Failed to save blog:", error);
-      alert("Failed to save blog. Please try again.");
-    }
-  };
+  // const handleSave = async (updatedBlog) => {
+  //   try {
+  //     if (editingBlog) {
+  //       const updatedData = await updateBlog(editingBlog.id, updatedBlog);
+  //       onSave(updatedData);
+  //     } else {
+  //       const newBlog = await createBlog(updatedBlog); // Pass setLoading here
+  //       onSave(newBlog); // You may need to modify this depending on the response
+  //     }
+  //   } catch (error) {
+  //     console.error("Failed to save blog:", error);
+  //     alert("Failed to save blog. Please try again.");
+  //   }
+  // };
 
   return (
     <div>
-      <Dialog open={isOpen} onOpenChange={(val) => setIsOpen(val)}>
+      <Dialog open={isOpen} onOpenChange={(val) => { setIsOpen(val); if (val == false) { setEditingBlog(null) } }}>
         <DialogTrigger className="bg-black text-white rounded-lg p-2">
           Add New Blog
         </DialogTrigger>
@@ -68,8 +69,8 @@ export default function BlogList({
             <DialogDescription>
               <BlogForm
                 blogData={editingBlog}
-                onSuccess={handleSave}
                 onCancel={onCancel}
+                onSave={onSave}
               />
             </DialogDescription>
           </DialogHeader>

@@ -41,14 +41,24 @@ export default function BlogPage() {
 
   const handleSave = async (updatedBlog) => {
     try {
-      const updatedBlogs = blogs.map((b) =>
-        b.id === updatedBlog.id ? updatedBlog : b
-      );
-      setBlogs(updatedBlogs);
-      setEditingBlog(null);
+      if (updateBlog) {
+        if (editingBlog) {
+
+          const updatedBlogs = blogs.map((b) =>
+            b.id === updatedBlog.id ? updatedBlog : b
+          );
+          setBlogs(updatedBlogs);
+          setEditingBlog(null);
+        }
+        else {
+          setBlogs((prev) => [
+            ...prev,
+            updatedBlog,
+          ])
+        }
+      }
     } catch (error) {
       console.error("Error updating blog:", error);
-      alert("Failed to update blog. Please try again.");
     }
   };
 
@@ -72,6 +82,7 @@ export default function BlogPage() {
             <div className="flex gap-4 items-center justify-between">
               {/* <BlogList /> */}
               <BlogList
+                setEditingBlog={setEditingBlog}
                 editingBlog={editingBlog}
                 onSave={handleSave}
                 onCancel={handleCancelEdit}
@@ -80,7 +91,6 @@ export default function BlogPage() {
               />
             </div>
           </div>
-
           <Image
             src={heroImg}
             alt="hero"
@@ -90,7 +100,6 @@ export default function BlogPage() {
           />
         </div>
       </section>
-
       <section
         id="events"
         className="wrapper my-8 flex flex-col gap-8 md:gap-12"

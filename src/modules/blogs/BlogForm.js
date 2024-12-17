@@ -8,7 +8,7 @@ import { TagInput } from "@/components/TagInput";
 import RichTextEditor from "./RichTextEditor";
 import { createBlog, updateBlog } from "@/utils/blog";
 import DOMPurify from "dompurify";
-const BlogForm = ({ blogData = null, onSuccess }) => {
+const BlogForm = ({ blogData = null, onSave }) => {
   const { control, handleSubmit, reset } = useForm({
     defaultValues: blogData || {
       title: "",
@@ -19,6 +19,8 @@ const BlogForm = ({ blogData = null, onSuccess }) => {
       files: [],
     },
   });
+
+  console.log(blogData)
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
@@ -34,7 +36,7 @@ const BlogForm = ({ blogData = null, onSuccess }) => {
     formData.append("category", data.category);
 
     data.tags.forEach((tag) => {
-      formData.append("tags[]", tag);
+      formData.append("tags", tag);
     });
 
     formData.append("urgent", data.urgent);
@@ -53,13 +55,13 @@ const BlogForm = ({ blogData = null, onSuccess }) => {
         await createBlog(formData);
       }
       toast.success(`Blog ${blogData ? "updated" : "created"} successfully!`);
-      onSuccess({ ...data, id: blogData ? blogData.id : Date.now() });
+      // onSuccess({ ...data, id: blogData ? blogData.id : Date.now() });
+      onSave(blogData)
       reset();
     } catch (error) {
       console.error("Error storing data:", error);
       toast.error(
-        `Failed to ${blogData ? "update" : "create"} blog: ${
-          error.response?.data?.message || "An error occurred."
+        `Failed to ${blogData ? "update" : "create"} blog: ${error.response?.data?.message || "An error occurred."
         }`
       );
     } finally {

@@ -25,11 +25,14 @@ export const fetchAllBlogs = async (setCardData, setLoading) => {
       toast.error("Failed to fetch blogs.");
     }
   } catch (error) {
-    toast.error(
-      "Error fetching blogs: " +
+    if (error.status != 404) {
+
+      toast.error(
+        "Error fetching blogs: " +
         (error.response?.data?.message || error.message)
-    );
-    console.error("Fetch all blogs error:", error);
+      );
+      console.error("Fetch all blogs error:", error);
+    }
   } finally {
     setLoading(false);
   }
