@@ -59,13 +59,26 @@ const RichTextEditor = ({ value, onChange }) => {
                  .ql-container {
                   max-width: 380px; 
             }
+            @media (max-width: 420px) {
+                 .ql-container {
+                  max-width: 360px; 
+            }
             @media (max-width: 400px) {
                  .ql-container {
                   max-width: 350px; 
             }
+           @media (max-width: 380px) {
+                 .ql-container {
+                  max-width: 330px; 
+            }
+    
            @media (max-width: 360px) {
                  .ql-container {
-                  max-width: 300px; 
+                  max-width: 280px; 
+            }
+           @media (max-width: 350px) {
+                 .ql-container {
+                  max-width: 250px; 
             }
 
       `}</style>

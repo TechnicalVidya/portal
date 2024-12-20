@@ -17,7 +17,7 @@ export default function BlogList({
   onCancel,
   isOpen,
   setIsOpen,
-  setEditingBlog
+  setEditingBlog,
 }) {
   const [loading, setLoading] = useState(false);
 
@@ -57,13 +57,21 @@ export default function BlogList({
 
   return (
     <div>
-      <Dialog open={isOpen} onOpenChange={(val) => { setIsOpen(val); if (val == false) { setEditingBlog(null) } }}>
+      <Dialog
+        open={isOpen}
+        onOpenChange={(val) => {
+          setIsOpen(val);
+          if (val == false) {
+            setEditingBlog(null);
+          }
+        }}
+      >
         <DialogTrigger className="bg-black text-white rounded-lg p-2">
           Add New Blog
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="mr-5">
           <DialogHeader>
-            <DialogTitle className="text-4xl font-bold text-center my-8">
+            <DialogTitle className="text-4xl font-bold text-center my-8 ">
               ADMIN DASHBOARD
             </DialogTitle>
             <DialogDescription>
