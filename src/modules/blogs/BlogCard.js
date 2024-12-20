@@ -12,18 +12,21 @@ const isAdmin = true;
 
 export default function BlogCard({ blog, onViewMore, onEdit }) {
   // Sanitize the blog content before rendering
-  const sanitizedContent = DOMPurify.sanitize(blog.content);
-  console.log(blog.content)
+  // const sanitizedContent = DOMPurify.sanitize(blog.content);
+  const sanitizedContent = DOMPurify.sanitize(blog.content).replace(
+    /<\/?p>/g,
+    ""
+  );
+  console.log(blog.content);
   return (
     <Card className="my-4 shadow-lg bg-white text-black">
       <CardHeader className="text-2xl font-bold">{blog.title}</CardHeader>
       <CardContent className="text-slate-600">
-        <div className="text-sm mb-2">{blog.date.split('T')[0]}</div>
+        <div className="text-sm mb-2">{blog.date.split("T")[0]}</div>
         <p
           className="truncate"
-          dangerouslySetInnerHTML={{ __html: blog.content }}
-        >
-        </p>{" "}
+          dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+        ></p>{" "}
         {/* Render sanitized content */}
         {blog.file && (
           <a

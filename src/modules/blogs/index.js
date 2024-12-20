@@ -43,18 +43,13 @@ export default function BlogPage() {
     try {
       if (updateBlog) {
         if (editingBlog) {
-
           const updatedBlogs = blogs.map((b) =>
             b.id === updatedBlog.id ? updatedBlog : b
           );
           setBlogs(updatedBlogs);
           setEditingBlog(null);
-        }
-        else {
-          setBlogs((prev) => [
-            ...prev,
-            updatedBlog,
-          ])
+        } else {
+          setBlogs((prev) => [...prev, updatedBlog]);
         }
       }
     } catch (error) {
@@ -68,10 +63,10 @@ export default function BlogPage() {
 
   return (
     <>
-      <section className=" bg-contain pt-5 md:py-10">
+      <section className=" bg-contain pt-5 md:py-10 px-4">
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
-            <h1 className="font-bold text-6xl">
+            <h1 className="font-bold text-4xl md:text-6xl">
               Stay Informed, Stay Ahead: Notices, Updates, Research Paper!{" "}
             </h1>
             <p className="text-lg md:text-xl">
@@ -108,7 +103,7 @@ export default function BlogPage() {
           <Heading heading={"Recent Blogs"} />
         </div>
       </section>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6">
         <div>
           {loading ? (
             <p>Loading...</p>

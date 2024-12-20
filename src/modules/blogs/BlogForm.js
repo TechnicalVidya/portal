@@ -20,7 +20,7 @@ const BlogForm = ({ blogData = null, onSave }) => {
     },
   });
 
-  console.log(blogData)
+  console.log(blogData);
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
@@ -56,12 +56,13 @@ const BlogForm = ({ blogData = null, onSave }) => {
       }
       toast.success(`Blog ${blogData ? "updated" : "created"} successfully!`);
       // onSuccess({ ...data, id: blogData ? blogData.id : Date.now() });
-      onSave(blogData)
+      onSave(blogData);
       reset();
     } catch (error) {
       console.error("Error storing data:", error);
       toast.error(
-        `Failed to ${blogData ? "update" : "create"} blog: ${error.response?.data?.message || "An error occurred."
+        `Failed to ${blogData ? "update" : "create"} blog: ${
+          error.response?.data?.message || "An error occurred."
         }`
       );
     } finally {
@@ -72,7 +73,7 @@ const BlogForm = ({ blogData = null, onSave }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-4 max-h-[60vh] overflow-y-auto p-3 custom-scroll"
+      className="space-y-4 max-h-[60vh] overflow-y-auto p-3 custom-scroll "
     >
       <Controller
         name="title"
@@ -119,6 +120,7 @@ const BlogForm = ({ blogData = null, onSave }) => {
           />
         )}
       />
+
       <Controller
         name="urgent"
         control={control}
@@ -137,7 +139,7 @@ const BlogForm = ({ blogData = null, onSave }) => {
           </div>
         )}
       />
-      <Controller
+      {/* <Controller
         name="files"
         control={control}
         render={({ field }) => (
@@ -149,6 +151,63 @@ const BlogForm = ({ blogData = null, onSave }) => {
             }}
             name={field.name}
           />
+        )}
+      /> */}
+      <Controller
+        name="files"
+        control={control}
+        defaultValue={[]}
+        render={({ field }) => (
+          <div className="space-y-4">
+            {/* File Input */}
+            <input
+              type="file"
+              multiple
+              onChange={(event) => {
+                const selectedFiles = Array.from(event.target.files);
+                const existingFiles = field.value || [];
+
+                // Prevent duplicate files based on name and size
+                const updatedFiles = [
+                  ...existingFiles,
+                  ...selectedFiles.filter(
+                    (file) =>
+                      !existingFiles.some(
+                        (existingFile) =>
+                          existingFile.name === file.name &&
+                          existingFile.size === file.size
+                      )
+                  ),
+                ];
+                field.onChange(updatedFiles);
+              }}
+            />
+
+            {/* Display Selected Files */}
+            <ul className="space-y-2">
+              {field.value.map((file, index) => (
+                <li
+                  key={`${file.name}-${file.size}`}
+                  className="flex items-center justify-between border p-2 rounded"
+                >
+                  <span className="text-sm truncate max-w-xs">{file.name}</span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      // Remove file from list
+                      const updatedFiles = field.value.filter(
+                        (_, fileIndex) => fileIndex !== index
+                      );
+                      field.onChange(updatedFiles);
+                    }}
+                    className="text-red-500 text-sm font-medium"
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       />
       <Button type="submit" loading={loading}>
