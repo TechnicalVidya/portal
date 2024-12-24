@@ -61,8 +61,7 @@ const BlogForm = ({ blogData = null, onSave }) => {
     } catch (error) {
       console.error("Error storing data:", error);
       toast.error(
-        `Failed to ${blogData ? "update" : "create"} blog: ${
-          error.response?.data?.message || "An error occurred."
+        `Failed to ${blogData ? "update" : "create"} blog: ${error.response?.data?.message || "An error occurred."
         }`
       );
     } finally {
@@ -187,10 +186,10 @@ const BlogForm = ({ blogData = null, onSave }) => {
             <ul className="space-y-2">
               {field.value.map((file, index) => (
                 <li
-                  key={`${file.name}-${file.size}`}
+                  key={`${file.url.split('blogs/')[1]}-${index}`}
                   className="flex items-center justify-between border p-2 rounded"
                 >
-                  <span className="text-sm truncate max-w-xs">{file.name}</span>
+                  <span className="text-sm truncate max-w-xs">{file.url.split('blogs/')[1]}</span>
                   <button
                     type="button"
                     onClick={() => {
