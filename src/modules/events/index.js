@@ -4,10 +4,10 @@ import heroImg from "@/assets/EveHero.png";
 import Cards from "../../components/cards";
 import Heading from "@/components/ui/heading";
 import { AddEvent } from './event/addEvent'
-import { fetchAllEvents, participate } from "@/utils/events";
+import { fetchAllEvents} from "@/utils/events";
 import { useSelector } from "react-redux";
 import AuthenticationAlert from "@/components/authentication-alert";
-
+import { toast } from "sonner";
 export default function EventHome() {
   const { user } = useSelector((state) => state.user);
   const [loading, setLoading] = useState(true);
@@ -18,6 +18,15 @@ export default function EventHome() {
       fetchAllEvents(setCardData, setLoading);
     }
   }, [loading, user]);
+
+  const handleParticipate = (event) => {
+    if (event.googleFormLink) {
+      window.open(event.googleFormLink, '_blank');
+    } else {
+      toast.error("Participation link not available for this event");
+    }
+  };
+  
   return (
     <>
       {
@@ -60,7 +69,7 @@ export default function EventHome() {
                       btnText={"Participate"}
                       type={"events"}
                       loading={loading}
-                      functionToBeExecuted={participate}
+                      functionToBeExecuted={(event) => handleParticipate(event)}
                     />
                   </div>
                 </div>
