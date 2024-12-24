@@ -136,7 +136,7 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
                   console.log(functionToBeExecuted)
                   if (functionToBeExecuted) {
                     console.log('first')
-                    functionToBeExecuted(card.id);
+                    functionToBeExecuted(card);
                   }
                 }}
               >

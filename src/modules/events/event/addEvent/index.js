@@ -37,6 +37,9 @@ const FormSchema = z.object({
     eventDesc: z.string().min(20, {
         message: "Event description must be at least 20 characters.",
     }),
+    googleFormLink: z.string().url({
+        message: "Please enter a valid URL for the Google Form."
+    }), 
     firstDate: z.date({
         required_error: "Start date is required.",
     }).refine((startDate) => {
@@ -70,6 +73,7 @@ const FormSchema = z.object({
 export function AddEvent() {
     const { user } = useSelector((state) => state.user);
     const hasPermission = user && user.erpID === "111111";
+    // const hasPermission = user && user.erpID === "220600077";
     const [logo, setLogo] = useState(null);
     const form = useForm({
         resolver: zodResolver(FormSchema),
@@ -77,6 +81,7 @@ export function AddEvent() {
             image: null,
             eventName: "",
             eventDesc: "",
+            googleFormLink: "",
             firstDate: new Date(),
             lastDate: new Date()
         },
@@ -145,6 +150,13 @@ export function AddEvent() {
                                             label="Description*"
                                             placeholder="Description"
                                             component={Textarea}
+                                        />
+                                        <ReusableField
+                                            form={form}
+                                            name="googleFormLink"
+                                            label="Google Form Link*"
+                                            placeholder="https://forms.gle/xxxxxxxxxxx"
+                                            component={Input}
                                         />
                                     </div>
                                 </div>

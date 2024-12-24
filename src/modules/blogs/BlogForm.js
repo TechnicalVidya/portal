@@ -115,7 +115,7 @@ const BlogForm = ({ blogData = null, onSave }) => {
           <TagInput
             name={field.name}
             label="Tags"
-            placeholder="Add tags"
+            placeholder="Add tags and then click enter"
             {...field}
           />
         )}
