@@ -186,10 +186,10 @@ const BlogForm = ({ blogData = null, onSave }) => {
             <ul className="space-y-2">
               {field.value.map((file, index) => (
                 <li
-                  key={`${file.url.split('blogs/')[1]}-${index}`}
+                  key={`${file?.url?.split('blogs/')[1] || file?.name}-${index}`}
                   className="flex items-center justify-between border p-2 rounded"
                 >
-                  <span className="text-sm truncate max-w-xs">{file.url.split('blogs/')[1]}</span>
+                  <span className="text-sm truncate max-w-xs">{file?.url?.split('blogs/')[1] || file.name}</span>
                   <button
                     type="button"
                     onClick={() => {
