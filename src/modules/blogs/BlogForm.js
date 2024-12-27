@@ -36,7 +36,7 @@ const BlogForm = ({ blogData = null, onSave }) => {
     formData.append("category", data.category);
 
     data.tags.forEach((tag) => {
-      formData.append("tags", tag);
+      formData.append("tags[]", tag);
     });
 
     formData.append("urgent", data.urgent);
