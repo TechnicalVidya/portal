@@ -30,13 +30,24 @@ export default function BlogDetailsPage() {
     loadBlogData();
   }, [id]);
 
+  const decodeHtmlEntities = (htmlString) => {
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = htmlString;
+    return textarea.value;
+  };
+  
+  const extractTextContent = (htmlString) => {
+    const decodedHtml = decodeHtmlEntities(htmlString); // Decode HTML entities
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(decodedHtml, 'text/html');
+    return doc.body.textContent || '';
+  };
+
   if (error) return <p className="text-red-500">{error}</p>;
   if (loading) return <p>Loading...</p>;
 
-  const sanitizedContent = DOMPurify.sanitize(blog.content).replace(
-    /<\/?p>/g,
-    ""
-  );
+  const sanitizedContent = DOMPurify.sanitize(blog.content)
+  console.log(blog.content, sanitizedContent)
 
   const renderFileContent = (files) => {
     return files.map((file, index) => {
@@ -45,7 +56,7 @@ export default function BlogDetailsPage() {
       if (file.type.includes("image")) {
         return (
           <img
-            key={file._id}
+            key={index}
             src={file.url}
             alt="Uploaded content"
             className="mt-4 w-96 h-auto rounded shadow cursor-pointer"
@@ -54,7 +65,7 @@ export default function BlogDetailsPage() {
         );
       } else if (fileExtension === "pdf") {
         return (
-          <div key={file._id} className="mt-4 flex flex-col items-start">
+          <div key={index} className="mt-4 flex flex-col items-start">
             <a
               href={file.url}
               target="_blank"
@@ -83,10 +94,11 @@ export default function BlogDetailsPage() {
           <div className="text-sm text-gray-500 mb-2">
             {new Date(blog.date).toLocaleDateString()}
           </div>
-          <p
+          <div
             className="text-lg mb-4"
-            dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-          />
+          >
+            {extractTextContent(sanitizedContent)}
+          </div>
           {blog.files && blog.files.length > 0 && renderFileContent(blog.files)}
           {blog.tags && blog.tags.length > 0 && (
             <div className="flex flex-wrap space-x-2 mt-4">

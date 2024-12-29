@@ -55,7 +55,6 @@ const BlogForm = ({ blogData = null, onSave }) => {
         await createBlog(formData);
       }
       toast.success(`Blog ${blogData ? "updated" : "created"} successfully!`);
-      // onSuccess({ ...data, id: blogData ? blogData.id : Date.now() });
       onSave(blogData);
       reset();
     } catch (error) {

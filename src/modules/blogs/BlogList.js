@@ -21,40 +21,6 @@ export default function BlogList({
 }) {
   const [loading, setLoading] = useState(false);
 
-  // const handleSave = async (updatedBlog) => {
-  //   setLoading(true);
-  //   try {
-
-  //     if (editingBlog) {
-  //       const updatedData = await updateBlog(editingBlog.id, updatedBlog); // Assuming updateBlog handles the update
-  //       onSave(updatedData);
-  //     } else {
-  //       const newBlog = createBlog(updatedBlog, setLoading);
-  //       onSave(newBlog);
-  //     }
-  //   } catch (error) {
-  //     console.error("Failed to save blog:", error);
-  //     alert("Failed to save blog. Please try again.");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // const handleSave = async (updatedBlog) => {
-  //   try {
-  //     if (editingBlog) {
-  //       const updatedData = await updateBlog(editingBlog.id, updatedBlog);
-  //       onSave(updatedData);
-  //     } else {
-  //       const newBlog = await createBlog(updatedBlog); // Pass setLoading here
-  //       onSave(newBlog); // You may need to modify this depending on the response
-  //     }
-  //   } catch (error) {
-  //     console.error("Failed to save blog:", error);
-  //     alert("Failed to save blog. Please try again.");
-  //   }
-  // };
-
   return (
     <div>
       <Dialog
