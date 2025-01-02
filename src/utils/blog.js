@@ -93,7 +93,11 @@ export const createBlog = async (blogData) => {
 
 export const updateBlog = async (blogId, blogData) => {
   try {
-    const { data } = await axios.post(`/api/blog/update/${blogId}`, blogData);
+    const { data } = await axios.post(`/api/blog/update/${blogId}`, blogData,{
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     if (data.success) {
       return data;
     } else {
