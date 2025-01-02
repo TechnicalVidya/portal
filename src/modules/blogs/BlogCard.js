@@ -28,7 +28,8 @@ export default function BlogCard({ blog, onViewMore, onEdit }) {
     <Card className="my-4 shadow-lg bg-white text-black">
       <CardHeader className="text-2xl font-bold">{blog.title}</CardHeader>
       <CardContent className="text-slate-600">
-        <div className="text-sm mb-2">{blog.date.split("T")[0]}</div>
+        {/* <div className="text-sm mb-2">{blog.date.split("T")[0]}</div> */}
+        <div className="text-sm mb-2">{blog.date ? blog.date.split("T")[0] : null}</div>
         <div
           className="truncate"
         >
@@ -48,11 +49,11 @@ export default function BlogCard({ blog, onViewMore, onEdit }) {
       </CardContent>
       <CardFooter className="flex justify-between items-center">
         <div className="flex space-x-2">
-          {blog.tags.map((tag, index) => (
+        {blog.tags?.map((tag, index) => (
             <span key={index} className="text-sm text-gray-400">
               {tag}
             </span>
-          ))}
+          )) ?? null}
         </div>
         <div className="space-x-2">
           <Button
