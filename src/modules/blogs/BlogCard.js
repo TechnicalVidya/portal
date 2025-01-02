@@ -24,7 +24,6 @@ export default function BlogCard({ blog, onViewMore, onEdit }) {
     return doc.body.textContent || '';
   };
   const sanitizedContent = DOMPurify.sanitize(blog.content)
-  console.log(blog.content);
   return (
     <Card className="my-4 shadow-lg bg-white text-black">
       <CardHeader className="text-2xl font-bold">{blog.title}</CardHeader>

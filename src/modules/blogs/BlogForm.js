@@ -20,7 +20,6 @@ const BlogForm = ({ blogData = null, onSave }) => {
     },
   });
 
-  console.log(blogData);
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
@@ -28,34 +27,20 @@ const BlogForm = ({ blogData = null, onSave }) => {
       toast.error("Content cannot be empty. Please add some content.");
       return;
     }
-
-    const sanitizedContent = DOMPurify.sanitize(data.content);
-    const formData = new FormData();
-    formData.append("title", data.title);
-    formData.append("content", sanitizedContent);
-    formData.append("category", data.category);
-
-    data.tags.forEach((tag) => {
-      formData.append("tags", tag);
-    });
-
-    formData.append("urgent", data.urgent);
-
-    if (data.files.length > 0) {
-      data.files.forEach((file) => {
-        formData.append("files", file);
-      });
-    }
-
+    data.content = DOMPurify.sanitize(data.content);
     setLoading(true);
     try {
       if (blogData) {
-        await updateBlog(blogData.id, formData);
+        await updateBlog(blogData.id, data).then((res) => {
+          onSave(res);
+        });
       } else {
-        await createBlog(formData);
+        await createBlog(data).then((res) => {
+          console.log(res)
+          onSave(res);
+        });
       }
       toast.success(`Blog ${blogData ? "updated" : "created"} successfully!`);
-      onSave(blogData);
       reset();
     } catch (error) {
       console.error("Error storing data:", error);

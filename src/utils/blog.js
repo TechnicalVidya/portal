@@ -79,17 +79,15 @@ export const createBlog = async (blogData) => {
       },
     });
 
-    if (response?.data?.success) {
-      toast.success("Blog created successfully!");
-      return response.data.data;
+    if (response?.success) {
+      return response?.blog;
     } else {
       throw new Error("Create failed: Success flag not set");
     }
   } catch (error) {
     const errorMessage = error.response?.data?.message || error.message;
-    toast.error("Error creating blog: " + errorMessage);
     console.error("Create blog error:", error);
-    throw error;
+    return errorMessage
   }
 };
 
@@ -97,42 +95,15 @@ export const updateBlog = async (blogId, blogData) => {
   try {
     const { data } = await axios.post(`/api/blog/update/${blogId}`, blogData);
     if (data.success) {
-      toast.success("Blog updated successfully!");
-      return data; // Return the response if needed
+      return data;
     } else {
-      toast.error("Failed to update the blog. Please try again.");
       throw new Error("Update failed");
     }
   } catch (error) {
-    toast.error(
-      "Error updating blog: " + (error.response?.data?.message || error.message)
-    );
     console.error("Update blog error:", error);
-    throw error; // Re-throw the error to handle it in the caller
+    return (error.response?.data?.message || error.message)
   }
 };
-
-// Update an existing blog
-/*export const updateBlog = async (blogId, blogData, setLoading) => {
-  setLoading(true); // Set loading to true before making the API call
-  try {
-    const { data } = await axios.post(`/api/blog/update/${blogId}`, blogData);
-    if (data.success) {
-      toast.success("Blog updated successfully!");
-    } else {
-      toast.error("Failed to update the blog. Please try again.");
-    }
-  } catch (error) {
-    toast.error(
-      "Error updating blog: " + (error.response?.data?.message || error.message)
-    );
-    console.error("Update blog error:", error);
-  } finally {
-    setLoading(false); // Set loading to false after the API call completes
-  }
-};
-*/
-
 // Delete a blog
 export const deleteBlog = async (blogId, setLoading) => {
   setLoading(true); // Set loading to true before making the API call

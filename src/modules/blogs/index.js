@@ -42,14 +42,17 @@ export default function BlogPage() {
   const handleSave = async (updatedBlog) => {
     try {
       if (updateBlog) {
+        console.log(updateBlog)
         if (editingBlog) {
           const updatedBlogs = blogs.map((b) =>
             b.id === updatedBlog.id ? updatedBlog : b
           );
           setBlogs(updatedBlogs);
+          setIsOpen(false);
           setEditingBlog(null);
         } else {
           setBlogs((prev) => [...prev, updatedBlog]);
+          setIsOpen(false);
         }
       }
     } catch (error) {
