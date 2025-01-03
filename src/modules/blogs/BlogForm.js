@@ -23,11 +23,23 @@ const BlogForm = ({ blogData = null, onSave }) => {
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
+    const decodeHtmlEntities = (htmlString) => {
+      const textarea = document.createElement('textarea');
+      textarea.innerHTML = htmlString;
+      return textarea.value;
+    };
+    const extractTextContent = (htmlString) => {
+      const decodedHtml = decodeHtmlEntities(htmlString); // Decode HTML entities
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(decodedHtml, 'text/html');
+      return doc.body.textContent || '';
+    };
     if (!data.content || data.content.trim() === "") {
       toast.error("Content cannot be empty. Please add some content.");
       return;
     }
-    data.content = DOMPurify.sanitize(data.content);
+    const sanitizedContent = DOMPurify.sanitize(data.content);
+    data.content = extractTextContent(sanitizedContent)
     setLoading(true);
     try {
       if (blogData) {
