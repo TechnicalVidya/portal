@@ -12,6 +12,7 @@ export default function BlogDetailsPage() {
   const [blog, setBlog] = useState(null);
   const [error, setError] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [pdfUrls, setPdfUrls] = useState({});
 
   useEffect(() => {
     const loadBlogData = async () => {
@@ -30,12 +31,33 @@ export default function BlogDetailsPage() {
     loadBlogData();
   }, [id]);
 
+  useEffect(() => {
+    const fetchFile = async (fileUrl, fileName) => {
+      try {
+        const response = await fetch(fileUrl);
+        const arrayBuffer = await response.arrayBuffer();
+        const blob = new Blob([arrayBuffer], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+        setPdfUrls((prevUrls) => ({ ...prevUrls, [fileName]: url }));
+      } catch (error) {
+        console.error("Error fetching file:", error);
+      }
+    };
+  
+    if (blog && blog.files) {
+      blog.files.forEach((file) => {
+        if (file.type.includes("pdf")) {
+          fetchFile(file.url, file.originalName || file.url.split("/").pop());
+        }
+      });
+    }
+  }, [blog]);
   const decodeHtmlEntities = (htmlString) => {
     const textarea = document.createElement('textarea');
     textarea.innerHTML = htmlString;
     return textarea.value;
   };
-  
+
   const extractTextContent = (htmlString) => {
     const decodedHtml = decodeHtmlEntities(htmlString); // Decode HTML entities
     const parser = new DOMParser();
@@ -67,7 +89,7 @@ export default function BlogDetailsPage() {
         return (
           <div key={index} className="mt-4 flex flex-col items-start">
             <a
-              href={file.url}
+              href={pdfUrls[file.url.split("/").pop()]}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center flex-col"
@@ -85,7 +107,6 @@ export default function BlogDetailsPage() {
       return null;
     });
   };
-
   return (
     <div className="container mx-auto px-4 py-8 flex items-center justify-center ">
       <Card className="my-4 shadow-lg bg-white text-black min-h-[50vh] min-w-[80vw]  ">
