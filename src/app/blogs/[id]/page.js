@@ -36,7 +36,7 @@ export default function BlogDetailsPage() {
       try {
         const response = await fetch(fileUrl);
         const arrayBuffer = await response.arrayBuffer();
-        const blob = new Blob([arrayBuffer], { type: "application/pdf" });
+        const blob = new Blob([arrayBuffer], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
         setPdfUrls((prevUrls) => ({ ...prevUrls, [fileName]: url }));
       } catch (error) {
@@ -47,7 +47,7 @@ export default function BlogDetailsPage() {
     if (blog && blog.files) {
       blog.files.forEach((file) => {
         if (file.type.includes("pdf")) {
-          fetchFile(file.url, file.originalName || file.url.split("/").pop());
+          fetchFile(file.url, file.url.split("/").pop());
         }
       });
     }
@@ -74,7 +74,6 @@ export default function BlogDetailsPage() {
   const renderFileContent = (files) => {
     return files.map((file, index) => {
       const fileExtension = file.type.split("/").pop().toLowerCase();
-
       if (file.type.includes("image")) {
         return (
           <img
@@ -92,6 +91,8 @@ export default function BlogDetailsPage() {
               href={pdfUrls[file.url.split("/").pop()]}
               target="_blank"
               rel="noopener noreferrer"
+              download={file.url.split("/").pop()}
+              type="application/pdf"
               className="flex items-center flex-col"
             >
               <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center shadow">
