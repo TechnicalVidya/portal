@@ -108,6 +108,7 @@ export default function BlogDetailsPage() {
       return null;
     });
   };
+  
   return (
     <div className="container mx-auto px-4 py-8 flex items-center justify-center ">
       <Card className="my-4 shadow-lg bg-white text-black min-h-[50vh] min-w-[80vw]  ">
