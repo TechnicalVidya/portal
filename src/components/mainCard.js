@@ -1,5 +1,5 @@
+'use client'
 import * as React from "react";
-
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -10,11 +10,19 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { Icons } from "./icons";
+import { useRouter } from "next/navigation";
 import { AnimatedTooltip } from "./ui/animated-tooltip";
+import { useSelector } from "react-redux";
+import { toast } from "sonner";
+import axios from "axios";
 
-export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
+
+
+export function CardWithForm({ card, btnText, type, functionToBeExecuted, eventId }) {
   const [isHovered, setIsHovered] = React.useState(false);
   const [title, setTitle] = React.useState(card?.title);
+  const router = useRouter()
+  const { user } = useSelector((state) => state.user)
 
   const truncateString = (str, num) => {
     return str.length > num ? str.slice(0, num) + "..." : str;
@@ -33,6 +41,23 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
     setIsHovered(false);
   };
 
+
+  const deleteEvent = async () => {
+    try {
+      const response = await axios.delete(`/api/event/delete/${eventId}`);
+      console.log(response);
+      if (response.data.success) {
+        toast.success("Event Deleted successfully!");
+        router.push('/events')
+      } else {
+        toast.error("Failed to Delete Event. Please try again.");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again.");
+      console.error("Error:", error);
+    }
+  }
+  console.log(eventId)
   return (
     <Card className="pt-6 ">
       <CardContent>
@@ -125,11 +150,24 @@ export function CardWithForm({ card, btnText, type, functionToBeExecuted }) {
         {type != "internship" ? (
           type === "events" ? (
             <div className="flex items-center gap-2">
-              <Link href={`/${type}/${card.id}`}>
-                <p className="text-xs text-muted-foreground hover:underline cursor-pointer">
-                  View more
-                </p>
-              </Link>
+              <>
+                {
+                  user?.authenticated ?
+                    (
+                      <div className="w-full justify-center flex flex-col items-center">
+                        <div className="flex justify-end w-full">
+                          <Button onClick={deleteEvent}>Delete</Button>
+                        </div>
+                      </div>
+                    )
+                    :
+                    (
+                      <p>
+                        NOt
+                      </p>
+                    )
+                }
+              </>
 
               <Button
                 onClick={() => {

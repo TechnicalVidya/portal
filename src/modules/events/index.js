@@ -3,7 +3,7 @@ import Image from "next/image";
 import heroImg from "@/assets/EveHero.png";
 import Cards from "../../components/cards";
 import Heading from "@/components/ui/heading";
-import { AddEvent } from './event/addEvent'
+import { AddEvent } from './addEvent'
 import { fetchAllEvents} from "@/utils/events";
 import { useSelector } from "react-redux";
 import AuthenticationAlert from "@/components/authentication-alert";
@@ -26,7 +26,6 @@ export default function EventHome() {
       toast.error("Participation link not available for this event");
     }
   };
-  
   return (
     <>
       {
