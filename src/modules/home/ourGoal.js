@@ -15,7 +15,7 @@ const OurGoal = () => {
     </div>
   
     <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-      <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+      <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-2xl">
         <div className="h-96 w-100 md:h-96 md:w-100">
           <Image className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-125" src={Img1} alt="Workshop" />
         </div>
@@ -25,7 +25,7 @@ const OurGoal = () => {
         </div>
       </div>
   
-      <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+      <div className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-2xl">
         <div className="h-96 w-100 md:h-96 md:w-100">
           <Image className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-125" src={Img2} alt="" />
         </div>

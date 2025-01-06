@@ -7,6 +7,7 @@ import Heading from "@/components/ui/heading";
 import Image from "next/image";
 import BlogList from "./BlogList";
 import BlogCard from "./BlogCard";
+import { Badge } from "@/components/ui/badge";
 
 export default function BlogPage() {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,18 +64,25 @@ export default function BlogPage() {
   return (
     <>
       <section className=" bg-contain pt-5 md:py-10 px-4">
-        <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
-          <div className="flex flex-col justify-center gap-8">
-            <h1 className="font-bold text-4xl md:text-6xl">
-              Stay Informed, Stay Ahead: Notices, Updates, Research Paper!{" "}
-            </h1>
-            <p className="text-lg md:text-xl">
-              Your one-stop platform for the latest announcements,
-              groundbreaking research papers, and news updates. Join us to keep
-              informed and stay at the forefront of innovation and discovery!
-            </p>
-            <div className="flex gap-4 items-center justify-between">
-              {/* <BlogList /> */}
+        <div className="flex flex-col pt-8">
+          <main className="flex-grow flex flex-col items-center justify-center">
+            <div className="flex items-center justify-center mb-4">
+              <Badge
+                className={
+                  "bg-secondary hover:bg-muted text-sm flex justify-between gap-3 text-muted-foreground"
+                }
+              >
+                <p>🎉</p>
+                <p>Blogs !</p>
+              </Badge>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 p-4">
+              <h1 className="scroll-m-20 text-3xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold tracking-tight text-center">
+              Stay Ahead: Notices, Research, Updates!
+              </h1>
+            </div>
+            <div className='flex flex-row gap-5 pt-5'>
               <BlogList
                 setEditingBlog={setEditingBlog}
                 editingBlog={editingBlog}
@@ -84,14 +92,7 @@ export default function BlogPage() {
                 setIsOpen={setIsOpen}
               />
             </div>
-          </div>
-          <Image
-            src={heroImg}
-            alt="hero"
-            width={1000}
-            height={1000}
-            className="max-h-[70vh] object-contain object-center 2xl:max-h-[50vh]"
-          />
+          </main>
         </div>
       </section>
       <section
