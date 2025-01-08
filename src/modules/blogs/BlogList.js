@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useSelector } from "react-redux";
 import BlogForm from "./BlogForm";
 import {
   Dialog,
@@ -10,7 +10,6 @@ import {
   DialogDescription,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { createBlog, updateBlog } from "@/utils/blog";
 export default function BlogList({
   editingBlog,
   onSave,
@@ -19,8 +18,13 @@ export default function BlogList({
   setIsOpen,
   setEditingBlog,
 }) {
-  const [loading, setLoading] = useState(false);
+  const { user } = useSelector((state) => state.user);
+  const hasPermission = user && user.erpID === "111111";
+  //const hasPermission = user && user.erpID === "220600077";
 
+  if(!hasPermission){
+    return null;
+  }
   return (
     <div>
       <Dialog

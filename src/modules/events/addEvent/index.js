@@ -64,7 +64,7 @@ const FormSchema = z.object({
         ctx.addIssue({
             code: z.ZodIssueCode.custom,
             message: "End date must be greater than or equal to start date.",
-            path: ["lastDate"], // Specify the path for the issue
+            path: ["lastDate"], 
         });
     }
 });
@@ -73,8 +73,9 @@ const FormSchema = z.object({
 export function AddEvent() {
     const { user } = useSelector((state) => state.user);
     const hasPermission = user && user.erpID === "111111";
-    // const hasPermission = user && user.erpID === "220600077";
+    //const hasPermission = user && user.erpID === "220600077";
     const [logo, setLogo] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const form = useForm({
         resolver: zodResolver(FormSchema),
         defaultValues: {
@@ -88,6 +89,8 @@ export function AddEvent() {
     });
 
     async function onSubmit(data) {
+        if (isSubmitting) return; 
+        setIsSubmitting(true); 
         try {
             const formData = new FormData();
             for (const key in data) {
@@ -105,6 +108,8 @@ export function AddEvent() {
         } catch (error) {
             toast.error("An error occurred. Try Logging in again");
             console.error("Error:", error);
+        }finally{
+            setIsSubmitting(false)
         }
     }
 
@@ -176,7 +181,10 @@ export function AddEvent() {
 
                             <AlertDialogFooter>
                                 <div className="flex justify-center gap-x-6 w-full items-center">
-                                    <Button type="submit">Continue</Button>
+                                    {/* <Button type="submit">Continue</Button> */}
+                                    <Button type="submit" disabled={isSubmitting}>
+                                        {isSubmitting ? "Submitting..." : "Continue"}
+                                    </Button>
                                     <AlertDialogCancel>Cancel</AlertDialogCancel>
                                 </div>
                             </AlertDialogFooter>

@@ -23,13 +23,14 @@ const BlogForm = ({ blogData = null, onSave }) => {
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
+    if (loading) return;
     const decodeHtmlEntities = (htmlString) => {
       const textarea = document.createElement('textarea');
       textarea.innerHTML = htmlString;
       return textarea.value;
     };
     const extractTextContent = (htmlString) => {
-      const decodedHtml = decodeHtmlEntities(htmlString); // Decode HTML entities
+      const decodedHtml = decodeHtmlEntities(htmlString); 
       const parser = new DOMParser();
       const doc = parser.parseFromString(decodedHtml, 'text/html');
       return doc.body.textContent || '';
@@ -205,7 +206,7 @@ const BlogForm = ({ blogData = null, onSave }) => {
           </div>
         )}
       />
-      <Button type="submit" loading={loading}>
+      <Button type="submit" loading={loading} disabled={loading}>
         {blogData ? "Update Blog" : "Create Blog"}
       </Button>
     </form>

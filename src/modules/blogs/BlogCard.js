@@ -10,7 +10,7 @@ import { Calendar, FileText, ExternalLink } from "lucide-react";
 import DOMPurify from "dompurify";
 
 
-const isAdmin = true;
+//const isAdmin = true;
 
 export default function BlogCard({ blog, onViewMore, onEdit }) {
   const decodeHtmlEntities = (htmlString) => {
@@ -84,7 +84,7 @@ export default function BlogCard({ blog, onViewMore, onEdit }) {
           >
             Read More
           </Button>
-          {isAdmin && (
+          {/* {isAdmin && ( */}
             <Button
               variant="outline"
               onClick={() => onEdit(blog)}
@@ -92,7 +92,7 @@ export default function BlogCard({ blog, onViewMore, onEdit }) {
             >
               Edit
             </Button>
-          )}
+          {/* )} */}
         </div>
       </CardFooter>
     </Card>

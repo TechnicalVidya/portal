@@ -46,11 +46,12 @@ const FormSchema = z.object({
 });
 
 export function AddInternship() {
+    const [isSubmitting, setIsSubmitting] = useState(false)
     const [logo, setLogo] = useState(null);
     const { user } = useSelector((state) => state.user);
 
     const hasPermission = user && user.erpID === "111111";
-
+    //const hasPermission = user && user.erpID === "220600077";
     const form = useForm({
         resolver: zodResolver(FormSchema),
         defaultValues: {
@@ -63,6 +64,8 @@ export function AddInternship() {
     });
 
     async function onSubmit(data) {
+        if(isSubmitting) return;
+        setIsSubmitting(true);
         try {
             console.log(data)
             const formData = new FormData();
@@ -81,6 +84,8 @@ export function AddInternship() {
         } catch (error) {
             toast.error("An error occurred. Please try again.");
             console.error("Error:", error);
+        }finally{
+            setIsSubmitting(false);
         }
     }
 
@@ -143,7 +148,8 @@ export function AddInternship() {
 
                             <AlertDialogFooter>
                                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <Button type="submit">Continue</Button>
+                                <Button type="submit" disabled={isSubmitting}>
+                                    {isSubmitting? "Submitting..." : "Continue"}</Button>
                             </AlertDialogFooter>
                         </form>
                     </Form>

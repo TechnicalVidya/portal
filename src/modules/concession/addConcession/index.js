@@ -16,7 +16,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { OptionsField, ReusableField } from "./formcomponents";
-
+import { useState } from "react";
 const FormSchema = z.object({
     boarding: z.string().min(2, {
         message: "Boarding station must be at least 2 characters.",
@@ -36,6 +36,7 @@ const FormSchema = z.object({
 });
 
 export function AddConcession() {
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const form = useForm({
         resolver: zodResolver(FormSchema),
         defaultValues: {
@@ -48,6 +49,8 @@ export function AddConcession() {
     });
 
     async function onSubmit(data) {
+        if(isSubmitting) return
+        setIsSubmitting(true);
         try {
             const response = await axios.post("/api/concession/student/student-form", data);
             console.log(response);
@@ -61,6 +64,8 @@ export function AddConcession() {
         } catch (error) {
             toast.error(error.response.data.message);
             console.error("Error:", error);
+        }finally{
+            setIsSubmitting(false);
         }
     }
 
@@ -120,7 +125,9 @@ export function AddConcession() {
                             />
                             <AlertDialogFooter>
                                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <Button type="submit">Continue</Button>
+                                <Button type="submit" disabled={isSubmitting}>
+                                        {isSubmitting ? "Submitting..." : "Continue"}
+                                </Button>
                             </AlertDialogFooter>
                         </form>
                     </Form>

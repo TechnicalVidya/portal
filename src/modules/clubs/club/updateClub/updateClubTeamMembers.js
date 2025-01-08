@@ -22,6 +22,7 @@ export const UpdateTeamMembers = ({ addNewMember, clubData }) => {
   const pathName = useParams()
   const { user } = useSelector((state) => state.user);
   const hasPermission = user && user.erpID === "111111";
+  //const hasPermission = user && user.erpID === "220600077";
   const [isOpen, setIsOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
 

@@ -52,7 +52,9 @@ const FormSchema = z.object({
 export function AddClub() {
   const { user } = useSelector((state) => state.user);
   const hasPermission = user && user.erpID === "111111";
+  //const hasPermission = user && user.erpID === "220600077";
   const [logo, setLogo] = useState(null);
+  const [isSubmitting, setIsSubmitting]= useState(false)
   const form = useForm({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -66,6 +68,8 @@ export function AddClub() {
   });
 
   async function onSubmit(data) {
+    if(isSubmitting) return;
+    setIsSubmitting(true);
     try {
       const formData = new FormData();
       for (const key in data) {
@@ -160,7 +164,8 @@ export function AddClub() {
 
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <Button type="submit">Continue</Button>
+                <Button type="submit" disabled={isSubmitting}>
+                 { isSubmitting? "Submitting...":"Continue"}</Button>
               </AlertDialogFooter>
             </form>
           </Form>
