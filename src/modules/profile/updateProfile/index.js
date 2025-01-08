@@ -31,6 +31,7 @@ const FormSchema = z.object({
 
 
 export function UpdateProfile() {
+    const [isSubmitting,setIsSubmitting] = useState(false)
     const [logo, setLogo] = useState(null);
     const form = useForm({
         resolver: zodResolver(FormSchema),
@@ -41,6 +42,8 @@ export function UpdateProfile() {
 
 
     async function onSubmit(data) {
+        if(isSubmitting) return;
+        setIsSubmitting(true)
         console.log(data)
         try {
             const formData = new FormData();
@@ -58,6 +61,8 @@ export function UpdateProfile() {
         } catch (error) {
             toast.error(error.response.data.message);
             console.error("Error:", error);
+        }finally{
+            setIsSubmitting(false);
         }
     }
 
@@ -85,7 +90,9 @@ export function UpdateProfile() {
                             </div>
                             <AlertDialogFooter>
                                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <Button type="submit">Continue</Button>
+                                <Button type="submit" disabled={isSubmitting}>
+                                    {isSubmitting? "Submitting...":"Continue"}
+                                </Button>
                             </AlertDialogFooter>
                         </form>
                     </Form>
