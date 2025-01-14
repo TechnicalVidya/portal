@@ -21,6 +21,7 @@ export const PDFUpload = ({
 }) => {
   const [isDragActive, setIsDragActive] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const fileInputRef = useRef(null); 
 
   const onDrop = (acceptedFiles, rejectedFiles) => {
 
@@ -51,7 +52,15 @@ export const PDFUpload = ({
     onDragLeave: () => setIsDragActive(false),
     onDropAccepted: () => setIsDragActive(false),
     onDropRejected: () => setIsDragActive(false),
+    noClick: true,
   });
+
+  
+  const handleClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
 
   return (
     <FormField
@@ -64,6 +73,7 @@ export const PDFUpload = ({
             <FormControl>
               <div
                 {...getRootProps()}
+                onClick={handleClick} 
                 style={{
                   border: isDragActive ? '2px solid blue' : '2px dashed gray',
                   padding: '20px',
@@ -75,9 +85,9 @@ export const PDFUpload = ({
               >
                 <Input
                   {...getInputProps()}
+                  ref={fileInputRef} 
                   id={`${name}_input`}
                   type="file"
-                  {...rest}
                   accept="application/pdf"
                   className="hidden"
                 />
