@@ -52,15 +52,7 @@ export const PDFUpload = ({
     onDragLeave: () => setIsDragActive(false),
     onDropAccepted: () => setIsDragActive(false),
     onDropRejected: () => setIsDragActive(false),
-    noClick: true,
   });
-
-  
-  const handleClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  };
 
   return (
     <FormField
@@ -73,7 +65,6 @@ export const PDFUpload = ({
             <FormControl>
               <div
                 {...getRootProps()}
-                onClick={handleClick} 
                 style={{
                   border: isDragActive ? '2px solid blue' : '2px dashed gray',
                   padding: '20px',
@@ -89,7 +80,7 @@ export const PDFUpload = ({
                   id={`${name}_input`}
                   type="file"
                   accept="application/pdf"
-                  className="hidden"
+                  className="absolute opacity-0 w-full h-full cursor-pointer"
                 />
                 {preview ? (
                   <div className="flex flex-col items-center justify-center">
