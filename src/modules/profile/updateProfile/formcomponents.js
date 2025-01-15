@@ -140,7 +140,7 @@ export const PDFUpload = ({
   const [isMobile, setIsMobile] = useState(false);
   const fileInputRef = useRef(null); 
 
-  // Check for mobile device
+ 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
@@ -196,7 +196,7 @@ export const PDFUpload = ({
     noClick: true
   });
 
-  // Render native input for mobile
+
   if (isMobile) {
     return (
       <FormField
@@ -235,7 +235,7 @@ export const PDFUpload = ({
     );
   }
 
-  // Desktop version with Dropzone
+ 
   return (
     <FormField
       control={form.control}
