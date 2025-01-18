@@ -34,6 +34,7 @@ const FormSchema = z.object({
 
 export default function OtpForm({ isOpen, setIsOpen, formData }) {
     const [isLoading, setLoading] = useState(false)
+    const [isResending, setIsResending] = useState(false)
     const form = useForm({
         resolver: zodResolver(FormSchema),
         defaultValues: {
@@ -62,6 +63,27 @@ export default function OtpForm({ isOpen, setIsOpen, formData }) {
             toast.error(error.response.data.message)
         }
     }
+
+    async function resendOtp() {
+        setIsResending(true);
+        form.setValue("pin", "")
+        try {
+            const response = await axios.post("/api/auth/otp", formData);
+            console.log(response);
+            if (response.data.success) {
+                setIsResending(false);
+                toast.success("Otp has been resent to your email !");
+            } else {
+                setIsResending(false);
+                toast.error("Failed to resend otp. Please try again.");
+            }
+        } catch (error) {
+            setIsResending(false);
+            console.error(error);
+            toast.error(error.response.data.message)
+        }
+    }
+
     return (
         <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
             <AlertDialogContent className="md:h-max h-svh flex flex-col justify-center items-center">
@@ -97,6 +119,12 @@ export default function OtpForm({ isOpen, setIsOpen, formData }) {
                         />
                         <AlertDialogFooter>
                             <AlertDialogCancel>Cancel</AlertDialogCancel>
+                            <Button type="button" variant="outline" onClick={resendOtp}>
+                                {isResending && (
+                                    <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                                )}
+                                Resend OTP
+                            </Button>
                             <Button type="submit">
                                 {isLoading && (
                                     <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
