@@ -46,7 +46,7 @@ export default function BlogCard({ blog, onViewMore, onEdit }) {
       </CardHeader>
       
       <CardContent className="space-y-4">
-        <p className="text-gray-600 leading-relaxed line-clamp-3">
+        <p className="leading-relaxed line-clamp-3">
           {truncatedContent}
         </p>
         
@@ -80,7 +80,6 @@ export default function BlogCard({ blog, onViewMore, onEdit }) {
           <Button
             variant="outline"
             onClick={() => onViewMore(blog)}
-            className="hover:bg-gray-100"
           >
             Read More
           </Button>
@@ -88,7 +87,6 @@ export default function BlogCard({ blog, onViewMore, onEdit }) {
             <Button
               variant="outline"
               onClick={() => onEdit(blog)}
-              className="hover:bg-gray-100"
             >
               Edit
             </Button>
