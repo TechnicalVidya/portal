@@ -2,12 +2,6 @@ import { PDFView } from "@/components/PDFView";
 import { Input } from "@/components/ui/input";
 import { useRef, useState, useEffect } from "react";
 import { useDropzone } from 'react-dropzone';
-import { pdfjs } from "react-pdf";
-
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url,
-).toString();
 const {
   FormField,
   FormItem,

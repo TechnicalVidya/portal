@@ -1,6 +1,4 @@
-'use client'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import Image from 'next/image';
 import { useSelector } from 'react-redux';
 import { UpdateProfile } from './updateProfile';
 import { Skeleton } from '@/components/skeleton/cardSkeletion';
