@@ -15,11 +15,12 @@ const withPWA = withPWAInit({
 });
 
 const nextConfig = {
-  webpack: (config) => {
-    config.resolve.alias.canvas = false;
-
-    return config;
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    config.resolve.alias.canvas = false
+    config.resolve.alias.encoding = false
+    return config
   },
+  swcMinify: false,
   async rewrites() {
     return [
       {
