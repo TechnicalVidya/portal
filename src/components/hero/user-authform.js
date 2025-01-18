@@ -82,6 +82,9 @@ export function UserAuthForm({ className, isLogin, ...props }) {
                       disabled={isLoading}
                     />
                   </div>
+                  <p className="text-red-600 ">
+                     <Link href="/forget-password">Forget password?</Link>
+                  </p>
                   <Button disabled={isLoading} type="submit">
                     {isLoading && (
                       <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
